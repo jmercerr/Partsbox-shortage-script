@@ -44,7 +44,6 @@ Function to calculate the average batch size for 4 time periods
 	- sorted_stock: sorted data from api response/cache 
 @returns 
 	- sorted_stock: data from api request with dictionary of average batch sizes added 
-
 """
 def get_avg_batch(sorted_stock, Timestamps):
 	part_entry = 0
@@ -147,7 +146,6 @@ Function to calculate the average time between batches for 4 time periods
 	- sorted_stock: dictionary of sorted data from api response/cache 
 @returns 
 	- sorted_stock: sorted stock data with dictionary of average times between batches added
-
 """
 def get_avg_time(sorted_stock, Timestamps): 
 	part_entry = 0
@@ -256,7 +254,6 @@ determines whether 4 averages for a part are relatively similar or if a weighted
 	- averages: a dictionary containing 4 averages for the 4 time periods
 @returns
 	- true_average: weighted average if averages are not relatively similar, year average otherwise
-
 '''
 def get_weighted_average(averages):
 	year_average = averages[3] 
@@ -315,6 +312,7 @@ function to calculate the risk level of running out of each part
 	- high = likely to run out in next 2 weeks 
 	- medium = likely to run out in next 3-4 weeks 
 	- low = likely to run out in over a month 
+			no stock data or only 1 data point - unlikely for future batches to take place 
 @params 
 	- sorted_stock: list with all sorted_data and added feilds from previous calculations 
 	- current_timestamp: timestamp from when the program was run 
@@ -335,8 +333,13 @@ def get_risk_level(sorted_stock, current_timestamp):
 		avg_time = sorted_stock[part_entry]['time/average_for_calculations']
 		last_batch = sorted_stock[part_entry]['time/last_batch']
 
-		time_till_next_batch = abs(int(last_batch - avg_time))
+		if last_batch >= avg_time: #overdue for a batch to be produced
+			time_till_next_batch = -abs(int(last_batch - avg_time))
+		else: 
+			time_till_next_batch = abs(int(last_batch - avg_time))
+
 		#print for testing 
+		print('time since last batch', last_batch)
 		print('time till next batch', time_till_next_batch)
 		print('average time:', avg_time)
 
@@ -354,9 +357,11 @@ def get_risk_level(sorted_stock, current_timestamp):
 		print('estimated ROP', int(estimated_rop))
 
 		if avg_time == None or avg_time == 0: #either no stock entries or only one therefore unlikely for more batches to be produced
-			sorted_stock[part_entry]['risk_level'] = 'Low'
+			sorted_stock[part_entry]['risk_level'] = 'Low - not enough data'
 		else: 
-			if (0 <= estimated_rop <= 14): 
+			if (estimated_rop < 0):
+				sorted_stock[part_entry]['risk_level'] = 'High - overdue for batch'
+			elif (0 <= estimated_rop <= 14): 
 				sorted_stock[part_entry]['risk_level'] = 'High'
 			elif (14 < estimated_rop <= 28):
 				sorted_stock[part_entry]['risk_level'] = 'Medium'
@@ -371,3 +376,4 @@ def get_risk_level(sorted_stock, current_timestamp):
 		part_entry += 1
 
 	return sorted_stock
+
