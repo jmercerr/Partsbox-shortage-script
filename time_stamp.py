@@ -1,0 +1,127 @@
+"""
+Module that contains functions for dealing with timestamps 
+
+"""
+
+from datetime import datetime, timedelta
+
+
+"""
+Calculates Timestamps 
+@params
+    - none 
+@returns 
+    - Timestamps: dictionary of 5 timestamps
+      (current, 1 month ago, 3 months ago, 6 months ago, 1 year ago)
+"""
+def get_timestamps():
+    Timestamps = {}
+    num_months = (1, 3, 6, 12) #set number of months needed as a tuple 
+
+    current_date = datetime.now()
+    current_timestamp = int(current_date.timestamp())
+    current_timestamp = current_timestamp * 1000 #convert to milliseconds
+    Timestamps[0] = current_timestamp
+
+    #get time stamps for 1 month ago, 3 months ago, 6 months ago, and 1 year ago
+    for num in num_months: 
+        difference = current_date.month - num
+
+        #if in previous year
+        if difference <= 0: 
+            month = 12 + difference
+            previous_date = current_date.replace(month=month, year=current_date.year-1)
+
+        #if in the current year
+        else:
+            month = current_date.month - num
+            previous_date = current_date.replace(month=month)
+
+        #get timestamp as an int and store in dictionary of timestamps 
+        previous_timestamp = int(previous_date.timestamp())
+        previous_timestamp = previous_timestamp * 1000 #convert to milliseconds
+        Timestamps[num] = previous_timestamp
+
+    return Timestamps 
+
+
+
+
+""" Testing the functions """
+if __name__ == '__main__':
+    print(get_timestamps())
+
+
+'''
+calculates the difference in days between two timestamps 
+
+@params
+    - timestamp_1: first time stamp 
+    - timestamp_2: second time stamp 
+@returns 
+    - difference: difference between two timestamps in days 
+
+'''
+def get_difference(timestamp_1, timestamp_2):
+    milli_per_day = 86400000
+
+    difference_in_milli = timestamp_2 - timestamp_1
+
+    difference = int(difference_in_milli / milli_per_day)
+
+    return difference
+
+
+
+'''
+determines if two time stamps are in the same time period 
+
+@params 
+    - timestamp_1: first time stamp 
+    - timestamp_2: second time stamp
+    - Timestamps: dictionary of current timestamp, last months, last 3 months, last 6 months, and last years timestamps
+@returns
+    - time_period: time period that both timestamps are in or null if timestamps are not within the same time period 
+
+'''
+def get_timeperiod(timestamp_1, timestamp_2, Timestamps):
+    time_period = None
+
+    if (Timestamps[0] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[1]) and (timestamp_2 > Timestamps[1]): #in the past month
+        time_period = 1
+
+    elif (Timestamps[1] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[3])and (timestamp_2 > Timestamps[3]): #between the past month and past 3 months   
+        time_period = 3
+
+    elif (Timestamps[3] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[6]) and (timestamp_2 > Timestamps[6]): #between the past 3 months and past 6 months
+        time_period = 6
+
+    elif (Timestamps[6] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[12]) and (timestamp_2 > Timestamps[12]) : #between the past 6 months and past year
+        time_period = 12
+
+    return time_period
+
+
+'''
+function to get the time since last batch for each part
+@params
+    - Timestamps: dictionary with timestamps for different timeperiods and the current timestamp
+    - sorted_stock: sorted stock data 
+@returns
+    - sorted_stock: sorted stock data with added data to each part for time since last batch 
+'''
+def get_time_since_last_batch(Timestamps, sorted_stock):
+    part_entry = 0
+
+    for part in sorted_stock: 
+        stock_history = sorted_stock[part_entry]['stock']
+        length = len(stock_history)
+        stock_index = length - 1
+
+        last_batch = stock_history[stock_index]['stock/timestamp']
+        time_since_last_batch = get_difference(last_batch, Timestamps[0])
+        sorted_stock[part_entry]["time/last_batch"] = time_since_last_batch
+
+        part_entry += 1
+
+    return sorted_stock
