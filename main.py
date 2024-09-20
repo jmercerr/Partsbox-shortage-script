@@ -141,3 +141,7 @@ if __name__ == '__main__':
 	sorted_stock = calculate.get_risk_level(sorted_stock, Timestamps[0])
 	jprint(sorted_stock)
 	print("after risk level function")
+
+	print("before creating json file")
+	sort_data.get_json_for_airtable(sorted_stock)
+	print("after creating json file")
