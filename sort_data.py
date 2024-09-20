@@ -2,6 +2,9 @@
 Module that contains functions for sorting data for partsbox api interface 
 """
 
+import json 
+import pandas as pd
+
 
 """
 Function to sort the data from api response to have just the batch data
@@ -147,4 +150,53 @@ def remove_empty_stock(json_data, stock_key):
 		part_entry += 1 
 
 	return refined_data
-	
+
+
+'''
+function that takes json data, takes data that is to be pushed to airtable and creates a json file and a csv file
+@params
+	- sorted_stock: list containgin json data for all valid parts int he past year 
+@returns 
+	- none
+
+'''
+def get_data_for_airtable(sorted_stock):
+	part_entry = 0
+
+	json_data_for_airtable = []
+
+	for part in sorted_stock: 
+		id = sorted_stock[part_entry]['id']
+		description = sorted_stock[part_entry]['description']
+		mpn = sorted_stock[part_entry]['mpn']
+		total_stock = sorted_stock[part_entry]['total_stock']
+		batch_average =sorted_stock[part_entry]['batch/average_for_calculations']
+		time_average = sorted_stock[part_entry]['time/average_for_calculations']
+		last_batch = sorted_stock[part_entry]['time/last_batch']
+		risk = sorted_stock[part_entry]['risk_level']
+		rop_estimate = sorted_stock[part_entry]['estimated_rop']
+
+		entry = {'id': id , 
+				'description': description, 
+				'mpn': mpn, 
+				'total_stock': total_stock, 
+				'batch_average': batch_average, 
+				'time_average': time_average, 
+				'last_batch': last_batch, 
+				'risk': risk, 
+				'rop_estimate': rop_estimate}
+
+		#add part data to stock list 
+		json_data_for_airtable.append(entry)
+
+		part_entry += 1
+
+	# Serializing json
+	json_object = json.dumps(json_data_for_airtable, indent=4)
+	 
+	# Writing to sample.json
+	with open("sample.json", "w") as outfile:
+		outfile.write(json_object)
+
+	data = pd.read_json('sample.json')
+	data.to_csv('sample.csv')
