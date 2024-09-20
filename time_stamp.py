@@ -11,8 +11,8 @@ Calculates Timestamps
 @params
     - none 
 @returns 
-    - Timestamps: dictionary of 5 timestamps
-      (current, 1 month ago, 3 months ago, 6 months ago, 1 year ago)
+    - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
+                  timestamps are unix timestamps, in milliseconds represented as integers 
 """
 def get_timestamps():
     Timestamps = {}
@@ -54,13 +54,11 @@ if __name__ == '__main__':
 
 '''
 calculates the difference in days between two timestamps 
-
 @params
     - timestamp_1: first time stamp 
     - timestamp_2: second time stamp 
 @returns 
     - difference: difference between two timestamps in days 
-
 '''
 def get_difference(timestamp_1, timestamp_2):
     milli_per_day = 86400000
@@ -75,14 +73,13 @@ def get_difference(timestamp_1, timestamp_2):
 
 '''
 determines if two time stamps are in the same time period 
-
 @params 
     - timestamp_1: first time stamp 
     - timestamp_2: second time stamp
-    - Timestamps: dictionary of current timestamp, last months, last 3 months, last 6 months, and last years timestamps
+    - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
+                  timestamps are unix timestamps, in milliseconds represented as integers 
 @returns
     - time_period: time period that both timestamps are in or null if timestamps are not within the same time period 
-
 '''
 def get_timeperiod(timestamp_1, timestamp_2, Timestamps):
     time_period = None
@@ -105,12 +102,13 @@ def get_timeperiod(timestamp_1, timestamp_2, Timestamps):
 '''
 function to get the time since last batch for each part
 @params
-    - Timestamps: dictionary with timestamps for different timeperiods and the current timestamp
+    - current_timestamp: timestamp from when get_timestamps function was called
+                         unix timestamp, in milliseconds represented as an integer
     - sorted_stock: sorted stock data 
 @returns
     - sorted_stock: sorted stock data with added data to each part for time since last batch 
 '''
-def get_time_since_last_batch(Timestamps, sorted_stock):
+def get_time_since_last_batch(current_timestamp, sorted_stock):
     part_entry = 0
 
     for part in sorted_stock: 
@@ -119,7 +117,7 @@ def get_time_since_last_batch(Timestamps, sorted_stock):
         stock_index = length - 1
 
         last_batch = stock_history[stock_index]['stock/timestamp']
-        time_since_last_batch = get_difference(last_batch, Timestamps[0])
+        time_since_last_batch = get_difference(last_batch, current_timestamp)
         sorted_stock[part_entry]["time/last_batch"] = time_since_last_batch
 
         part_entry += 1
