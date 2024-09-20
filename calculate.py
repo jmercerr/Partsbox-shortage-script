@@ -8,7 +8,7 @@ import time_stamp
 """
 calculate total stock count for each item 
 @params 
-	-parts: data from api response/cache 
+	-parts: json data from api response/cache
 @returns 
 	-parts: data from api/response with appended data for stock counts 
 """
@@ -17,17 +17,12 @@ def total_stock(parts):
 
 	for part in parts:
 		stock_count = 0
+		part_stock = parts[part_entry]['part/stock']
+		stock_entry = 0
 
-		try:
-			part_stock = parts[part_entry]['part/stock']
-			stock_entry = 0
-
-			for stock in part_stock:
-				stock_count  = stock_count + parts[part_entry]['part/stock'][stock_entry]['stock/quantity']
-				stock_entry = stock_entry + 1
-
-		except KeyError:
-			stock_count = None
+		for stock in part_stock:
+			stock_count  = stock_count + parts[part_entry]['part/stock'][stock_entry]['stock/quantity']
+			stock_entry = stock_entry + 1
 
 		#add key value pair with total stock count to each part 
 		parts[part_entry]['part/total_stock'] = stock_count
@@ -40,8 +35,9 @@ def total_stock(parts):
 """
 Function to calculate the average batch size for 4 time periods 
 @params 
-	- Timestamps: dictionary of timestamps 
-	- sorted_stock: sorted data from api response/cache 
+    - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
+                  timestamps are unix timestamps, in milliseconds represented as integers 
+  	- sorted_stock: sorted data from api response/cache 
 @returns 
 	- sorted_stock: data from api request with dictionary of average batch sizes added 
 """
@@ -59,38 +55,34 @@ def get_avg_batch(sorted_stock, Timestamps):
 		data_points_12 = 0
 
 		#if part has stock
-		try:
-			part_stock = sorted_stock[part_entry]['stock']
-			batch_total = 0
-			stock_entry = 0
+		batch_total = 0
+		stock_entry = 0
 
-			for stock in part_stock:
-				timestamp = part_stock[stock_entry]['stock/timestamp']
+		part_stock = sorted_stock[part_entry]['stock']
 
-				if Timestamps[0] > timestamp and timestamp > Timestamps[1]: #in the past month
-					batch_tot_1 = batch_tot_1 + sorted_stock[part_entry]['stock'][stock_entry]['stock/quantity']
-					data_points_1 = data_points_1 + 1
+		for stock in part_stock:
+			timestamp = part_stock[stock_entry]['stock/timestamp']
 
-				elif Timestamps[1] > timestamp and timestamp > Timestamps[3]: #between the past month and past 3 months 
-					batch_tot_3 = batch_tot_3 + sorted_stock[part_entry]['stock'][stock_entry]['stock/quantity']
-					data_points_3 = data_points_3 + 1
+			if Timestamps[0] > timestamp and timestamp > Timestamps[1]: #in the past month
+				batch_tot_1 = batch_tot_1 + sorted_stock[part_entry]['stock'][stock_entry]['stock/quantity']
+				data_points_1 = data_points_1 + 1
 
-				elif Timestamps[3] > timestamp and timestamp > Timestamps[6]: #between the past 3 months and past 6 months 
-					batch_tot_6 = batch_tot_6 + sorted_stock[part_entry]['stock'][stock_entry]['stock/quantity']
-					data_points_6 = data_points_6 + 1
+			elif Timestamps[1] > timestamp and timestamp > Timestamps[3]: #between the past month and past 3 months 
+				batch_tot_3 = batch_tot_3 + sorted_stock[part_entry]['stock'][stock_entry]['stock/quantity']
+				data_points_3 = data_points_3 + 1
 
-				elif Timestamps[6] > timestamp and timestamp > Timestamps[12]: # between the past 6 months and past year 
-					batch_tot_12 = batch_tot_12 + sorted_stock[part_entry]['stock'][stock_entry]['stock/quantity']
-					data_points_12 = data_points_12 + 1
+			elif Timestamps[3] > timestamp and timestamp > Timestamps[6]: #between the past 3 months and past 6 months 
+				batch_tot_6 = batch_tot_6 + sorted_stock[part_entry]['stock'][stock_entry]['stock/quantity']
+				data_points_6 = data_points_6 + 1
 
-				else:
-					pass
+			elif Timestamps[6] > timestamp and timestamp > Timestamps[12]: # between the past 6 months and past year 
+				batch_tot_12 = batch_tot_12 + sorted_stock[part_entry]['stock'][stock_entry]['stock/quantity']
+				data_points_12 = data_points_12 + 1
 
-				stock_entry += 1
+			else:
+				pass
 
-		except KeyError: 
-
-			avg_batch = None
+			stock_entry += 1
 
 		#calculate cumulative values for batch totals and data points 
 		batch_tot_3 = batch_tot_3 + batch_tot_1
@@ -142,7 +134,8 @@ def get_avg_batch(sorted_stock, Timestamps):
 """
 Function to calculate the average time between batches for 4 time periods 
 @params
-	- Timestamps: dictionary of timestamps 
+	- Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
+                  timestamps are unix timestamps, in milliseconds represented as integers 
 	- sorted_stock: dictionary of sorted data from api response/cache 
 @returns 
 	- sorted_stock: sorted stock data with dictionary of average times between batches added
@@ -319,7 +312,8 @@ function to calculate the risk level of running out of each part
 @returns
 	- sorted_stock: with added risk level and estimated time till no stock 
 '''
-def get_risk_level(sorted_stock, current_timestamp): 
+#TODO: approx_lead_time variable with default lead time will be set for every part figure out a way to pass in a lead time for each 
+def get_risk_level(sorted_stock, current_timestamp, approx_lead_time = 7): 
 	part_entry = 0 
 
 	for part in sorted_stock: 
@@ -351,7 +345,7 @@ def get_risk_level(sorted_stock, current_timestamp):
 		if number_of_batches == 0: #next batch will require more stock before it can be completed 
 			estimated_rop =  time_till_next_batch - approx_lead_time
 		else:
-			estimated_rop = number_of_batches * avg_time
+			estimated_rop = (number_of_batches * avg_time) - approx_lead_time
 
 		#print for testing 
 		print('estimated ROP', int(estimated_rop))
@@ -376,4 +370,3 @@ def get_risk_level(sorted_stock, current_timestamp):
 		part_entry += 1
 
 	return sorted_stock
-
