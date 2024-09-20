@@ -81,20 +81,48 @@ determines if two time stamps are in the same time period
 @returns
     - time_period: time period that both timestamps are in or null if timestamps are not within the same time period 
 '''
-def get_timeperiod(timestamp_1, timestamp_2, Timestamps):
+def get_similar_timeperiod(timestamp_1, timestamp_2, Timestamps):
     time_period = None
 
     if (Timestamps[0] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[1]) and (timestamp_2 > Timestamps[1]): #in the past month
-        time_period = 1
+        time_period = '1_month'
 
     elif (Timestamps[1] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[3])and (timestamp_2 > Timestamps[3]): #between the past month and past 3 months   
-        time_period = 3
+        time_period = '3_months'
 
     elif (Timestamps[3] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[6]) and (timestamp_2 > Timestamps[6]): #between the past 3 months and past 6 months
-        time_period = 6
+        time_period = '6_months'
 
     elif (Timestamps[6] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[12]) and (timestamp_2 > Timestamps[12]) : #between the past 6 months and past year
-        time_period = 12
+        time_period = '12_months'
+
+    return time_period
+
+
+'''
+determines the timeperiod a timestamp falls in
+@params 
+    - timestamp_1: first time stamp 
+    - timestamp_2: second time stamp
+    - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
+                  timestamps are unix timestamps, in milliseconds represented as integers 
+@returns
+    - time_period: time period that both timestamps are in or null if timestamps are not within the same time period 
+'''
+def get__current_timeperiod(timestamp, Timestamps):
+    time_period = None
+
+    if (Timestamps[0] > timestamp) and (timestamp > Timestamps[1]): #in the past month
+        time_period = '1_month'
+
+    elif (Timestamps[1] > timestamp) and  (timestamp > Timestamps[3]): #between the past month and past 3 months   
+        time_period = '3_months'
+
+    elif (Timestamps[3] > timestamp)  and (timestamp > Timestamps[6]): #between the past 3 months and past 6 months
+        time_period = '6_months'
+
+    elif (Timestamps[6] > timestamp)  and (timestamp > Timestamps[12]): #between the past 6 months and past year
+        time_period = '12_months'
 
     return time_period
 
