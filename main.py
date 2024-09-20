@@ -56,14 +56,16 @@ def jprint(obj):
 	print(text)
 
 
-
-
 """main"""
 if __name__ == '__main__':
 	url = 'https://api.partsbox.com/api/1/part/all' 
 	json_cache = 'request_cache.json'
+
+	with open("config.json") as config_file: 
+		config = json.load(config_file)
+
 	headers = {
-	'Authorization' : 'APIKey partsboxapi_d2j5nhhdm4jme86mpt1kecb00v2127c31572eec027394fb13a8af1066344fda8' 
+	'Authorization': config["API_key"] 
 	}
 
 	data: dict = fetch_data(update=False,
@@ -72,13 +74,23 @@ if __name__ == '__main__':
 							headers=headers)
 
 	#create list of just the data entries from api response
-	parts = data['data']	
+	parts = data['data']
 
 	#for testing timestamp function 
 	print("entering timestmap function")
 	Timestamps = time_stamp.get_timestamps()
 	print(Timestamps)
 	print("after timestamp function")
+
+
+	#for testing delete empty stock lists 
+	print("before delete function")
+	parts = sort_data.remove_empty_stock(parts, 'part/stock')
+	#jprint(sorted_stock)
+	length = len(parts)
+	print('Length after inital delete', length)
+	print("after delete function")
+
 
 	#for testing total stock function
 	print("entering total stock function")
@@ -96,8 +108,10 @@ if __name__ == '__main__':
 
 	#for testing delete empty stock lists 
 	print("before delete function")
-	sorted_stock = sort_data.remove_empty_stock(sorted_stock)
+	sorted_stock = sort_data.remove_empty_stock(sorted_stock, 'stock')
 	#jprint(sorted_stock)
+	length = len(sorted_stock)
+	print('Length after second delete', length)
 	print("after delete function")
 
 
@@ -117,7 +131,7 @@ if __name__ == '__main__':
 
 	#for testing time since last batch function 
 	print("before time since function")
-	sorted_stock = time_stamp.get_time_since_last_batch(Timestamps, sorted_stock)
+	sorted_stock = time_stamp.get_time_since_last_batch(Timestamps[0], sorted_stock)
 	#jprint(sorted_stock)
 	print("after time since function")
 
@@ -127,6 +141,3 @@ if __name__ == '__main__':
 	sorted_stock = calculate.get_risk_level(sorted_stock, Timestamps[0])
 	jprint(sorted_stock)
 	print("after risk level function")
-
-
-
