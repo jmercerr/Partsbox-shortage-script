@@ -40,7 +40,7 @@
         "batch_average": -76.57439560439562,
         "time_average": 4.028137254901961,
         "last_batch": 2,
-        "risk": "Low",
+        "risk": "High",
         "rop_estimate": 29.25323529411765
     },
     {
@@ -117,7 +117,7 @@
         "batch_average": -15.614285714285714,
         "time_average": 41.22222222222222,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 34.22222222222222
     },
     {
@@ -205,7 +205,7 @@
         "batch_average": -86.9057142857143,
         "time_average": 33.80128205128205,
         "last_batch": 10,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 26.80128205128205
     },
     {
@@ -238,7 +238,7 @@
         "batch_average": -215.18888888888887,
         "time_average": 43.583333333333336,
         "last_batch": 10,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 80.16666666666667
     },
     {
@@ -403,7 +403,7 @@
         "batch_average": -2.333333333333333,
         "time_average": 56.166666666666664,
         "last_batch": 14,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 49.166666666666664
     },
     {
@@ -458,7 +458,7 @@
         "batch_average": -54.0,
         "time_average": 9.333333333333334,
         "last_batch": 102,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 30.333333333333336
     },
     {
@@ -557,7 +557,7 @@
         "batch_average": -24.0,
         "time_average": 2.5,
         "last_batch": 312,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 33.0
     },
     {
@@ -567,7 +567,7 @@
         "total_stock": 278,
         "batch_average": -51.0,
         "time_average": 0,
-        "last_batch": 326,
+        "last_batch": 327,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -722,7 +722,7 @@
         "batch_average": -54.0,
         "time_average": 9.333333333333334,
         "last_batch": 102,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 30.333333333333336
     },
     {
@@ -744,7 +744,7 @@
         "batch_average": -42.39666666666667,
         "time_average": 48.53333333333333,
         "last_batch": 12,
-        "risk": "Low",
+        "risk": "High",
         "rop_estimate": 29
     },
     {
@@ -810,7 +810,7 @@
         "batch_average": -2.25,
         "time_average": 9.0,
         "last_batch": 153,
-        "risk": "Low",
+        "risk": "High",
         "rop_estimate": 29.0
     },
     {
@@ -821,7 +821,7 @@
         "batch_average": -54.0,
         "time_average": 9.333333333333334,
         "last_batch": 102,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 30.333333333333336
     },
     {
@@ -832,7 +832,7 @@
         "batch_average": -119.22992555831266,
         "time_average": 7.26111111111111,
         "last_batch": 7,
-        "risk": "Low",
+        "risk": "High",
         "rop_estimate": 29.30555555555555
     },
     {
@@ -920,7 +920,7 @@
         "batch_average": -3.80625,
         "time_average": 22.68730158730159,
         "last_batch": 14,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 15.68730158730159
     },
     {
@@ -1041,7 +1041,7 @@
         "batch_average": -64.07,
         "time_average": 5.1,
         "last_batch": 24,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 59.3
     },
     {
@@ -1052,7 +1052,7 @@
         "batch_average": -14.085714285714285,
         "time_average": 45.333333333333336,
         "last_batch": 23,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 83.66666666666667
     },
     {
@@ -1084,7 +1084,7 @@
         "total_stock": 2449,
         "batch_average": -1.0,
         "time_average": 0,
-        "last_batch": 324,
+        "last_batch": 325,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -1106,9 +1106,9 @@
         "total_stock": 1,
         "batch_average": -71.0,
         "time_average": 0,
-        "last_batch": 179,
+        "last_batch": 180,
         "risk": "Low - not enough data",
-        "rop_estimate": -186
+        "rop_estimate": -187
     },
     {
         "id": "1xzc2pkamjkkpagmdgcgdga1fk",
@@ -1283,7 +1283,7 @@
         "batch_average": -43.20000000000001,
         "time_average": 7.0,
         "last_batch": 102,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 28.0
     },
     {
@@ -1293,7 +1293,7 @@
         "total_stock": 10,
         "batch_average": -1.6666666666666667,
         "time_average": 49.0,
-        "last_batch": 222,
+        "last_batch": 223,
         "risk": "Low",
         "rop_estimate": 287.0
     },
@@ -1305,7 +1305,7 @@
         "batch_average": -13.7,
         "time_average": 69.5,
         "last_batch": 12,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 50
     },
     {
@@ -1326,7 +1326,7 @@
         "total_stock": 223,
         "batch_average": -62.629999999999995,
         "time_average": 52.986111111111114,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Low",
         "rop_estimate": 151.95833333333334
     },
@@ -1337,7 +1337,7 @@
         "total_stock": 717,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 326,
+        "last_batch": 327,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -1360,7 +1360,7 @@
         "batch_average": -16.69047619047619,
         "time_average": 54.833333333333336,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 47.833333333333336
     },
     {
@@ -1393,7 +1393,7 @@
         "batch_average": -14.872727272727273,
         "time_average": 32.6,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 58.2
     },
     {
@@ -1404,7 +1404,7 @@
         "batch_average": -9.520562770562771,
         "time_average": 26.377777777777776,
         "last_batch": 31,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 19.377777777777776
     },
     {
@@ -1415,7 +1415,7 @@
         "batch_average": -32.361111111111114,
         "time_average": 77.66666666666667,
         "last_batch": 91,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 70.66666666666667
     },
     {
@@ -1448,7 +1448,7 @@
         "batch_average": -18.145714285714284,
         "time_average": 30.722222222222225,
         "last_batch": 14,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 23.722222222222225
     },
     {
@@ -1536,7 +1536,7 @@
         "batch_average": -15.614285714285714,
         "time_average": 41.22222222222222,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 75.44444444444444
     },
     {
@@ -1547,7 +1547,7 @@
         "batch_average": -19.666666666666668,
         "time_average": 135.0,
         "last_batch": 53,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 75
     },
     {
@@ -1558,7 +1558,7 @@
         "batch_average": -323.15000000000003,
         "time_average": 11.904761904761905,
         "last_batch": 61,
-        "risk": "Low",
+        "risk": "High",
         "rop_estimate": 28.714285714285715
     },
     {
@@ -1657,7 +1657,7 @@
         "batch_average": -54.0,
         "time_average": 9.333333333333334,
         "last_batch": 102,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 30.333333333333336
     },
     {
@@ -1712,7 +1712,7 @@
         "batch_average": -3.6700000000000004,
         "time_average": 45.09722222222222,
         "last_batch": 7,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 83.19444444444444
     },
     {
@@ -1777,9 +1777,9 @@
         "total_stock": 0,
         "batch_average": -7.0,
         "time_average": 0,
-        "last_batch": 194,
+        "last_batch": 195,
         "risk": "Low - not enough data",
-        "rop_estimate": -201
+        "rop_estimate": -202
     },
     {
         "id": "6cejb8tp8mh249fz333nb1vvj9",
@@ -1811,7 +1811,7 @@
         "batch_average": -11.485064935064935,
         "time_average": 9.507948717948718,
         "last_batch": 2,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 40.539743589743594
     },
     {
@@ -1832,7 +1832,7 @@
         "total_stock": 79,
         "batch_average": -23.75,
         "time_average": 89.66666666666667,
-        "last_batch": 54,
+        "last_batch": 55,
         "risk": "Low",
         "rop_estimate": 262.0
     },
@@ -1932,7 +1932,7 @@
         "batch_average": -12.68154761904762,
         "time_average": 22.714285714285715,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 83.85714285714286
     },
     {
@@ -1954,7 +1954,7 @@
         "batch_average": -69.75,
         "time_average": 64.5,
         "last_batch": 10,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 47
     },
     {
@@ -1976,7 +1976,7 @@
         "batch_average": -20.483333333333334,
         "time_average": 57.666666666666664,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 50.666666666666664
     },
     {
@@ -2009,7 +2009,7 @@
         "batch_average": -8.812037037037037,
         "time_average": 10.844696969696969,
         "last_batch": 31,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 25.534090909090907
     },
     {
@@ -2031,7 +2031,7 @@
         "batch_average": -93.0625,
         "time_average": 35.857142857142854,
         "last_batch": 37,
-        "risk": "Low",
+        "risk": "High",
         "rop_estimate": 28.857142857142854
     },
     {
@@ -2064,7 +2064,7 @@
         "batch_average": -18.291666666666668,
         "time_average": 23.19047619047619,
         "last_batch": 125,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 16.19047619047619
     },
     {
@@ -2074,7 +2074,7 @@
         "total_stock": 22,
         "batch_average": -13.154882154882154,
         "time_average": 14.35,
-        "last_batch": 62,
+        "last_batch": 63,
         "risk": "High",
         "rop_estimate": 7.35
     },
@@ -2140,7 +2140,7 @@
         "total_stock": 243,
         "batch_average": -7.0,
         "time_average": 0,
-        "last_batch": 324,
+        "last_batch": 325,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -2151,7 +2151,7 @@
         "total_stock": 1155,
         "batch_average": -45.0,
         "time_average": 0,
-        "last_batch": 326,
+        "last_batch": 327,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -2262,7 +2262,7 @@
         "batch_average": -83.33746898263027,
         "time_average": 8.963333333333335,
         "last_batch": 10,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 73.67000000000002
     },
     {
@@ -2283,7 +2283,7 @@
         "total_stock": 360,
         "batch_average": -119.0,
         "time_average": 0,
-        "last_batch": 324,
+        "last_batch": 325,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -2295,7 +2295,7 @@
         "batch_average": -15.433333333333332,
         "time_average": 41.22222222222222,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 34.22222222222222
     },
     {
@@ -2305,7 +2305,7 @@
         "total_stock": 205,
         "batch_average": -18.583333333333332,
         "time_average": 15.597883597883596,
-        "last_batch": 61,
+        "last_batch": 62,
         "risk": "Low",
         "rop_estimate": 164.57671957671957
     },
@@ -2316,7 +2316,7 @@
         "total_stock": 829,
         "batch_average": -15.0,
         "time_average": 0,
-        "last_batch": 326,
+        "last_batch": 327,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -2350,7 +2350,7 @@
         "batch_average": -39.11111111111111,
         "time_average": 23.599999999999998,
         "last_batch": 53,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 16.599999999999998
     },
     {
@@ -2449,7 +2449,7 @@
         "batch_average": -10.95,
         "time_average": 30.25,
         "last_batch": 2,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 23.25
     },
     {
@@ -2548,7 +2548,7 @@
         "batch_average": -17.666666666666668,
         "time_average": 26.5,
         "last_batch": 41,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 19.5
     },
     {
@@ -2680,7 +2680,7 @@
         "batch_average": -39.163529411764706,
         "time_average": 11.959305555555554,
         "last_batch": 2,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 40.837222222222216
     },
     {
@@ -2712,7 +2712,7 @@
         "total_stock": 51,
         "batch_average": -4.0,
         "time_average": 0,
-        "last_batch": 9,
+        "last_batch": 10,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -2801,7 +2801,7 @@
         "batch_average": -3.0277777777777772,
         "time_average": 19.0,
         "last_batch": 60,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 50.0
     },
     {
@@ -2911,7 +2911,7 @@
         "batch_average": -3.0833333333333335,
         "time_average": 41.88888888888889,
         "last_batch": 91,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 76.77777777777779
     },
     {
@@ -3043,7 +3043,7 @@
         "batch_average": -60.6375,
         "time_average": 13.26190476190476,
         "last_batch": 2,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 72.57142857142856
     },
     {
@@ -3053,9 +3053,9 @@
         "total_stock": 31,
         "batch_average": -50.0,
         "time_average": 0,
-        "last_batch": 324,
+        "last_batch": 325,
         "risk": "Low - not enough data",
-        "rop_estimate": -331
+        "rop_estimate": -332
     },
     {
         "id": "51z6p6cn6ykkdaey2geaz1pm5k",
@@ -3098,7 +3098,7 @@
         "batch_average": -1.5,
         "time_average": 13.0,
         "last_batch": 12,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 71.0
     },
     {
@@ -3108,8 +3108,8 @@
         "total_stock": 9,
         "batch_average": -3.5833333333333335,
         "time_average": 30.666666666666668,
-        "last_batch": 60,
-        "risk": "Low",
+        "last_batch": 61,
+        "risk": "Medium",
         "rop_estimate": 54.333333333333336
     },
     {
@@ -3229,8 +3229,8 @@
         "total_stock": 925,
         "batch_average": -288.28138528138527,
         "time_average": 12.933333333333332,
-        "last_batch": 39,
-        "risk": "Low",
+        "last_batch": 40,
+        "risk": "Medium",
         "rop_estimate": 31.799999999999997
     },
     {
@@ -3273,7 +3273,7 @@
         "total_stock": 270,
         "batch_average": -200.0,
         "time_average": 0,
-        "last_batch": 165,
+        "last_batch": 166,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -3306,7 +3306,7 @@
         "total_stock": 938,
         "batch_average": -50.0,
         "time_average": 0,
-        "last_batch": 326,
+        "last_batch": 327,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -3318,7 +3318,7 @@
         "batch_average": -56.0,
         "time_average": 7.0,
         "last_batch": 4,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 77.0
     },
     {
@@ -3340,7 +3340,7 @@
         "batch_average": -92.53333333333333,
         "time_average": 19.740000000000002,
         "last_batch": 4,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 52.220000000000006
     },
     {
@@ -3350,7 +3350,7 @@
         "total_stock": 113,
         "batch_average": -9.916666666666666,
         "time_average": 18.857142857142858,
-        "last_batch": 170,
+        "last_batch": 171,
         "risk": "Low",
         "rop_estimate": 200.42857142857144
     },
@@ -3384,7 +3384,7 @@
         "batch_average": -60.8,
         "time_average": 33.5,
         "last_batch": 189,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 60.0
     },
     {
@@ -3439,7 +3439,7 @@
         "batch_average": -4.378571428571428,
         "time_average": 46.888888888888886,
         "last_batch": 23,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 16
     },
     {
@@ -3449,9 +3449,9 @@
         "total_stock": 0,
         "batch_average": -1.0,
         "time_average": 0,
-        "last_batch": 153,
+        "last_batch": 154,
         "risk": "Low - not enough data",
-        "rop_estimate": -160
+        "rop_estimate": -161
     },
     {
         "id": "82f4qaxbxejq4axgxe2tmvm17k",
@@ -3461,7 +3461,7 @@
         "batch_average": -21.944444444444443,
         "time_average": 28.038095238095238,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 49.076190476190476
     },
     {
@@ -3483,7 +3483,7 @@
         "batch_average": -34.82870813397129,
         "time_average": 6.76979797979798,
         "last_batch": 2,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 20.07919191919192
     },
     {
@@ -3615,7 +3615,7 @@
         "batch_average": -3.9166666666666665,
         "time_average": 32.8,
         "last_batch": 76,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 25.799999999999997
     },
     {
@@ -3637,7 +3637,7 @@
         "batch_average": -41.75,
         "time_average": 63.333333333333336,
         "last_batch": 151,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 56.333333333333336
     },
     {
@@ -3648,7 +3648,7 @@
         "batch_average": -28.793650793650798,
         "time_average": 13.305555555555557,
         "last_batch": 53,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 46.22222222222223
     },
     {
@@ -3780,7 +3780,7 @@
         "batch_average": -37.333333333333336,
         "time_average": 3.5,
         "last_batch": 4,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 28.0
     },
     {
@@ -3846,7 +3846,7 @@
         "batch_average": -8.93939393939394,
         "time_average": 24.171428571428567,
         "last_batch": 31,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 17.171428571428567
     },
     {
@@ -4044,7 +4044,7 @@
         "batch_average": -1.0,
         "time_average": 173.0,
         "last_batch": 91,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 75
     },
     {
@@ -4055,7 +4055,7 @@
         "batch_average": -32.0,
         "time_average": 42.0,
         "last_batch": 52,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 77.0
     },
     {
@@ -4088,7 +4088,7 @@
         "batch_average": -54.0,
         "time_average": 9.333333333333334,
         "last_batch": 102,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 30.333333333333336
     },
     {
@@ -4098,8 +4098,8 @@
         "total_stock": 19,
         "batch_average": -6.25,
         "time_average": 9.666666666666666,
-        "last_batch": 61,
-        "risk": "Medium",
+        "last_batch": 62,
+        "risk": "High",
         "rop_estimate": 22.0
     },
     {
@@ -4110,7 +4110,7 @@
         "batch_average": -19.333333333333336,
         "time_average": 15.100000000000001,
         "last_batch": 41,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 83.60000000000001
     },
     {
@@ -4121,7 +4121,7 @@
         "batch_average": -102.64583333333333,
         "time_average": 35.714285714285715,
         "last_batch": 37,
-        "risk": "Low",
+        "risk": "High",
         "rop_estimate": 28.714285714285715
     },
     {
@@ -4186,8 +4186,8 @@
         "total_stock": 28,
         "batch_average": -26.23611111111111,
         "time_average": 61.0,
-        "last_batch": 62,
-        "risk": "Low",
+        "last_batch": 63,
+        "risk": "Medium",
         "rop_estimate": 54.0
     },
     {
@@ -4209,7 +4209,7 @@
         "batch_average": -15.523809523809524,
         "time_average": 41.22222222222222,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 75.44444444444444
     },
     {
@@ -4264,7 +4264,7 @@
         "batch_average": -11.875,
         "time_average": 63.888888888888886,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 56.888888888888886
     },
     {
@@ -4373,7 +4373,7 @@
         "total_stock": 692,
         "batch_average": -4.0,
         "time_average": 0,
-        "last_batch": 324,
+        "last_batch": 325,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -4429,7 +4429,7 @@
         "batch_average": -62.55555555555555,
         "time_average": 25.166666666666668,
         "last_batch": 95,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 43.333333333333336
     },
     {
@@ -4660,7 +4660,7 @@
         "batch_average": -280.5654401154401,
         "time_average": 7.2008791208791205,
         "last_batch": 2,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 14.60263736263736
     },
     {
@@ -4671,7 +4671,7 @@
         "batch_average": -72.40994949494949,
         "time_average": 4.647142857142857,
         "last_batch": 2,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 34.82428571428571
     },
     {
@@ -4682,7 +4682,7 @@
         "batch_average": -42.88,
         "time_average": 19.75,
         "last_batch": 7,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 72.0
     },
     {
@@ -4692,7 +4692,7 @@
         "total_stock": 53,
         "batch_average": -5.416666666666667,
         "time_average": 44.333333333333336,
-        "last_batch": 170,
+        "last_batch": 171,
         "risk": "Low",
         "rop_estimate": 392.0
     },
@@ -4759,7 +4759,7 @@
         "batch_average": -31.98333333333333,
         "time_average": 71.66666666666667,
         "last_batch": 10,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 54
     },
     {
@@ -4769,7 +4769,7 @@
         "total_stock": 380,
         "batch_average": -5.0,
         "time_average": 0,
-        "last_batch": 326,
+        "last_batch": 327,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -4781,7 +4781,7 @@
         "batch_average": -108.9861111111111,
         "time_average": 79.0,
         "last_batch": 87,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 72.0
     },
     {
@@ -4891,7 +4891,7 @@
         "batch_average": -11.222222222222221,
         "time_average": 27.50952380952381,
         "last_batch": 31,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 20.50952380952381
     },
     {
@@ -4902,7 +4902,7 @@
         "batch_average": -50.0,
         "time_average": 190.0,
         "last_batch": 151,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 32
     },
     {
@@ -4935,7 +4935,7 @@
         "batch_average": -55.010909090909095,
         "time_average": 10.888333333333332,
         "last_batch": 2,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 36.55333333333333
     },
     {
@@ -5001,7 +5001,7 @@
         "batch_average": -12.392857142857144,
         "time_average": 33.888888888888886,
         "last_batch": 31,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 26.888888888888886
     },
     {
@@ -5100,7 +5100,7 @@
         "batch_average": -17.857142857142858,
         "time_average": 78.55555555555556,
         "last_batch": 45,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 26
     },
     {
@@ -5111,7 +5111,7 @@
         "batch_average": -30.013888888888886,
         "time_average": 34.88888888888889,
         "last_batch": 91,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 62.777777777777786
     },
     {
@@ -5199,7 +5199,7 @@
         "batch_average": -16.646491228070175,
         "time_average": 13.29074074074074,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 59.453703703703695
     },
     {
@@ -5210,7 +5210,7 @@
         "batch_average": -32.73863636363636,
         "time_average": 6.67103390269151,
         "last_batch": 10,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 79.72344073498964
     },
     {
@@ -5286,7 +5286,7 @@
         "total_stock": 309,
         "batch_average": -1.0,
         "time_average": 0,
-        "last_batch": 324,
+        "last_batch": 325,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -5407,7 +5407,7 @@
         "total_stock": 88,
         "batch_average": -18.666666666666668,
         "time_average": 224.0,
-        "last_batch": 54,
+        "last_batch": 55,
         "risk": "Low",
         "rop_estimate": 889.0
     },
@@ -5430,7 +5430,7 @@
         "batch_average": -17.694444444444446,
         "time_average": 43.02222222222222,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 36.02222222222222
     },
     {
@@ -5507,7 +5507,7 @@
         "batch_average": -54.0,
         "time_average": 9.333333333333334,
         "last_batch": 102,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 30.333333333333336
     },
     {
@@ -5550,9 +5550,9 @@
         "total_stock": 3,
         "batch_average": -23.777777777777775,
         "time_average": 95.0,
-        "last_batch": 171,
+        "last_batch": 172,
         "risk": "High - overdue for batch",
-        "rop_estimate": -83
+        "rop_estimate": -84
     },
     {
         "id": "d9c5dyb9e4k9tbjpg4yv1cj8ep",
@@ -5639,7 +5639,7 @@
         "batch_average": -8.909090909090908,
         "time_average": 23.90476190476191,
         "last_batch": 31,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 16.90476190476191
     },
     {
@@ -5649,7 +5649,7 @@
         "total_stock": 11,
         "batch_average": -1.0,
         "time_average": 0,
-        "last_batch": 181,
+        "last_batch": 182,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -5661,7 +5661,7 @@
         "batch_average": -110.05555555555556,
         "time_average": 18.08888888888889,
         "last_batch": 37,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 65.35555555555555
     },
     {
@@ -5881,7 +5881,7 @@
         "batch_average": -100.06666666666666,
         "time_average": 88.25925925925925,
         "last_batch": 47,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 34
     },
     {
@@ -5892,7 +5892,7 @@
         "batch_average": -47.086011904761904,
         "time_average": 4.617647058823529,
         "last_batch": 2,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 25.323529411764703
     },
     {
@@ -5903,7 +5903,7 @@
         "batch_average": -22.73611111111111,
         "time_average": 15.138888888888888,
         "last_batch": 67,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 23.277777777777775
     },
     {
@@ -5914,7 +5914,7 @@
         "batch_average": -15.523809523809524,
         "time_average": 41.22222222222222,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 75.44444444444444
     },
     {
@@ -5969,7 +5969,7 @@
         "batch_average": -17.944444444444446,
         "time_average": 43.02222222222222,
         "last_batch": 31,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 36.02222222222222
     },
     {
@@ -5991,7 +5991,7 @@
         "batch_average": -23.083333333333332,
         "time_average": 26.0,
         "last_batch": 110,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 45.0
     },
     {
@@ -6002,7 +6002,7 @@
         "batch_average": -23.083333333333332,
         "time_average": 26.0,
         "last_batch": 110,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 45.0
     },
     {
@@ -6056,7 +6056,7 @@
         "total_stock": 15,
         "batch_average": -8.0,
         "time_average": 0,
-        "last_batch": 278,
+        "last_batch": 279,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -6068,7 +6068,7 @@
         "batch_average": -364.6111111111111,
         "time_average": 9.303703703703704,
         "last_batch": 61,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 30.214814814814815
     },
     {
@@ -6079,7 +6079,7 @@
         "batch_average": -51.80619047619048,
         "time_average": 5.846040100250627,
         "last_batch": 2,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 51.460401002506266
     },
     {
@@ -6089,9 +6089,9 @@
         "total_stock": 0,
         "batch_average": -103.2,
         "time_average": 63.0,
-        "last_batch": 25,
-        "risk": "Low",
-        "rop_estimate": 31
+        "last_batch": 26,
+        "risk": "High",
+        "rop_estimate": 30
     },
     {
         "id": "crzwdk77gejsv8nzqxpnyekvkk",
@@ -6343,7 +6343,7 @@
         "batch_average": -23.0,
         "time_average": 38.0,
         "last_batch": 283,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 31.0
     },
     {
@@ -6376,7 +6376,7 @@
         "batch_average": -19.666666666666668,
         "time_average": 135.0,
         "last_batch": 53,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 75
     },
     {
@@ -6398,7 +6398,7 @@
         "batch_average": -36.48888888888889,
         "time_average": 12.583333333333334,
         "last_batch": 95,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 30.75
     },
     {
@@ -6442,7 +6442,7 @@
         "batch_average": -40.35761904761905,
         "time_average": 10.568055555555555,
         "last_batch": 2,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 77.54444444444444
     },
     {
@@ -6485,9 +6485,9 @@
         "total_stock": 0,
         "batch_average": -35.333333333333336,
         "time_average": 0,
-        "last_batch": 180,
+        "last_batch": 181,
         "risk": "Low - not enough data",
-        "rop_estimate": -187
+        "rop_estimate": -188
     },
     {
         "id": "evvqgpk4hmga08xjrvbnxy7djn",
@@ -6607,7 +6607,7 @@
         "batch_average": -3.75,
         "time_average": 9.0,
         "last_batch": 38,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 38.0
     },
     {
@@ -6629,7 +6629,7 @@
         "batch_average": -107.7266233766234,
         "time_average": 15.796666666666663,
         "last_batch": 2,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 24.593333333333327
     },
     {
@@ -6662,7 +6662,7 @@
         "batch_average": -45.11666666666666,
         "time_average": 16.77941176470588,
         "last_batch": 10,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 60.11764705882352
     },
     {
@@ -6749,8 +6749,8 @@
         "total_stock": 2,
         "batch_average": -2.0,
         "time_average": 41.0,
-        "last_batch": 153,
-        "risk": "Low",
+        "last_batch": 154,
+        "risk": "Medium",
         "rop_estimate": 34.0
     },
     {
@@ -6772,7 +6772,7 @@
         "batch_average": -47.6,
         "time_average": 24.6,
         "last_batch": 6,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 42.2
     },
     {
@@ -6805,7 +6805,7 @@
         "batch_average": -10.6,
         "time_average": 39.5,
         "last_batch": 12,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 32.5
     },
     {
@@ -6860,7 +6860,7 @@
         "batch_average": -34.26421052631579,
         "time_average": 9.913333333333332,
         "last_batch": 10,
-        "risk": "Medium",
+        "risk": "High",
         "rop_estimate": 22.739999999999995
     },
     {
@@ -6871,7 +6871,7 @@
         "batch_average": -71.13333333333334,
         "time_average": 53.5,
         "last_batch": 140,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 46.5
     },
     {
@@ -6904,7 +6904,7 @@
         "batch_average": -120.82410084033613,
         "time_average": 6.566239316239316,
         "last_batch": 7,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 38.96367521367521
     },
     {
@@ -7014,7 +7014,7 @@
         "batch_average": -1.5,
         "time_average": 13.0,
         "last_batch": 201,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 58.0
     },
     {
@@ -7047,7 +7047,7 @@
         "batch_average": -140.0,
         "time_average": 197.0,
         "last_batch": 130,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 60
     },
     {
@@ -7069,7 +7069,7 @@
         "batch_average": -11.67,
         "time_average": 47.44444444444445,
         "last_batch": 0,
-        "risk": "Low",
+        "risk": "Medium",
         "rop_estimate": 40.44444444444445
     },
     {

@@ -58,6 +58,9 @@ if __name__ == '__main__':
 	#create list of just the data entries from api response
 	parts = data['data']
 
+	print("PARTS")
+	jprint(parts)
+
 
 	#for testing delete empty stock lists 
 	print("before delete function")

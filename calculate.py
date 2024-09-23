@@ -288,11 +288,11 @@ def get_risk_level(sorted_stock, current_timestamp, approx_lead_time = 7):
 		else: 
 			if (estimated_rop < 0):
 				sorted_stock[part_entry]['risk_level'] = 'High - overdue for batch'
-			elif (0 <= estimated_rop <= 14): 
+			elif (0 <= estimated_rop <= 30): 
 				sorted_stock[part_entry]['risk_level'] = 'High'
-			elif (14 < estimated_rop <= 28):
+			elif (30 < estimated_rop <= 90):
 				sorted_stock[part_entry]['risk_level'] = 'Medium'
-			elif (estimated_rop > 28):
+			elif (estimated_rop > 90):
 				sorted_stock[part_entry]['risk_level'] = 'Low'
 
 		#print for testing 
