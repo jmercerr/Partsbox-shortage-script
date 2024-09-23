@@ -5,9 +5,12 @@ module that contains functions for creating an updating the json cache file
 
 import json 
 import requests 
+import time 
+import os
 
 
-"""function determines if cache file exists 
+'''
+function determines if cache file exists 
 	if file exists - use data from file
 	else - creates cache file, makes api request, stores response in file 
 @params
@@ -17,7 +20,7 @@ import requests
 	- headers: for api request
 @returns
 	- json_data: data in the cache file 
-"""
+'''
 def fetch_data(*, update: bool = False, json_cache: str, url: str, headers: dict):
 	if update:
 		json_data = None
@@ -40,3 +43,36 @@ def fetch_data(*, update: bool = False, json_cache: str, url: str, headers: dict
 			json.dump(json_data, file)
 
 	return json_data
+
+
+'''
+function determines if cache file needs to be updated with new data from partsbox
+@params
+	- current_timestamp: the timestamp from when the get_timestamps function was called treated as current time
+@returns 
+	- update: bool flag (set to true if the cache was last modified over a week ago, false otherwise)
+'''
+def get_update_flag(current_timestamp): 
+	cache = "request_cache.json"
+	MILLI_PER_WEEK = 604800000
+
+	#get timestamp in seconds
+	modified_time = int(os.path.getmtime(cache))
+
+	#convert to milliseconds 
+	modified_time = modified_time * 1000
+	print(modified_time)
+
+	one_week_ago = current_timestamp - MILLI_PER_WEEK
+	print(one_week_ago)
+
+	if modified_time >= one_week_ago: #modified within the past week 
+		update = False
+	else: #modified more than a week ago
+		update = True
+
+	return update
+
+
+
+

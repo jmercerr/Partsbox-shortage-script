@@ -45,13 +45,6 @@ def get_timestamps():
     return Timestamps 
 
 
-
-
-""" Testing the functions """
-if __name__ == '__main__':
-    print(get_timestamps())
-
-
 '''
 calculates the difference in days between two timestamps 
 @params
@@ -61,14 +54,13 @@ calculates the difference in days between two timestamps
     - difference: difference between two timestamps in days 
 '''
 def get_difference(timestamp_1, timestamp_2):
-    milli_per_day = 86400000
+    MILLI_PER_DAY = 86400000
 
     difference_in_milli = timestamp_2 - timestamp_1
 
-    difference = int(difference_in_milli / milli_per_day)
+    difference = int(difference_in_milli / MILLI_PER_DAY)
 
     return difference
-
 
 
 '''
@@ -151,3 +143,10 @@ def get_time_since_last_batch(current_timestamp, sorted_stock):
         part_entry += 1
 
     return sorted_stock
+
+
+
+
+""" Testing the functions """
+if __name__ == '__main__':
+    print(get_timestamps())

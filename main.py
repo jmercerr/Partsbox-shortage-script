@@ -7,41 +7,7 @@ import requests
 import sort_data
 import calculate
 import time_stamp
-
-
-"""function determines if cache file exists 
-	if file exists - use data from file
-	else - creates cache file, makes api request, stores response in file 
-@params
-	- update: flag
-	- json_cache: file name
-	- url: for api request
-	- headers: for api request
-@returns
-	- json_data: data in the cache file 
-"""
-def fetch_data(*, update: bool = False, json_cache: str, url: str, headers: dict):
-	if update:
-		json_data = None
-	else:
-		try:
-			#cache is created 
-			with open(json_cache, 'r') as file:
-				json_data = json.load(file)
-				print('Fetched data from local cache!')
-		except(FileNotFoundError, json.JSONDecodeError) as e:
-			print(f'No local cache found... ({e})')
-			json_data = None
-
-	#create cache file 
-	if not json_data:
-		print('Fetching new json data... (creating local cache)')
-		json_data = requests.get(url, headers=headers).json()
-
-		with open(json_cache, 'w') as file:
-			json.dump(json_data, file)
-
-	return json_data
+import cache
 
 
 """
@@ -61,26 +27,36 @@ if __name__ == '__main__':
 	url = 'https://api.partsbox.com/api/1/part/all' 
 	json_cache = 'request_cache.json'
 
-	with open("config.json") as config_file: 
-		config = json.load(config_file)
+	try: 
+		with open("config.json") as config_file: 
+			config = json.load(config_file)
+	except FileNotFoundError: 
+		print("no config file found")
+		f = open("config.json", "x")
+		f.close
+		print("config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
 
 	headers = {
 	'Authorization': config["API_key"] 
 	}
-
-	data: dict = fetch_data(update=False,
-						    json_cache=json_cache,
-							url=url, 
-							headers=headers)
-
-	#create list of just the data entries from api response
-	parts = data['data']
 
 	#for testing timestamp function 
 	print("entering timestmap function")
 	Timestamps = time_stamp.get_timestamps()
 	print(Timestamps)
 	print("after timestamp function")
+
+	update = cache.get_update_flag(Timestamps[0])
+	print(update)
+
+
+	data: dict = cache.fetch_data(update=update,
+						    json_cache=json_cache,
+							url=url, 
+							headers=headers)
+
+	#create list of just the data entries from api response
+	parts = data['data']
 
 
 	#for testing delete empty stock lists 

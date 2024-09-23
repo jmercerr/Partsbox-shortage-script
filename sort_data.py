@@ -34,19 +34,19 @@ def sort(parts, Timestamps):
 		part_id = parts[part_entry]['part/id']
 		try:
 			part_description = parts[part_entry]['part/description']
-		except KeyError:
+		except KeyError: #entry does not contain a description
 			part_description = None
 		try:
 			part_mpn = parts[part_entry]['part/mpn']
-		except KeyError:
+		except KeyError: #entry does not contain an mpn
 			part_mpn = None
 		try: 
 			part_stock_count = parts[part_entry]['part/total_stock']
-		except KeyError:
+		except KeyError: #entry does not contain a total stock count
 			part_stock_count = None
 		try:
 			part_stock = parts[part_entry]['part/stock']
-		except KeyError:
+		except KeyError:#entry does not contain a stock history
 			part_stock = None
 
 		#create dictionary of data feilds for parts
@@ -84,11 +84,11 @@ def sort(parts, Timestamps):
 				word = 'moved'
 				if word in comment.lower():
 					valid = False
-			except KeyError:
+			except KeyError:#entry in stock history does not contain a comment 
 				pass
 			try: 
 				stock_timestamp = parts[part_entry]['part/stock'][stock_entry]['stock/timestamp']
-			except KeyError: 
+			except KeyError: #entry in stock history does not contain a timestamp
 				stock_timestamp = None
 
 			#check if stock update is for production or procurement
@@ -138,7 +138,7 @@ def remove_empty_stock(json_data, stock_key):
 
 		try:
 			stock_data = json_data[part_entry][stock_key]
-		except KeyError:
+		except KeyError: #entry does not exist 
 			valid = False
 
 		if stock_data == []:
@@ -200,3 +200,4 @@ def get_data_for_airtable(sorted_stock):
 
 	data = pd.read_json('sample.json')
 	data.to_csv('sample.csv')
+
