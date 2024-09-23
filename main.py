@@ -143,5 +143,5 @@ if __name__ == '__main__':
 	print("after risk level function")
 
 	print("before creating json file")
-	sort_data.get_json_for_airtable(sorted_stock)
+	sort_data.get_data_for_airtable(sorted_stock)
 	print("after creating json file")
