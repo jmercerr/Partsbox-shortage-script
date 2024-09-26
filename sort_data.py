@@ -16,10 +16,9 @@ Function to sort the data from api response to have just the batch data
 	- stock_list: dictionary of sorted data 
 """
 def sort(parts, Timestamps):
-	part_entry=0
-
-	#create an empty list to store all stock data 
-	stock_list = []
+	part_entry = 0
+	#create an empty dictionary to store all stock data 
+	stock_list = {}
 
 	""" 
 	iterate through parts in data 
@@ -32,6 +31,7 @@ def sort(parts, Timestamps):
 
 		#get wanted variables 
 		part_id = parts[part_entry]['part/id']
+	
 		try:
 			part_description = parts[part_entry]['part/description']
 		except KeyError: #entry does not contain a description
@@ -50,10 +50,7 @@ def sort(parts, Timestamps):
 			part_stock = None
 
 		#create dictionary of data feilds for parts
-		entry = {'id': part_id, 'description': part_description, 'mpn': part_mpn, 'total_stock': part_stock_count}
-
-		#add part data to stock list 
-		stock_list.append(entry)
+		stock_list[part_id] = {'description': part_description, 'mpn': part_mpn, 'total_stock': part_stock_count}
 
 		#create empty list for valid stock entries for each part
 		valid_stock = []
@@ -111,10 +108,10 @@ def sort(parts, Timestamps):
 			stock_entry = stock_entry + 1
 
 		#add valid stock to stock list entries
-		stock_list[part_entry]['stock'] = valid_stock
+		stock_list[part_id]['stock'] = valid_stock
 
-		#increase part counter
-		part_entry = part_entry + 1
+		part_entry += 1
+
 
 	return stock_list
 
@@ -123,21 +120,20 @@ def sort(parts, Timestamps):
 '''
 function to remove entries in the sorted data that have no valid stock history 
 @params 
-	- json_data: json data for parts 
-	- stock_key: string for accessing stock data either 'part/stock' or 'stock'. depends on type of json data being passed 
+	- parts: list of all parts data
 @returns 
 	- refined_stock: list of parts that have had valid stock history within the past year 
 '''
-def remove_empty_stock(json_data, stock_key):
+def remove_empty_stock_list(parts):
 	part_entry = 0 
 	refined_data = []
 
-	for part in json_data: 
-		data = json_data[part_entry]
+	for part in parts: 
+		data = parts[part_entry]
 		valid = True
 
 		try:
-			stock_data = json_data[part_entry][stock_key]
+			stock_data = parts[part_entry]['part/stock']
 		except KeyError: #entry does not exist 
 			valid = False
 
@@ -153,6 +149,34 @@ def remove_empty_stock(json_data, stock_key):
 
 
 '''
+function to remove entries in the sorted data that have no valid stock history 
+@params 
+	- sorted_stock: nested dictionary of valid part information 
+@returns 
+	- refined_stock: list of parts that have had valid stock history within the past year 
+'''
+def remove_empty_stock_dict(sorted_stock):
+	refined_data = {}
+
+	for part in sorted_stock: 
+		data = sorted_stock[part]
+		valid = True
+
+		try:
+			stock_data = sorted_stock[part]['stock']
+		except KeyError: #entry does not exist 
+			valid = False
+
+		if stock_data == []:
+			valid = False
+
+		if valid == True: 
+			refined_data[part] = data
+
+	return refined_data
+
+
+'''
 function that takes json data, takes data that is to be pushed to airtable and creates a json file and a csv file
 @params
 	- sorted_stock: list containgin json data for all valid parts int he past year 
@@ -161,20 +185,18 @@ function that takes json data, takes data that is to be pushed to airtable and c
 
 '''
 def get_data_for_airtable(sorted_stock):
-	part_entry = 0
-
 	json_data_for_airtable = []
 
 	for part in sorted_stock: 
-		id = sorted_stock[part_entry]['id']
-		description = sorted_stock[part_entry]['description']
-		mpn = sorted_stock[part_entry]['mpn']
-		total_stock = sorted_stock[part_entry]['total_stock']
-		batch_average =sorted_stock[part_entry]['batch/average_for_calculations']
-		time_average = sorted_stock[part_entry]['time/average_for_calculations']
-		last_batch = sorted_stock[part_entry]['time/last_batch']
-		risk = sorted_stock[part_entry]['risk_level']
-		rop_estimate = sorted_stock[part_entry]['estimated_rop']
+		id = part
+		description = sorted_stock[part]['description']
+		mpn = sorted_stock[part]['mpn']
+		total_stock = sorted_stock[part]['total_stock']
+		batch_average =sorted_stock[part]['batch/average_for_calculations']
+		time_average = sorted_stock[part]['time/average_for_calculations']
+		last_batch = sorted_stock[part]['time/last_batch']
+		risk = sorted_stock[part]['risk_level']
+		rop_estimate = sorted_stock[part]['estimated_rop']
 
 		entry = {'id': id , 
 				'description': description, 
@@ -189,8 +211,6 @@ def get_data_for_airtable(sorted_stock):
 		#add part data to stock list 
 		json_data_for_airtable.append(entry)
 
-		part_entry += 1
-
 	# Serializing json
 	json_object = json.dumps(json_data_for_airtable, indent=4)
 	 
@@ -200,4 +220,6 @@ def get_data_for_airtable(sorted_stock):
 
 	data = pd.read_json('sample.json')
 	data.to_csv('sample.csv')
+
+
 

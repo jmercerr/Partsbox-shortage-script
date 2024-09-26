@@ -58,13 +58,13 @@ if __name__ == '__main__':
 	#create list of just the data entries from api response
 	parts = data['data']
 
-	print("PARTS")
-	jprint(parts)
+	#print("PARTS")
+	#jprint(parts)
 
 
 	#for testing delete empty stock lists 
 	print("before delete function")
-	parts = sort_data.remove_empty_stock(parts, 'part/stock')
+	parts = sort_data.remove_empty_stock_list(parts)
 	#jprint(sorted_stock)
 	length = len(parts)
 	print('Length after inital delete', length)
@@ -85,9 +85,12 @@ if __name__ == '__main__':
 	print("after sort function")
 
 
+
 	#for testing delete empty stock lists 
 	print("before delete function")
-	sorted_stock = sort_data.remove_empty_stock(sorted_stock, 'stock')
+	length = len(sorted_stock)
+	print("length before second delete", length)
+	sorted_stock = sort_data.remove_empty_stock_dict(sorted_stock)
 	#jprint(sorted_stock)
 	length = len(sorted_stock)
 	print('Length after second delete', length)
@@ -114,13 +117,19 @@ if __name__ == '__main__':
 	#jprint(sorted_stock)
 	print("after time since function")
 
-
 	#for testing risk level function 
 	print("before risk level function")
 	sorted_stock = calculate.get_risk_level(sorted_stock, Timestamps[0])
+	print()
+	print()
+	print("SORTED STOCK")
+	print()
+	print()
 	jprint(sorted_stock)
 	print("after risk level function")
 
 	print("before creating json file")
 	sort_data.get_data_for_airtable(sorted_stock)
 	print("after creating json file")
+
+

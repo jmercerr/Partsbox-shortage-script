@@ -129,18 +129,14 @@ function to get the time since last batch for each part
     - sorted_stock: sorted stock data with added data to each part for time since last batch 
 '''
 def get_time_since_last_batch(current_timestamp, sorted_stock):
-    part_entry = 0
-
     for part in sorted_stock: 
-        stock_history = sorted_stock[part_entry]['stock']
+        stock_history = sorted_stock[part]['stock']
         length = len(stock_history)
         stock_index = length - 1
 
         last_batch = stock_history[stock_index]['stock/timestamp']
         time_since_last_batch = get_difference(last_batch, current_timestamp)
-        sorted_stock[part_entry]["time/last_batch"] = time_since_last_batch
-
-        part_entry += 1
+        sorted_stock[part]["time/last_batch"] = time_since_last_batch
 
     return sorted_stock
 

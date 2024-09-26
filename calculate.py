@@ -42,8 +42,6 @@ Function to calculate the average batch size for 4 time periods
 	- sorted_stock: data from api request with dictionary of average batch sizes added 
 """
 def get_avg_batch(sorted_stock, Timestamps):
-	part_entry = 0
-
 	for part in sorted_stock:
 		batch_totals = {'1_month': 0, '3_months': 0, '6_months': 0, '12_months': 0}
 		batch_averages = {'1_month': 0, '3_months': 0, '6_months': 0, '12_months': 0}
@@ -54,7 +52,7 @@ def get_avg_batch(sorted_stock, Timestamps):
 		batch_total = 0
 		stock_entry = 0
 
-		part_stock = sorted_stock[part_entry]['stock']
+		part_stock = sorted_stock[part]['stock']
 
 		for stock in part_stock:
 			timestamp = part_stock[stock_entry]['stock/timestamp']
@@ -63,7 +61,7 @@ def get_avg_batch(sorted_stock, Timestamps):
 			time_period = time_stamp.get__current_timeperiod(timestamp, Timestamps)
 
 			#increase batch total based on time period 
-			batch_totals[time_period] = batch_totals[time_period] + sorted_stock[part_entry]['stock'][stock_entry]['stock/quantity']
+			batch_totals[time_period] = batch_totals[time_period] + sorted_stock[part]['stock'][stock_entry]['stock/quantity']
 
 			#increase data points based on time period
 			data_points[time_period] = data_points[time_period] + 1
@@ -91,12 +89,9 @@ def get_avg_batch(sorted_stock, Timestamps):
 		average_for_calculations = get_weighted_average(batch_averages)
 
 		#add averages to dictionary 
-		sorted_stock[part_entry]['batch/averages'] = batch_averages
+		sorted_stock[part]['batch/averages'] = batch_averages
 	
-		sorted_stock[part_entry]['batch/average_for_calculations'] = average_for_calculations
-
-		#increase part counter 
-		part_entry = part_entry + 1
+		sorted_stock[part]['batch/average_for_calculations'] = average_for_calculations
 
 	return sorted_stock
 
@@ -111,15 +106,13 @@ Function to calculate the average time between batches for 4 time periods
 	- sorted_stock: sorted stock data with dictionary of average times between batches added
 """
 def get_avg_time(sorted_stock, Timestamps): 
-	part_entry = 0
-
 	for part in sorted_stock: 
 		time_totals = {'1_month': 0, '3_months': 0, '6_months': 0, '12_months': 0}
 		time_averages = {'1_month': 0, '3_months': 0, '6_months': 0, '12_months': 0}
 		data_points = {'1_month': 0, '3_months': 0, '6_months': 0, '12_months': 0}
 		time_periods = ['1_month', '3_months', '6_months', '12_months']
 
-		part_stock = sorted_stock[part_entry]['stock']
+		part_stock = sorted_stock[part]['stock']
 		stock_entry = 0
 		stock_history_size = len(part_stock)
 
@@ -138,7 +131,7 @@ def get_avg_time(sorted_stock, Timestamps):
 
 			if time_period != 0:
 				time_totals[time_period] = time_totals[time_period] + difference
-				data_points[time_period]= data_points[time_period] + 1
+				data_points[time_period] = data_points[time_period] + 1
 
 			else:
 	 			pass
@@ -165,11 +158,8 @@ def get_avg_time(sorted_stock, Timestamps):
 		average_for_calculations = get_weighted_average(time_averages)
 
 	 	#add averages to dictionary 
-		sorted_stock[part_entry]['time/averages'] = time_averages
-		sorted_stock[part_entry]['time/average_for_calculations'] = average_for_calculations
-
-	 	#increase part counter 
-		part_entry = part_entry + 1
+		sorted_stock[part]['time/averages'] = time_averages
+		sorted_stock[part]['time/average_for_calculations'] = average_for_calculations
 
 	return sorted_stock
 
@@ -247,17 +237,15 @@ function to calculate the risk level of running out of each part
 '''
 #TODO: approx_lead_time variable with default lead time will be set for every part figure out a way to pass in a lead time for each 
 def get_risk_level(sorted_stock, current_timestamp, approx_lead_time = 7): 
-	part_entry = 0 
-
 	for part in sorted_stock: 
 		estimated_rop = 0
-		sorted_stock[part_entry]['risk_level'] = None
-		current_stock = sorted_stock[part_entry]['total_stock']
+		sorted_stock[part]['risk_level'] = None
+		current_stock = sorted_stock[part]['total_stock']
 		current_stock = abs(current_stock)
-		avg_batch = sorted_stock[part_entry]['batch/average_for_calculations']
+		avg_batch = sorted_stock[part]['batch/average_for_calculations']
 		avg_batch = abs(avg_batch)
-		avg_time = sorted_stock[part_entry]['time/average_for_calculations']
-		last_batch = sorted_stock[part_entry]['time/last_batch']
+		avg_time = sorted_stock[part]['time/average_for_calculations']
+		last_batch = sorted_stock[part]['time/last_batch']
 
 		if last_batch >= avg_time: #overdue for a batch to be produced
 			time_till_next_batch = -abs(int(last_batch - avg_time))
@@ -281,26 +269,24 @@ def get_risk_level(sorted_stock, current_timestamp, approx_lead_time = 7):
 
 		#print for testing 
 		print('estimated ROP', int(estimated_rop))
-		sorted_stock[part_entry]['estimated_rop'] = estimated_rop
+		sorted_stock[part]['estimated_rop'] = estimated_rop
 
 		if avg_time == None or avg_time == 0: #either no stock entries or only one therefore unlikely for more batches to be produced
-			sorted_stock[part_entry]['risk_level'] = 'Low - not enough data'
+			sorted_stock[part]['risk_level'] = 'Low - not enough data'
 		else: 
 			if (estimated_rop < 0):
-				sorted_stock[part_entry]['risk_level'] = 'High - overdue for batch'
+				sorted_stock[part]['risk_level'] = 'High - overdue for batch'
 			elif (0 <= estimated_rop <= 30): 
-				sorted_stock[part_entry]['risk_level'] = 'High'
+				sorted_stock[part]['risk_level'] = 'High'
 			elif (30 < estimated_rop <= 90):
-				sorted_stock[part_entry]['risk_level'] = 'Medium'
+				sorted_stock[part]['risk_level'] = 'Medium'
 			elif (estimated_rop > 90):
-				sorted_stock[part_entry]['risk_level'] = 'Low'
+				sorted_stock[part]['risk_level'] = 'Low'
 
 		#print for testing 
-		print('risk level', sorted_stock[part_entry]['risk_level'])
+		print('risk level', sorted_stock[part]['risk_level'])
 		print()
 		print()
-
-		part_entry += 1
 
 	return sorted_stock
 
