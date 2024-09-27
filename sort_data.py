@@ -6,6 +6,7 @@ import json
 import pandas as pd
 
 
+
 """
 Function to sort the data from api response to have just the batch data
 @params 
@@ -220,6 +221,41 @@ def get_data_for_airtable(sorted_stock):
 
 	data = pd.read_json('sample.json')
 	data.to_csv('sample.csv')
+
+
+
+'''
+function that takes in a csv file with data for lead times and adds lead times to parts 
+using uuid's to identify the correct parts 
+@params
+	- sorted_stock: dictionary of valid parts 
+	- file_name: name of csv file 
+@returns
+	- sorted_stock: dictionary of valid parts with updated lead times 
+'''
+def get_lead_times(sorted_stock, file_name = "leadtimes.csv"): 
+	data = pd.read_csv(file_name)
+
+	row_index = 0
+	length = len(data)
+	print(length)
+
+	#add lead times to sorted_stock dictionary using data from the provided csv file 
+	while row_index < length: 
+		part_id = data['id'].values[row_index]
+		lead_time = data["lead_time"].values[row_index]
+		sorted_stock[part_id]["lead_time"] = lead_time
+		row_index += 1
+
+	return sorted_stock
+
+
+		
+
+	
+
+
+
 
 
 
