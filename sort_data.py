@@ -35,19 +35,21 @@ def sort(parts, Timestamps):
 	
 		try:
 			part_description = parts[part_entry]['part/description']
-		except KeyError: #entry does not contain a description
+		except KeyError as e: #entry does not contain a description
+			e.add_note(f"{part_id} does not contain the data field 'part/description'")
 			part_description = None
+			raise
 		try:
 			part_mpn = parts[part_entry]['part/mpn']
-		except KeyError: #entry does not contain an mpn
+		except KeyError as e: #entry does not contain an mpn
 			part_mpn = None
 		try: 
 			part_stock_count = parts[part_entry]['part/total_stock']
-		except KeyError: #entry does not contain a total stock count
+		except KeyError as e: #entry does not contain a total stock count
 			part_stock_count = None
 		try:
 			part_stock = parts[part_entry]['part/stock']
-		except KeyError:#entry does not contain a stock history
+		except KeyError as e:#entry does not contain a stock history
 			part_stock = None
 
 		#create dictionary of data feilds for parts
