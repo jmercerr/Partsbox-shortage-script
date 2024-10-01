@@ -280,7 +280,7 @@ def get_risk_level(sorted_stock, current_timestamp):
 		avg_batch = sorted_stock[part]['batch/average_for_calculations']
 		avg_batch = abs(avg_batch)
 		avg_time = sorted_stock[part]['time/average_for_calculations']
-		last_batch = sorted_stock[part]['time/last_batch']
+		last_batch = sorted_stock[part]['days_since_last_batch']
 		try:
 			lead_time = sorted_stock[part]["lead_time"] 
 		except KeyError as e: 
@@ -301,7 +301,6 @@ def get_risk_level(sorted_stock, current_timestamp):
 
 		#print for testing 
 		print('number of batches that can be produced', number_of_batches)
-
 
 		if number_of_batches == 0: #next batch will require more stock before it can be completed 
 			estimated_rop =  time_till_next_batch - lead_time

@@ -18,7 +18,7 @@ function to format the printing of json data
 	- none
 """
 def jprint(obj):
-	text = json.dumps(obj, indent = 4)
+	text = json.dumps(obj, indent = 4, default = str)
 	print(text)
 
 
@@ -58,9 +58,6 @@ if __name__ == '__main__':
 	#create list of just the data entries from api response
 	parts = data['data']
 
-	#print("PARTS")
-	#jprint(parts)
-
 
 	#for testing delete empty stock lists 
 	print("before delete function")
@@ -78,12 +75,17 @@ if __name__ == '__main__':
 	print("after stock function")
 
 
+	#for testing date of last restock function 
+	print("before get last restock function")
+	time_stamp.get_date_of_last_restock(Timestamps[0], parts)
+	#jprint(parts)
+	print("after get last restock function")
+
 	#for testing sort function
 	print("before sort function")
 	sorted_stock = sort_data.sort(parts, Timestamps)
 	#jprint(sorted_stock)
 	print("after sort function")
-
 
 
 	#for testing delete empty stock lists 
@@ -119,11 +121,14 @@ if __name__ == '__main__':
 
 
 	#testing lead time function
+	'''
 	file_name = input("Enter the name of the CSV that contains lead times: ")#get input from user for file name
 	if file_name == "": #no file name provided
 		calculate.get_lead_times(sorted_stock)
 	else: #file name provided
 		calculate.get_lead_times(sorted_stock, file_name)
+	'''
+	calculate.get_lead_times(sorted_stock)
 	#jprint(sorted_stock)
 
 

@@ -136,10 +136,87 @@ def get_time_since_last_batch(current_timestamp, sorted_stock):
 
         last_batch = stock_history[stock_index]['stock/timestamp']
         time_since_last_batch = get_difference(last_batch, current_timestamp)
-        sorted_stock[part]["time/last_batch"] = time_since_last_batch
+        sorted_stock[part]["days_since_last_batch"] = time_since_last_batch
+        sorted_stock[part]["date_last_batch"] = datetime.fromtimestamp(last_batch/1000) #convert timestamp to seconds from milliseconds 
 
     return sorted_stock
 
+
+'''
+function to get date of last acquisition of parts 
+@params
+    - current_timestamp: timestamp from when get_timestamp function was called, 
+                         unix timestamp, in milliseconds represented as an integer 
+    - parts: list of dictionaries with full response from api request 
+@returns 
+    - parts: parts data with added feild for date of last acquisition 
+'''
+def get_date_of_last_restock(current_timestamp, parts):
+    part_entry = 0
+
+    for part in parts: 
+        stock = parts[part_entry]["part/stock"]
+        length = len(stock) 
+
+        if length <= 0: #if no stock history
+            parts[part_entry]["date_last_restock"] = None
+        else:
+            stock_entry = get_restock_entry(parts, length, part_entry)
+        if stock_entry == None:
+            parts[part_entry]["date_last_restock"] = None
+        else:
+            last_restock = parts[part_entry]['part/stock'][stock_entry]['stock/timestamp']
+            parts[part_entry]["date_last_restock"] = datetime.fromtimestamp(last_restock/1000) #convert timestamp to seconds from milliseconds first
+
+        part_entry += 1
+
+    return parts
+
+'''
+function that determines the most recent restock based on comments not containing 'move'
+and quantity being positive 
+@params 
+    - parts:
+    - stock_index: 
+@returns 
+    - 
+
+'''
+def get_restock_entry(parts, stock_index, part_entry):
+    #initalize flags
+    comment = False
+    positive = False
+
+    #loop until most recent entry that is a restock 
+    while (comment == False) or (positive == False):
+        #loop until most recent entry that is a restock 
+        if stock_index > 0: 
+            stock_index -= 1
+            quantity = parts[part_entry]['part/stock'][stock_index]['stock/quantity']
+
+            try:
+                comment = parts[part_entry]['part/stock'][stock_index]['stock/comments']
+                word = 'moved'
+                #check if stock entry was for moving stock
+                if word in comment.lower():
+                    comment = False
+                else: 
+                    comment = True
+            except KeyError: #no comment
+                comment = True
+                    
+            #check if stock entry was a batch or a restock
+            if quantity >= 0:
+                positive = True
+            else: 
+                positive = False
+
+        else: 
+            comment = True 
+            positive = True
+            stock_index = None
+
+    return stock_index
 
 
 

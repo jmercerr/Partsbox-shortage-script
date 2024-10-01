@@ -1,0 +1,37 @@
+part_id,description,mpn,total_stock,time/last_batch,risk,rop_estimate
+03v3p5ntktjjb90mrg0n795kkp,FPGA Kintex-7 Family 406720 Cells 28nm Technology 1V 676-Pin Lidless FCBGA,XC7K410T-1FBG676C,69,320,Low - not enough data,-7
+01drh3znayhbv98w1cny4qw3mp,"Precision resistor, SMD [Panasonic Automotive & Industrial Systems] ERJ2RKF1001X Precision resistor, SMD",ERJ-2RKF1001X,44,110,High - overdue for batch,-89
+00knzpmxpwjbbbmpxf78f9nxj3,"12-Bit, 200-MSPS Analog-to-Digital Converter (ADC) 48-VQFN -40 to 85",ADS4128IRGZT,0,183,Low - not enough data,-190
+09qa1eed22kx4a52pgs092j4j7,"Anti-Static Bag 2x3""",30023,698,6,High,28.274812818209043
+04p1f3kyeykrb8h141f8qnr93g,"Low cost SMA Edge (RF Connectors / Coaxial Connectors SMA EDGE MOUNT JACK),Receptacle, Female Socket",,195,99,Low,107.0
+0eweygp74yjzx82zyxydfz738n,XMEGA TARGET PCB,,136,137,Low - not enough data,-7
+01hsys77gghg0b8d418wtgxyrk,Res Thick Film 1.6 x 0.8 mm 100 Ohm 1% 0.1W(1/10W) 100ppm/ C Molded SMD Paper T/R,RC0603FR-07100RL,5740,137,Low - not enough data,-7
+02skbrrqr6hmp96pz5m42aahx5,4MM/CCW COIL,,41,159,High - overdue for batch,-71
+05xxxfmyx6kvjb1dcr2rq3w0cd,NAE-CW508-HPF0.5,,1,33,Low - not enough data,-40
+06wrq318h8k7x8sn4xr8gqynt4,SCAPACK-L1-KIT SLEEVE,,133,83,Low - not enough data,-7
+060x9yrca2hna8p2gjagvgjgtm,USB COMMUNICATION INTERFACE,,16,6,High,24.666666666666668
+06mc3e6b9yjqc9hc5sxajjrexh,Hex screwdriver for CW305 Socket,27545,3,101,Low - not enough data,-7
+0bg5csr7wak03bke35b4mqh8yz,Res Thick Film 0402 24K Ohm 1% 0.063W(1/16W) ±100ppm/C Pad SMD Automotive T/R,RMCF0402FT24K0,10444,110,Low,2681.0
+0gzczzs5jwj7096421g25wj1fc,Conn Shrouded Header HDR 14 POS 2mm Solder ST Top Entry SMD Milli-Grid™ Tube,87832-1420,28,62,Low,126.5
+0c8qc8r4mmk0c8x6a4thqa3jj6,INJECTION TIP LABEL 1MM/CCW (RED),,67,159,Low - not enough data,-7
+06rb2pfp6ckx0bbcxqqgywma77,CW312-TMP91FW27UG target,,5,48,Low,228
+07ncbnxd5pj3gbka8ttwcewp2w,"Connector Accessory, 0.05in Min Cable Dia, 0.06in Max Cable Dia, Contact, Brass",66506-3,138,318,High - overdue for batch,-3.0
+0mnxhkzv68hhja0t42nhcmtd3r,3 COND 6FT BLACK,173-21103-E,0,165,High - overdue for batch,-155
+0gd2gmpxxtjpg9e216rmb8b61v,Prototyping Products 3 jumpers-Qty 100 RED female-female),920-0008-01,136,18,High,26.80128205128205
+0ce147mpfag8wahbswmahja319,Chipshover LCD board cable,,2,216,High - overdue for batch,-110
+0mm9jm70c2kmrb1cfehtp5qjj0,"ChipWhisperer 20-pin Breakout, Flying Leads",B451-2008-11-01-1,1088,6,Low,125.35723308270676
+13a3za0w0wjcfa2jbvtn74yet3,"Jumper Wire Female 7"" 100PCS (GREEN)",920-0205-01,444,18,Medium,80.16666666666667
+0dtkrpxpfckn59tnbpypvd2q6d,0603 10 nF 16 V ±10% Tolerance X7R SMT Multilayer Ceramic Capacitor,GRM188R71C103KA01D,1386,67,Low,1904.0
+0erak4pxhthnr9fwh12qat1qrm,Res Thick Film 0603 4.7K Ohm 1% 1/10W ±100ppm/°C Molded SMD SMD Paper Tape on Plastic Reel,CR0603-FX-4701ELF,3544,110,Low,889.0
+0gf588y7cygqf89bvjtp269nw7,"USB-C, 3 feet, black, MP 38916 - Monoprice Select Charge & Sync Type-C to Type-C Cable, USB 2.0, TPE Jacket, Up to 3A/60W, 3ft, Black",38916,0,175,High - overdue for batch,-130
+0x7tg547awgnbagpdcmn12kttw,CW310-K410T Kit - SCA (COMPLETE KIT) includes acc pack for K410T (spare fan),,0,68,Low - not enough data,-75
+0vaz1wkncajm89ctbh48fn1fk8,(NAE-CB520)  ....OSCILLOSCOPE PROBE ADAPTER LABEL,,528,363,Low - not enough data,-7
+1aq80k2hrtkmqbn3w20fznk2ga,Daughter Cards & OEM Boards STM32L5 w/ Hardware Crypto Target for CW308 (TESTED),,40,22,Low,1317.4166666666667
+0ybffqgw8ekgdbkjx7dx297wwq,Switch Rocker ON OFF SPST Quick Connect Curved Rocker 9A 250VAC 30000Cycles,R1973ABLKGILFF4,75,216,Low,573.0
+0wxqbx28jagh8ba3p3gd69r317,0603 47 pF 50 V ±5 % Tol. C0G/NP0 Surface Mount Multilayer Ceramic Capacitor,06035A470JAT2A,3110,188,Low,929.0
+0r0xt5gbq2krpa5rgff44p7ynx,Light Pipe; Rigid; Panel Mnt (Front); 3mm Round Lens; Low Profile Round Face; .125in.,PLP2-125,1113,39,Low,383.6666666666667
+1dtqgb40ejg9paxrd35dyqfv3c,Power Supply AC-DC Desktop Medical&ITE 36W 12V@3A 90-264V Input,ACM36US12,5,61,High - overdue for batch,-49
+13b9jecs98g1db42htm36z061d,"Stainless Steel Flat-Tip Set Screw, 18-8, M8 x 1.25 mm Thread, 16 mm Long",92605A144,81,39,Low,153.5
+0pf51gsmkwhfr9j1s1qhz79kjp,Switch DIP ON OFF SPST 6 Raised Slide 0.1A 20VDC Gull Wing 2000Cycles 2.54mm SMD Tube,219-6MST,3,20,Low - not enough data,-27
+11fvjzk7etjdvbtgsnhhfaa4fv,UFO TARGET BOARD MPC5777C  (UNTESTED),,14,56,Low,821.0
+1g44amj944g3saw850ar96g2a0,SAM3U Series 96 MHz 256 kB Flash 52 kB SRAM 32-Bit Microcontroller - LQFP-144,ATSAM3U4EA-AU,111,333,Low - not enough data,-7

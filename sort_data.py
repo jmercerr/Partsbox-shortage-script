@@ -4,6 +4,7 @@ Module that contains functions for sorting data for partsbox api interface
 
 import json 
 import pandas as pd
+import csv
 
 
 """
@@ -53,9 +54,15 @@ def sort(parts, Timestamps):
 		except KeyError as e:#entry does not contain a stock history
 			part_stock = None
 			e.add_note(f"{part_id} does not contain the data field 'part/stock'")
+		try:
+			part_restock = parts[part_entry]["date_last_restock"]
+		except KeyError as e: 
+			part_restock = None
+			e.add_note(f"{part_id} does not contain the data field 'date_last_restock'")
+
 
 		#create dictionary of data feilds for parts
-		stock_list[part_id] = {'description': part_description, 'mpn': part_mpn, 'total_stock': part_stock_count}
+		stock_list[part_id] = {'description': part_description, 'mpn': part_mpn, 'total_stock': part_stock_count, 'part/restock': part_restock}
 
 		#create empty list for valid stock entries for each part
 		valid_stock = []
@@ -189,27 +196,26 @@ function that takes json data, takes data that is to be pushed to airtable and c
 	- none
 
 '''
+#TODO: get rid of the json file and read into csv from json string?
 def get_data_for_airtable(sorted_stock):
 	json_data_for_airtable = []
 
 	for part in sorted_stock: 
-		id = part
+		part_id = part
 		description = sorted_stock[part]['description']
 		mpn = sorted_stock[part]['mpn']
 		total_stock = sorted_stock[part]['total_stock']
-		batch_average =sorted_stock[part]['batch/average_for_calculations']
-		time_average = sorted_stock[part]['time/average_for_calculations']
-		last_batch = sorted_stock[part]['time/last_batch']
+		last_batch = sorted_stock[part]['date_last_batch']
+		last_restock = sorted_stock[part]['part/restock']
 		risk = sorted_stock[part]['risk_level']
-		rop_estimate = sorted_stock[part]['estimated_rop']
+		rop_estimate = int(sorted_stock[part]['estimated_rop'])
 
-		entry = {'id': id , 
+		entry = {'part_id': part_id,
 				'description': description, 
 				'mpn': mpn, 
 				'total_stock': total_stock, 
-				'batch_average': batch_average, 
-				'time_average': time_average, 
 				'last_batch': last_batch, 
+				'last_restock': last_restock,
 				'risk': risk, 
 				'rop_estimate': rop_estimate}
 
@@ -217,14 +223,19 @@ def get_data_for_airtable(sorted_stock):
 		json_data_for_airtable.append(entry)
 
 	# Serializing json
-	json_object = json.dumps(json_data_for_airtable, indent=4)
+	json_object = json.dumps(json_data_for_airtable, indent=4, default = str)
 	 
 	# Writing to sample.json
+
 	with open("sample.json", "w") as outfile:
 		outfile.write(json_object)
 
-	data = pd.read_json('sample.json')
+	data = pd.read_json("sample.json")
 	data.to_csv('sample.csv')
+
+
+
+
 
 
 
