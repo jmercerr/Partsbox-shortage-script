@@ -3,6 +3,11 @@ Module containing functions to complete necessary calculations for partsbox api 
 """
 
 import time_stamp
+import pandas as pd
+
+
+#constant default (in days), used in get_lead_times, if CSV has no data
+DEFAULT_LEAD_TIME = 7
 
 
 """
@@ -223,11 +228,41 @@ def get_weighted_average(averages):
 
 
 
+'''
+function that takes in a csv file with data for lead times and adds lead times to parts 
+using uuid's to identify the correct parts 
+@params
+	- sorted_stock: dictionary of valid parts 
+	- file_name: name of csv file 
+@returns
+	- sorted_stock: dictionary of valid parts with updated lead times 
+'''
+def get_lead_times(sorted_stock, file_name = "leadtimes.csv"): 
+	data = pd.read_csv(file_name)
+
+	row_index = 0
+	length = len(data)
+	print(length)
+
+	#add lead times to sorted_stock dictionary using data from the provided csv file 
+	while row_index < length: 
+		part_id = data['id'].values[row_index]
+		lead_time = data["lead_time"].values[row_index]
+		if lead_time == "nan" or "NaN":
+			sorted_stock[part_id]["lead_time"] = DEFAULT_LEAD_TIME
+		else: 
+			sorted_stock[part_id]["lead_time"] = lead_time
+		row_index += 1
+
+	return sorted_stock
+
+
+
 ''' 
 function to calculate the risk level of running out of each part 
-	- high = likely to run out in next 2 weeks 
-	- medium = likely to run out in next 3-4 weeks 
-	- low = likely to run out in over a month 
+	- high = likely to run out in next month
+	- medium = likely to run out in month - 3 months 
+	- low = likely to run out in over 3 months 
 			no stock data or only 1 data point - unlikely for future batches to take place 
 @params 
 	- sorted_stock: list with all sorted_data and added feilds from previous calculations 
@@ -235,8 +270,8 @@ function to calculate the risk level of running out of each part
 @returns
 	- sorted_stock: with added risk level and estimated time till no stock 
 '''
-#TODO: approx_lead_time variable with default lead time will be set for every part figure out a way to pass in a lead time for each 
-def get_risk_level(sorted_stock, current_timestamp, approx_lead_time = 7): 
+
+def get_risk_level(sorted_stock, current_timestamp): 
 	for part in sorted_stock: 
 		estimated_rop = 0
 		sorted_stock[part]['risk_level'] = None
@@ -246,6 +281,11 @@ def get_risk_level(sorted_stock, current_timestamp, approx_lead_time = 7):
 		avg_batch = abs(avg_batch)
 		avg_time = sorted_stock[part]['time/average_for_calculations']
 		last_batch = sorted_stock[part]['time/last_batch']
+		try:
+			lead_time = sorted_stock[part]["lead_time"] 
+		except KeyError as e: 
+			lead_time = DEFAULT_LEAD_TIME
+			e.add_note(f"{part} does not contain the data field 'lead_time'")
 
 		if last_batch >= avg_time: #overdue for a batch to be produced
 			time_till_next_batch = -abs(int(last_batch - avg_time))
@@ -262,10 +302,11 @@ def get_risk_level(sorted_stock, current_timestamp, approx_lead_time = 7):
 		#print for testing 
 		print('number of batches that can be produced', number_of_batches)
 
+
 		if number_of_batches == 0: #next batch will require more stock before it can be completed 
-			estimated_rop =  time_till_next_batch - approx_lead_time
+			estimated_rop =  time_till_next_batch - lead_time
 		else:
-			estimated_rop = (number_of_batches * avg_time) - approx_lead_time
+			estimated_rop = (number_of_batches * avg_time) - lead_time 
 
 		#print for testing 
 		print('estimated ROP', int(estimated_rop))

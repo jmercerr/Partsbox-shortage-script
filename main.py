@@ -117,18 +117,23 @@ if __name__ == '__main__':
 	#jprint(sorted_stock)
 	print("after time since function")
 
+
+	#testing lead time function
+	calculate.get_lead_times(sorted_stock)
+	#jprint(sorted_stock)
+
+
 	#for testing risk level function 
 	print("before risk level function")
 	sorted_stock = calculate.get_risk_level(sorted_stock, Timestamps[0])
-	#jprint(sorted_stock)
+	jprint(sorted_stock)
 	print("after risk level function")
+
 
 	print("before creating json file")
 	sort_data.get_data_for_airtable(sorted_stock)
 	print("after creating json file")
 
-	#testing lead time function
-	sort_data.get_lead_times(sorted_stock, 'leadtimes.csv')
-	jprint(sorted_stock)
+
 
 

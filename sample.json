@@ -28,9 +28,9 @@
         "total_stock": 0,
         "batch_average": -25.0,
         "time_average": 0,
-        "last_batch": 182,
+        "last_batch": 183,
         "risk": "Low - not enough data",
-        "rop_estimate": -189
+        "rop_estimate": -190
     },
     {
         "id": "09qa1eed22kx4a52pgs092j4j7",
@@ -105,7 +105,7 @@
         "total_stock": 133,
         "batch_average": -50.0,
         "time_average": 0,
-        "last_batch": 82,
+        "last_batch": 83,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -369,9 +369,9 @@
         "total_stock": 3,
         "batch_average": -15.0,
         "time_average": 0,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Low - not enough data",
-        "rop_estimate": -26
+        "rop_estimate": -27
     },
     {
         "id": "11fvjzk7etjdvbtgsnhhfaa4fv",
@@ -402,7 +402,7 @@
         "total_stock": 3,
         "batch_average": -2.333333333333333,
         "time_average": 56.166666666666664,
-        "last_batch": 21,
+        "last_batch": 22,
         "risk": "Medium",
         "rop_estimate": 49.166666666666664
     },
@@ -413,9 +413,9 @@
         "total_stock": 0,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 341,
+        "last_batch": 342,
         "risk": "Low - not enough data",
-        "rop_estimate": -348
+        "rop_estimate": -349
     },
     {
         "id": "1gkh02zyr4jkgamrb0914ekcpr",
@@ -435,7 +435,7 @@
         "total_stock": 1443,
         "batch_average": -102.4111111111111,
         "time_average": 39.333333333333336,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low",
         "rop_estimate": 543.6666666666667
     },
@@ -490,7 +490,7 @@
         "total_stock": 26,
         "batch_average": -1.0,
         "time_average": 0,
-        "last_batch": 297,
+        "last_batch": 298,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -765,9 +765,9 @@
         "total_stock": 19,
         "batch_average": -43.71666666666667,
         "time_average": 61.6,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Medium",
-        "rop_estimate": 35
+        "rop_estimate": 34
     },
     {
         "id": "2m7km44f5yjmt9s6kjcnxzpsc7",
@@ -820,7 +820,7 @@
         "total_stock": 9,
         "batch_average": -2.4166666666666665,
         "time_average": 9.0,
-        "last_batch": 160,
+        "last_batch": 161,
         "risk": "High",
         "rop_estimate": 20.0
     },
@@ -875,9 +875,9 @@
         "total_stock": 0,
         "batch_average": -2.0,
         "time_average": 0,
-        "last_batch": 87,
+        "last_batch": 88,
         "risk": "Low - not enough data",
-        "rop_estimate": -94
+        "rop_estimate": -95
     },
     {
         "id": "17fq1a9c7jkx583w316d3c4krx",
@@ -1018,9 +1018,9 @@
         "total_stock": 2,
         "batch_average": -30.0,
         "time_average": 0,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Low - not enough data",
-        "rop_estimate": -26
+        "rop_estimate": -27
     },
     {
         "id": "1958pkhmawjvpazfssz0qgphd5",
@@ -1051,7 +1051,7 @@
         "total_stock": 851,
         "batch_average": -71.45,
         "time_average": 7.833333333333332,
-        "last_batch": 31,
+        "last_batch": 32,
         "risk": "Medium",
         "rop_estimate": 79.16666666666666
     },
@@ -1117,9 +1117,9 @@
         "total_stock": 0,
         "batch_average": -51.0,
         "time_average": 0,
-        "last_batch": 188,
+        "last_batch": 189,
         "risk": "Low - not enough data",
-        "rop_estimate": -195
+        "rop_estimate": -196
     },
     {
         "id": "349yj18cs0k41b0cyjcnc6ryw0",
@@ -1172,9 +1172,9 @@
         "total_stock": 0,
         "batch_average": -188.5,
         "time_average": 0,
-        "last_batch": 182,
+        "last_batch": 183,
         "risk": "Low - not enough data",
-        "rop_estimate": -189
+        "rop_estimate": -190
     },
     {
         "id": "2qx6gvhwfthbh91tz30axbahej",
@@ -1216,7 +1216,7 @@
         "total_stock": 8,
         "batch_average": -1.0,
         "time_average": 0,
-        "last_batch": 199,
+        "last_batch": 200,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -1249,7 +1249,7 @@
         "total_stock": 400,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -1293,9 +1293,9 @@
         "total_stock": 0,
         "batch_average": -9.375,
         "time_average": 107.33333333333333,
-        "last_batch": 5,
+        "last_batch": 6,
         "risk": "Low",
-        "rop_estimate": 95
+        "rop_estimate": 94
     },
     {
         "id": "3hhhbm307rkembk67111n0ebds",
@@ -1315,9 +1315,9 @@
         "total_stock": 3,
         "batch_average": -13.7,
         "time_average": 69.5,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Medium",
-        "rop_estimate": 43
+        "rop_estimate": 42
     },
     {
         "id": "2wayfsx27rgm0bx5q1rgg3b16f",
@@ -1381,7 +1381,7 @@
         "total_stock": 646,
         "batch_average": -91.78,
         "time_average": 58.166666666666664,
-        "last_batch": 14,
+        "last_batch": 15,
         "risk": "Low",
         "rop_estimate": 400.16666666666663
     },
@@ -1480,7 +1480,7 @@
         "total_stock": 1402,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -1491,9 +1491,9 @@
         "total_stock": 0,
         "batch_average": -9.2,
         "time_average": 32.5,
-        "last_batch": 203,
+        "last_batch": 204,
         "risk": "High - overdue for batch",
-        "rop_estimate": -177
+        "rop_estimate": -178
     },
     {
         "id": "3xs0as2w2rkgr86c1mp8gdhc50",
@@ -1601,9 +1601,9 @@
         "total_stock": 8,
         "batch_average": -50.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
-        "rop_estimate": -83
+        "rop_estimate": -84
     },
     {
         "id": "2yatvbypbrg74btcq64erkdnsz",
@@ -1700,7 +1700,7 @@
         "total_stock": 464,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -1722,7 +1722,7 @@
         "total_stock": 8,
         "batch_average": -3.97,
         "time_average": 34.875,
-        "last_batch": 14,
+        "last_batch": 15,
         "risk": "Medium",
         "rop_estimate": 62.75
     },
@@ -1733,7 +1733,7 @@
         "total_stock": 200,
         "batch_average": -37.625,
         "time_average": 87.66666666666667,
-        "last_batch": 75,
+        "last_batch": 76,
         "risk": "Low",
         "rop_estimate": 431.33333333333337
     },
@@ -1766,9 +1766,9 @@
         "total_stock": 0,
         "batch_average": -60.0,
         "time_average": 0,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Low - not enough data",
-        "rop_estimate": -26
+        "rop_estimate": -27
     },
     {
         "id": "4dqeszs416hhpaz89tc52v7sdx",
@@ -1788,9 +1788,9 @@
         "total_stock": 0,
         "batch_average": -1.0,
         "time_average": 0,
-        "last_batch": 203,
+        "last_batch": 204,
         "risk": "Low - not enough data",
-        "rop_estimate": -210
+        "rop_estimate": -211
     },
     {
         "id": "4jeynv2jrtjksb9qd1c8h7exzp",
@@ -1876,7 +1876,7 @@
         "total_stock": 174,
         "batch_average": -19.5,
         "time_average": 132.0,
-        "last_batch": 75,
+        "last_batch": 76,
         "risk": "Low",
         "rop_estimate": 1049.0
     },
@@ -1909,9 +1909,9 @@
         "total_stock": 0,
         "batch_average": -2.9166666666666665,
         "time_average": 55.0,
-        "last_batch": 166,
+        "last_batch": 167,
         "risk": "High - overdue for batch",
-        "rop_estimate": -118
+        "rop_estimate": -119
     },
     {
         "id": "3s48tdeqhekqb95v437jma83pd",
@@ -2074,7 +2074,7 @@
         "total_stock": 753,
         "batch_average": -50.0,
         "time_average": 0,
-        "last_batch": 182,
+        "last_batch": 183,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -2404,9 +2404,9 @@
         "total_stock": 4,
         "batch_average": -10.0,
         "time_average": 0,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Low - not enough data",
-        "rop_estimate": -26
+        "rop_estimate": -27
     },
     {
         "id": "5c0n31qgsjg8jb0fxp0hc8skp7",
@@ -2525,7 +2525,7 @@
         "total_stock": 90,
         "batch_average": -11.0,
         "time_average": 66.0,
-        "last_batch": 75,
+        "last_batch": 76,
         "risk": "Low",
         "rop_estimate": 521.0
     },
@@ -2789,9 +2789,9 @@
         "total_stock": 36,
         "batch_average": -102.0,
         "time_average": 0,
-        "last_batch": 188,
+        "last_batch": 189,
         "risk": "Low - not enough data",
-        "rop_estimate": -195
+        "rop_estimate": -196
     },
     {
         "id": "5st6rrtmewhkha437r1tntjehh",
@@ -2800,7 +2800,7 @@
         "total_stock": 5402,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -2811,7 +2811,7 @@
         "total_stock": 103,
         "batch_average": -50.0,
         "time_average": 0,
-        "last_batch": 82,
+        "last_batch": 83,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -2833,7 +2833,7 @@
         "total_stock": 452,
         "batch_average": -66.5,
         "time_average": 22.333333333333332,
-        "last_batch": 74,
+        "last_batch": 75,
         "risk": "Low",
         "rop_estimate": 127.0
     },
@@ -2899,9 +2899,9 @@
         "total_stock": 3,
         "batch_average": -22.0,
         "time_average": 0,
-        "last_batch": 129,
+        "last_batch": 130,
         "risk": "Low - not enough data",
-        "rop_estimate": -136
+        "rop_estimate": -137
     },
     {
         "id": "akr66pe6yck25bj9wz6yn0ckkm",
@@ -2998,9 +2998,9 @@
         "total_stock": 9,
         "batch_average": -92.5,
         "time_average": 255.0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low",
-        "rop_estimate": 172
+        "rop_estimate": 171
     },
     {
         "id": "4ztvd93h2ej5e82c48dr6taav2",
@@ -3207,7 +3207,7 @@
         "total_stock": 62,
         "batch_average": -19.444444444444446,
         "time_average": 132.0,
-        "last_batch": 75,
+        "last_batch": 76,
         "risk": "Low",
         "rop_estimate": 389.0
     },
@@ -3218,7 +3218,7 @@
         "total_stock": 9,
         "batch_average": -1.3,
         "time_average": 13.0,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Medium",
         "rop_estimate": 71.0
     },
@@ -3229,7 +3229,7 @@
         "total_stock": 25,
         "batch_average": -15.0,
         "time_average": 0,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -3284,7 +3284,7 @@
         "total_stock": 417,
         "batch_average": -50.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -3372,7 +3372,7 @@
         "total_stock": 69,
         "batch_average": -28.53333333333333,
         "time_average": 154.5,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Low",
         "rop_estimate": 302.0
     },
@@ -3416,7 +3416,7 @@
         "total_stock": 507,
         "batch_average": -125.0,
         "time_average": 0,
-        "last_batch": 182,
+        "last_batch": 183,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -3449,7 +3449,7 @@
         "total_stock": 1640,
         "batch_average": -123.5,
         "time_average": 257.0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low",
         "rop_estimate": 3334.0
     },
@@ -3570,9 +3570,9 @@
         "total_stock": 2,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
-        "rop_estimate": -83
+        "rop_estimate": -84
     },
     {
         "id": "aax7560a1chcnbsmb25x6vchm7",
@@ -4076,7 +4076,7 @@
         "total_stock": 64,
         "batch_average": -32.0,
         "time_average": 42.0,
-        "last_batch": 59,
+        "last_batch": 60,
         "risk": "Medium",
         "rop_estimate": 77.0
     },
@@ -4340,9 +4340,9 @@
         "total_stock": 0,
         "batch_average": -6.422222222222222,
         "time_average": 14.25,
-        "last_batch": 171,
+        "last_batch": 172,
         "risk": "High - overdue for batch",
-        "rop_estimate": -163
+        "rop_estimate": -164
     },
     {
         "id": "9t78pkcymagmtb1qs85vddev9p",
@@ -4450,7 +4450,7 @@
         "total_stock": 126,
         "batch_average": -62.55555555555555,
         "time_average": 25.166666666666668,
-        "last_batch": 102,
+        "last_batch": 103,
         "risk": "Medium",
         "rop_estimate": 43.333333333333336
     },
@@ -4494,7 +4494,7 @@
         "total_stock": 2362,
         "batch_average": -351.8,
         "time_average": 31.0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low",
         "rop_estimate": 179.0
     },
@@ -4582,7 +4582,7 @@
         "total_stock": 145,
         "batch_average": -36.44444444444444,
         "time_average": 131.5,
-        "last_batch": 75,
+        "last_batch": 76,
         "risk": "Low",
         "rop_estimate": 387.5
     },
@@ -4637,9 +4637,9 @@
         "total_stock": 0,
         "batch_average": -3.1666666666666665,
         "time_average": 229.0,
-        "last_batch": 98,
+        "last_batch": 99,
         "risk": "Low",
-        "rop_estimate": 124
+        "rop_estimate": 123
     },
     {
         "id": "a6ztnm9smrkye8kfk0mdgyq4xb",
@@ -4681,7 +4681,7 @@
         "total_stock": 5310,
         "batch_average": -60.0,
         "time_average": 0,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -4736,7 +4736,7 @@
         "total_stock": 150,
         "batch_average": -50.0,
         "time_average": 0,
-        "last_batch": 182,
+        "last_batch": 183,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -4780,9 +4780,9 @@
         "total_stock": 4,
         "batch_average": -20.0,
         "time_average": 0,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Low - not enough data",
-        "rop_estimate": -26
+        "rop_estimate": -27
     },
     {
         "id": "ab8bg7pfackhx991bzkf447r34",
@@ -5011,9 +5011,9 @@
         "total_stock": 8,
         "batch_average": -51.0,
         "time_average": 0,
-        "last_batch": 188,
+        "last_batch": 189,
         "risk": "Low - not enough data",
-        "rop_estimate": -195
+        "rop_estimate": -196
     },
     {
         "id": "e8gwthf5qpg5pb0qjeb8qxf0gp",
@@ -5022,9 +5022,9 @@
         "total_stock": 10,
         "batch_average": -32.67964365881033,
         "time_average": 7.116300366300368,
-        "last_batch": 31,
+        "last_batch": 32,
         "risk": "High - overdue for batch",
-        "rop_estimate": -30
+        "rop_estimate": -31
     },
     {
         "id": "b0p3c1tgb0hvwbw2qn2sbvycg6",
@@ -5088,7 +5088,7 @@
         "total_stock": 61,
         "batch_average": -52.5,
         "time_average": 0,
-        "last_batch": 19,
+        "last_batch": 20,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -5209,9 +5209,9 @@
         "total_stock": 13,
         "batch_average": -21.0,
         "time_average": 0,
-        "last_batch": 59,
+        "last_batch": 60,
         "risk": "Low - not enough data",
-        "rop_estimate": -66
+        "rop_estimate": -67
     },
     {
         "id": "fycfp1z8trj1jaea31eve0d549",
@@ -5374,7 +5374,7 @@
         "total_stock": 1248,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -5517,9 +5517,9 @@
         "total_stock": 98,
         "batch_average": -366.8333333333333,
         "time_average": 257.0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low",
-        "rop_estimate": 174
+        "rop_estimate": 173
     },
     {
         "id": "b1hvqrryc4hccb25td4pphdy45",
@@ -5726,7 +5726,7 @@
         "total_stock": 1721,
         "batch_average": -1.0,
         "time_average": 0,
-        "last_batch": 194,
+        "last_batch": 195,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -5759,7 +5759,7 @@
         "total_stock": 900,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -5858,7 +5858,7 @@
         "total_stock": 383,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -6232,7 +6232,7 @@
         "total_stock": 528,
         "batch_average": -59.75,
         "time_average": 87.66666666666667,
-        "last_batch": 75,
+        "last_batch": 76,
         "risk": "Low",
         "rop_estimate": 694.3333333333334
     },
@@ -6452,7 +6452,7 @@
         "total_stock": 127,
         "batch_average": -36.48888888888889,
         "time_average": 12.583333333333334,
-        "last_batch": 102,
+        "last_batch": 103,
         "risk": "Medium",
         "rop_estimate": 30.75
     },
@@ -6529,7 +6529,7 @@
         "total_stock": 186,
         "batch_average": -38.95,
         "time_average": 85.25,
-        "last_batch": 6,
+        "last_batch": 7,
         "risk": "Low",
         "rop_estimate": 334.0
     },
@@ -6672,7 +6672,7 @@
         "total_stock": 75,
         "batch_average": -75.0,
         "time_average": 0,
-        "last_batch": 182,
+        "last_batch": 183,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -6705,7 +6705,7 @@
         "total_stock": 39,
         "batch_average": -21.25,
         "time_average": 14.0,
-        "last_batch": 59,
+        "last_batch": 60,
         "risk": "High",
         "rop_estimate": 7.0
     },
@@ -7057,7 +7057,7 @@
         "total_stock": 259,
         "batch_average": -100.0,
         "time_average": 0,
-        "last_batch": 76,
+        "last_batch": 77,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },

@@ -6,7 +6,6 @@ import json
 import pandas as pd
 
 
-
 """
 Function to sort the data from api response to have just the batch data
 @params 
@@ -36,21 +35,24 @@ def sort(parts, Timestamps):
 		try:
 			part_description = parts[part_entry]['part/description']
 		except KeyError as e: #entry does not contain a description
+			#added notes for exception, will only show if code is changed so exception is raised
 			e.add_note(f"{part_id} does not contain the data field 'part/description'")
 			part_description = None
-			raise
 		try:
 			part_mpn = parts[part_entry]['part/mpn']
 		except KeyError as e: #entry does not contain an mpn
 			part_mpn = None
+			e.add_note(f"{part_id} does not contain the data field 'part/mpn'")
 		try: 
 			part_stock_count = parts[part_entry]['part/total_stock']
 		except KeyError as e: #entry does not contain a total stock count
 			part_stock_count = None
+			e.add_note(f"{part_id} does not contain the data field 'part/total_stock'")
 		try:
 			part_stock = parts[part_entry]['part/stock']
 		except KeyError as e:#entry does not contain a stock history
 			part_stock = None
+			e.add_note(f"{part_id} does not contain the data field 'part/stock'")
 
 		#create dictionary of data feilds for parts
 		stock_list[part_id] = {'description': part_description, 'mpn': part_mpn, 'total_stock': part_stock_count}
@@ -225,31 +227,6 @@ def get_data_for_airtable(sorted_stock):
 	data.to_csv('sample.csv')
 
 
-
-'''
-function that takes in a csv file with data for lead times and adds lead times to parts 
-using uuid's to identify the correct parts 
-@params
-	- sorted_stock: dictionary of valid parts 
-	- file_name: name of csv file 
-@returns
-	- sorted_stock: dictionary of valid parts with updated lead times 
-'''
-def get_lead_times(sorted_stock, file_name = "leadtimes.csv"): 
-	data = pd.read_csv(file_name)
-
-	row_index = 0
-	length = len(data)
-	print(length)
-
-	#add lead times to sorted_stock dictionary using data from the provided csv file 
-	while row_index < length: 
-		part_id = data['id'].values[row_index]
-		lead_time = data["lead_time"].values[row_index]
-		sorted_stock[part_id]["lead_time"] = lead_time
-		row_index += 1
-
-	return sorted_stock
 
 
 		
