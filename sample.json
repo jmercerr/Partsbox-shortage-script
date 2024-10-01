@@ -1843,7 +1843,7 @@
         "total_stock": 1,
         "batch_average": -1.0,
         "time_average": 0,
-        "last_batch": 5,
+        "last_batch": 6,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },
@@ -5297,7 +5297,7 @@
         "total_stock": 7000,
         "batch_average": -915.0,
         "time_average": 0,
-        "last_batch": 334,
+        "last_batch": 335,
         "risk": "Low - not enough data",
         "rop_estimate": -7
     },

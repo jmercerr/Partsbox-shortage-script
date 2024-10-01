@@ -119,7 +119,11 @@ if __name__ == '__main__':
 
 
 	#testing lead time function
-	calculate.get_lead_times(sorted_stock)
+	file_name = input("Enter the name of the CSV that contains lead times: ")#get input from user for file name
+	if file_name == "": #no file name provided
+		calculate.get_lead_times(sorted_stock)
+	else: #file name provided
+		calculate.get_lead_times(sorted_stock, file_name)
 	#jprint(sorted_stock)
 
 

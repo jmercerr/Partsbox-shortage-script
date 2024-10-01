@@ -166,7 +166,7 @@
 164,3p3j1b5md8gwc9j3zhx47kznfn,Conn FFC/FPC Connector SKT 50 POS 0.5mm Solder RA SMD Embossed T/R,FH12A-50S-0.5SH(55),18,-10.0,0.0,290,Low - not enough data,-7.0
 165,3ezn02dp3ygswa41xgmh8bxmpd,Differential Probe,,59,-11.0425,8.838311688311688,7,Medium,37.19155844155844
 166,4e4w9ac3arg65a1s7qs8ds68cb,UFO TARGET BOARD MPC5676R,,0,-7.0,0.0,202,Low - not enough data,-209.0
-167,4m9qszfx0yh63aey8dfa7zpxyc,UFO Board Kit,,1,-1.0,0.0,5,Low - not enough data,-7.0
+167,4m9qszfx0yh63aey8dfa7zpxyc,UFO Board Kit,,1,-1.0,0.0,6,Low - not enough data,-7.0
 168,3pn62e28drj55a3r8exeahkdnq,DRAM Chip DDR SDRAM 512Mbit 64M X 8 1.8V 24-Pin FBGA Tray,S80KS5122GABHM020,79,-23.75,89.66666666666667,62,Low,262.0
 169,3r0vz8s4bgj4tbba2az0e6zdwp,"Power inductor, shielded, 20% tol, SMT, RoHS",MLC1565-732MLC,75,-25.0,0.0,67,Low - not enough data,-7.0
 170,4ejvy1pgrajk38e9gctkf5zb0c,XH Series 2.5mm 2 Position Through Hole Shrouded Header Connector,S2B-XH-A(LF)(SN),174,-19.5,132.0,76,Low,1049.0
@@ -480,7 +480,7 @@
 478,bk8g8vxegjkbb9jxnfpk9hp0ff,Cable Assemblies; Smb Straight Plug to Smb Straight Plug; Rg 316; 36 Inches,145101-01-36.00,24,-4.924242424242424,8.647272727272727,4,High,27.589090909090906
 479,9ade6m2t2mhp48e4hhktkrn5x9,"Board Connector, 4 Contact(s), 1 Row(s), Female, Straight, Solder Terminal, Socket",801-87-004-10-001101,125,-2.0,0.0,329,Low - not enough data,-7.0
 480,aa3ba57c2ch1kb1q6p2cpdrng3,"Tubing, Heat Shrink, Adhesive Lined, Flame Retardant, Blk Polyolefin, 48"" L",Q5-3X-3/4-01-QB48IN-5,0,-3.0,0.0,319,Low - not enough data,-326.0
-481,aays0a58fghnh9ksv6mpmkz61r,Res Thick Film 1.0 x 0.5 mm 330 Ohm 1% 0.063W(1/16W) 100ppm/ C Molded SMD Paper T/R,RC0402FR-07330RL,7000,-915.0,0.0,334,Low - not enough data,-7.0
+481,aays0a58fghnh9ksv6mpmkz61r,Res Thick Film 1.0 x 0.5 mm 330 Ohm 1% 0.063W(1/16W) 100ppm/ C Molded SMD Paper T/R,RC0402FR-07330RL,7000,-915.0,0.0,335,Low - not enough data,-7.0
 482,bqdk20c2syh3xawmhhwkzjk4nn,"Surface Mount Thick Film Resistor, RC Series, 330 ohm, 100 mW, - 1%, 50 V, 0603 [1608 Metric]",RC0603FR-07330RL,2110,-139.15,12.133333333333335,12,Low,175.00000000000003
 483,ct92sd9b30g4c905f804wqn4fh,Knob for ChipShover-One,,12,-10.0,0.0,215,Low - not enough data,-7.0
 484,9gx029ravyg4gab8kpt23vqy3z,Fuse Blade Fast Acting 2A 32V Holder QuickConnect 10.9 X 3.8 X 8.8mm Polyamide 66 UL,0297002.WXNV,40,-4.0,56.5,215,Low,558.0
