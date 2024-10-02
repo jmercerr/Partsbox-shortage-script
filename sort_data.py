@@ -186,12 +186,13 @@ function that sorts data to be pushed to air table
 	- airtable_json: airtable data in json format
 
 '''
-def get_data_for_airtable(sorted_stock, index):
-	json_data = []
-	group_of_ten = []
+def get_data_for_airtable(sorted_stock):
+	json_object = {}
+
 	part_index = 0
 
 	for part in sorted_stock: 
+		part_id = part
 		description = sorted_stock[part]['description']
 		mpn = sorted_stock[part]['mpn']
 		total_stock = sorted_stock[part]['total_stock']
@@ -208,15 +209,27 @@ def get_data_for_airtable(sorted_stock, index):
 				'risk': risk, 
 				'rop_estimate': rop_estimate}
 
-		if part_index < 10:
-			group_of_ten.append(entry)
-			part_index += 1 
-		elif part_index == 10:
-			json_data.append(group_of_ten)
-			group_of_ten.clear()
-			part_index = 0
+		json_object[part] = entry
 
-	return (json_data)
+		
+	# Serializing json
+	json_object = json.dumps(json_object, indent=4, default = str)
+
+	return json_object
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

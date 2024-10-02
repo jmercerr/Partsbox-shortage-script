@@ -141,7 +141,16 @@ if __name__ == '__main__':
 
 
 	print("before creating json file")
-	json_data = sort_data.get_data_for_airtable(sorted_stock, 0)
+	json_data = sort_data.get_data_for_airtable(sorted_stock)
 	print("after creating json file")
+	print(json_data)
 
-	jprint(json_data)
+	part_index = 0
+	group_of_ten = []
+	for part in json_data:
+		if part_index <=10:
+			group_of_ten.append(json_data.pop(part))
+
+
+
+
