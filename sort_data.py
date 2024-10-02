@@ -81,8 +81,7 @@ def sort(parts, Timestamps):
 
 			#set valid and negative flags 
 			valid = True
-			negative = False
-			last_year = False				
+			negative = False			
 			#get stock data
 			stock_data = parts[part_entry]['part/stock'][stock_entry]
 			part_quantity = parts[part_entry]['part/stock'][stock_entry]['stock/quantity']
@@ -95,10 +94,6 @@ def sort(parts, Timestamps):
 					valid = False
 			except KeyError:#entry in stock history does not contain a comment 
 				pass
-			try: 
-				stock_timestamp = parts[part_entry]['part/stock'][stock_entry]['stock/timestamp']
-			except KeyError: #entry in stock history does not contain a timestamp
-				stock_timestamp = None
 
 			#check if stock update is for production or procurement
 			if part_quantity >= 0:
@@ -106,13 +101,8 @@ def sort(parts, Timestamps):
 			else:
 				negative = True
 
-			#check if stock entry is from the past year 
-			if stock_timestamp != None: 
-				if stock_timestamp >= Timestamps[12]: 
-					last_year = True
-
 			#if for production add to stock list 
-			if (valid==True)and(negative==True)and(last_year==True):
+			if (valid==True)and(negative==True):
 				valid_stock.append(stock_data)
 				add_part_flag == True
 
@@ -189,19 +179,19 @@ def remove_empty_stock_dict(sorted_stock):
 
 
 '''
-function that takes json data, takes data that is to be pushed to airtable and creates a json file and a csv file
+function that sorts data to be pushed to air table
 @params
 	- sorted_stock: list containgin json data for all valid parts int he past year 
 @returns 
-	- none
+	- airtable_json: airtable data in json format
 
 '''
-#TODO: get rid of the json file and read into csv from json string?
-def get_data_for_airtable(sorted_stock):
-	json_data_for_airtable = []
+def get_data_for_airtable(sorted_stock, index):
+	json_data = []
+	group_of_ten = []
+	part_index = 0
 
 	for part in sorted_stock: 
-		part_id = part
 		description = sorted_stock[part]['description']
 		mpn = sorted_stock[part]['mpn']
 		total_stock = sorted_stock[part]['total_stock']
@@ -210,8 +200,7 @@ def get_data_for_airtable(sorted_stock):
 		risk = sorted_stock[part]['risk_level']
 		rop_estimate = int(sorted_stock[part]['estimated_rop'])
 
-		entry = {'part_id': part_id,
-				'description': description, 
+		entry = {'description': description, 
 				'mpn': mpn, 
 				'total_stock': total_stock, 
 				'last_batch': last_batch, 
@@ -219,19 +208,20 @@ def get_data_for_airtable(sorted_stock):
 				'risk': risk, 
 				'rop_estimate': rop_estimate}
 
-		#add part data to stock list 
-		json_data_for_airtable.append(entry)
+		if part_index < 10:
+			group_of_ten.append(entry)
+			part_index += 1 
+		elif part_index == 10:
+			json_data.append(group_of_ten)
+			group_of_ten.clear()
+			part_index = 0
 
-	# Serializing json
-	json_object = json.dumps(json_data_for_airtable, indent=4, default = str)
-	 
-	# Writing to sample.json
+	return (json_data)
 
-	with open("sample.json", "w") as outfile:
-		outfile.write(json_object)
 
-	data = pd.read_json("sample.json")
-	data.to_csv('sample.csv')
+
+
+
 
 
 

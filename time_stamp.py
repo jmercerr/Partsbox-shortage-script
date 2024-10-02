@@ -74,7 +74,6 @@ determines if two time stamps are in the same time period
     - time_period: time period that both timestamps are in or null if timestamps are not within the same time period 
 '''
 def get_similar_timeperiod(timestamp_1, timestamp_2, Timestamps):
-    time_period = None
 
     if (Timestamps[0] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[1]) and (timestamp_2 > Timestamps[1]): #in the past month
         time_period = '1_month'
@@ -87,6 +86,8 @@ def get_similar_timeperiod(timestamp_1, timestamp_2, Timestamps):
 
     elif (Timestamps[6] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[12]) and (timestamp_2 > Timestamps[12]) : #between the past 6 months and past year
         time_period = '12_months'
+    else:
+        time_period = 0
 
     return time_period
 
@@ -101,7 +102,7 @@ determines the timeperiod a timestamp falls in
 @returns
     - time_period: time period that both timestamps are in or null if timestamps are not within the same time period 
 '''
-def get__current_timeperiod(timestamp, Timestamps):
+def get_current_timeperiod(timestamp, Timestamps):
     time_period = None
 
     if (Timestamps[0] > timestamp) and (timestamp > Timestamps[1]): #in the past month
@@ -115,6 +116,8 @@ def get__current_timeperiod(timestamp, Timestamps):
 
     elif (Timestamps[6] > timestamp)  and (timestamp > Timestamps[12]): #between the past 6 months and past year
         time_period = '12_months'
+    else: 
+        time_period = None
 
     return time_period
 
@@ -138,6 +141,7 @@ def get_time_since_last_batch(current_timestamp, sorted_stock):
         time_since_last_batch = get_difference(last_batch, current_timestamp)
         sorted_stock[part]["days_since_last_batch"] = time_since_last_batch
         sorted_stock[part]["date_last_batch"] = datetime.fromtimestamp(last_batch/1000) #convert timestamp to seconds from milliseconds 
+        sorted_stock[part]['date_last_batch'] = datetime.date(sorted_stock[part]["date_last_batch"])
 
     return sorted_stock
 
@@ -167,6 +171,7 @@ def get_date_of_last_restock(current_timestamp, parts):
         else:
             last_restock = parts[part_entry]['part/stock'][stock_entry]['stock/timestamp']
             parts[part_entry]["date_last_restock"] = datetime.fromtimestamp(last_restock/1000) #convert timestamp to seconds from milliseconds first
+            parts[part_entry]["date_last_restock"] = datetime.date(parts[part_entry]["date_last_restock"])
 
         part_entry += 1
 

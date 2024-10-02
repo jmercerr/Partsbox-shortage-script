@@ -63,13 +63,14 @@ def get_avg_batch(sorted_stock, Timestamps):
 			timestamp = part_stock[stock_entry]['stock/timestamp']
 
 			#call get time period function 
-			time_period = time_stamp.get__current_timeperiod(timestamp, Timestamps)
+			time_period = time_stamp.get_current_timeperiod(timestamp, Timestamps)
 
-			#increase batch total based on time period 
-			batch_totals[time_period] = batch_totals[time_period] + sorted_stock[part]['stock'][stock_entry]['stock/quantity']
+			if time_period != None: 
+				#increase batch total based on time period 
+				batch_totals[time_period] = batch_totals[time_period] + sorted_stock[part]['stock'][stock_entry]['stock/quantity']
 
-			#increase data points based on time period
-			data_points[time_period] = data_points[time_period] + 1
+				#increase data points based on time period
+				data_points[time_period] = data_points[time_period] + 1
 
 			stock_entry += 1
 
@@ -242,7 +243,6 @@ def get_lead_times(sorted_stock, file_name = "leadtimes.csv"):
 
 	row_index = 0
 	length = len(data)
-	print(length)
 
 	#add lead times to sorted_stock dictionary using data from the provided csv file 
 	while row_index < length: 
@@ -281,6 +281,7 @@ def get_risk_level(sorted_stock, current_timestamp):
 		avg_batch = abs(avg_batch)
 		avg_time = sorted_stock[part]['time/average_for_calculations']
 		last_batch = sorted_stock[part]['days_since_last_batch']
+
 		try:
 			lead_time = sorted_stock[part]["lead_time"] 
 		except KeyError as e: 
@@ -296,11 +297,13 @@ def get_risk_level(sorted_stock, current_timestamp):
 		print('time since last batch', last_batch)
 		print('time till next batch', time_till_next_batch)
 		print('average time:', avg_time)
+		print(time_till_next_batch)
 
-		number_of_batches = int(current_stock / avg_batch) 
-
-		#print for testing 
-		print('number of batches that can be produced', number_of_batches)
+		try: 
+			number_of_batches = int(current_stock / avg_batch) 
+		except ZeroDivisionError as e:
+			e.add_note(f"{part} does not contain data for the past year, resulting in an average batch size of 0, unlikely that the part will be needed soon")
+			number_of_batches = 0
 
 		if number_of_batches == 0: #next batch will require more stock before it can be completed 
 			estimated_rop =  time_till_next_batch - lead_time
@@ -311,17 +314,18 @@ def get_risk_level(sorted_stock, current_timestamp):
 		print('estimated ROP', int(estimated_rop))
 		sorted_stock[part]['estimated_rop'] = estimated_rop
 
-		if avg_time == None or avg_time == 0: #either no stock entries or only one therefore unlikely for more batches to be produced
+		if avg_time == None or avg_time == 0 or avg_batch == 0: #either no stock entries, only one stock entry, therefore unlikely for more batches to be produced
 			sorted_stock[part]['risk_level'] = 'Low - not enough data'
 		else: 
-			if (estimated_rop < 0):
+			if estimated_rop < 0:
 				sorted_stock[part]['risk_level'] = 'High - overdue for batch'
-			elif (0 <= estimated_rop <= 30): 
+			elif 0 <= estimated_rop <= 30: 
 				sorted_stock[part]['risk_level'] = 'High'
-			elif (30 < estimated_rop <= 90):
+			elif 30 < estimated_rop <= 90:
 				sorted_stock[part]['risk_level'] = 'Medium'
-			elif (estimated_rop > 90):
+			elif estimated_rop > 90:
 				sorted_stock[part]['risk_level'] = 'Low'
+
 
 		#print for testing 
 		print('risk level', sorted_stock[part]['risk_level'])

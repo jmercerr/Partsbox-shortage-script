@@ -81,6 +81,7 @@ if __name__ == '__main__':
 	#jprint(parts)
 	print("after get last restock function")
 
+
 	#for testing sort function
 	print("before sort function")
 	sorted_stock = sort_data.sort(parts, Timestamps)
@@ -135,14 +136,12 @@ if __name__ == '__main__':
 	#for testing risk level function 
 	print("before risk level function")
 	sorted_stock = calculate.get_risk_level(sorted_stock, Timestamps[0])
-	jprint(sorted_stock)
+	#jprint(sorted_stock)
 	print("after risk level function")
 
 
 	print("before creating json file")
-	sort_data.get_data_for_airtable(sorted_stock)
+	json_data = sort_data.get_data_for_airtable(sorted_stock, 0)
 	print("after creating json file")
 
-
-
-
+	jprint(json_data)
