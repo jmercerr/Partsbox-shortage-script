@@ -28,13 +28,13 @@ if __name__ == '__main__':
 	json_cache = 'request_cache.json'
 
 	try: 
-		with open("config.json") as config_file: 
+		with open("partsbox_config.json") as config_file: 
 			config = json.load(config_file)
 	except FileNotFoundError: 
 		print("no config file found")
-		f = open("config.json", "x")
+		f = open("partsbox_config.json", "x")
 		f.close
-		print("config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
+		print("partsbox_config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
 
 	headers = {
 	'Authorization': config["API_key"] 
@@ -140,16 +140,66 @@ if __name__ == '__main__':
 	print("after risk level function")
 
 
-	print("before creating json file")
-	json_data = sort_data.get_data_for_airtable(sorted_stock)
-	print("after creating json file")
-	print(json_data)
+	print("before getting data for airtable")
+	airtable_data = sort_data.get_data_for_airtable(sorted_stock)
+	print("after getting data for airtable")
+	#jprint(airtable_data) 
 
-	part_index = 0
-	group_of_ten = []
-	for part in json_data:
-		if part_index <=10:
-			group_of_ten.append(json_data.pop(part))
+	def get_group_of_ten(airtable_data):
+		test_index = 0
+		group_of_ten = []
+		length = len(airtable_data)
+		print(length)
+		print(test_index)
+		while test_index < 10 and test_index < length-1:
+
+			group_of_ten.append(airtable_data.pop(test_index))
+			test_index += 1
+
+		return group_of_ten
+
+	data_to_push = get_group_of_ten(airtable_data)
+
+	try: 
+		with open("airtable_config.json") as c_file: 
+			config = json.load(c_file)
+	except FileNotFoundError: 
+		print("no config file found")
+		f = open("airtable_config.json", "x")
+		f.close
+		print("config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
+
+	headers = {
+	'Authorization': config['Authorization'],
+	"Content-Type": "application/json"
+	}
+
+	data = {}
+	list_of_fields = []
+	list_of_fields.append("part_id")
+	list_of_fields.append("description")
+
+	entry = {"fieldsToMergeOn": list_of_fields}
+	data = {"performUpsert": entry, "records": data_to_push}
+
+	data_json = json.dumps(data, default = str)
+	url = "https://api.airtable.com/v0/appRz7kFjf3jJ9Xe4/tblHGveIi8Oy1XoeA" 
+
+	json_result = requests.patch(url, headers = headers, json=data_json)
+	print(json_result)
+	print(data)
+
+
+#commented out for now to test api call with just one group of ten
+'''
+	while airtable_data: 
+		group_of_ten = get_group_of_ten(airtable_data)
+		print("group of ten")
+		jprint(group_of_ten)
+
+'''
+
+
 
 
 

@@ -181,13 +181,13 @@ def remove_empty_stock_dict(sorted_stock):
 '''
 function that sorts data to be pushed to air table
 @params
-	- sorted_stock: list containgin json data for all valid parts int he past year 
+	- sorted_stock: nested dictionary containg data for all valid parts
 @returns 
-	- airtable_json: airtable data in json format
+	- airtable_data: airtable data for all parts, formatted as a list so it can be easily broken in to groups of 10 for pushing to airtable
 
 '''
 def get_data_for_airtable(sorted_stock):
-	json_object = {}
+	airtable_data = []
 
 	part_index = 0
 
@@ -201,21 +201,21 @@ def get_data_for_airtable(sorted_stock):
 		risk = sorted_stock[part]['risk_level']
 		rop_estimate = int(sorted_stock[part]['estimated_rop'])
 
-		entry = {'description': description, 
-				'mpn': mpn, 
-				'total_stock': total_stock, 
-				'last_batch': last_batch, 
+		entry = {'part_id': part_id,
+				'description': description,
+				'mpn': mpn,
+				'total_stock': total_stock,
+				'last_batch': last_batch,
 				'last_restock': last_restock,
-				'risk': risk, 
+				'risk': risk,
 				'rop_estimate': rop_estimate}
 
-		json_object[part] = entry
+		data = {"fields": entry}
 
-		
-	# Serializing json
-	json_object = json.dumps(json_object, indent=4, default = str)
+		airtable_data.append(data)
 
-	return json_object
+
+	return airtable_data
 	 
 
 
