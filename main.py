@@ -8,10 +8,6 @@ import sort_data
 import calculate
 import time_stamp
 import cache
-from ratelimit import limits
-from alive_progress import alive_bar
-from alive_progress.styles import showtime
-import time
 
 """
 function to format the printing of json data
@@ -147,62 +143,4 @@ if __name__ == '__main__':
 	print("after getting data for airtable")
 	#jprint(airtable_data) 
 
-	def get_group_of_ten(airtable_data):
-		test_index = 0
-		group_of_ten = []
-
-		length = len(airtable_data)
-		while test_index < 10 and test_index <= length-1:
-			group_of_ten.append(airtable_data.pop(0))
-			test_index += 1
-
-		return group_of_ten
-
-
-	#time period in seconds (airtable is limited to 5 requests per second)
-	TIME_PERIOD = 1 
-	@limits(calls = 5, period = TIME_PERIOD)
-	def push_to_airtable(airtable_data):
-		length = len(airtable_data)
-		number_of_calls = int(length / 10) + (length % 10 > 0) 
-		with alive_bar(number_of_calls, bar = 'fish') as bar: #set up progress bar based off of number of calls to be made
-			for i in range(number_of_calls):
-				#get arrray of ten parts
-				data_to_push = get_group_of_ten(airtable_data)
-				length = len(airtable_data)
-
-				#get authorization token
-				try: 
-					with open("airtable_config.json") as c_file: 
-						config = json.load(c_file)
-				except FileNotFoundError: 
-					print("no config file found")
-					f = open("airtable_config.json", "x")
-					f.close
-					print("config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
-
-				headers = {
-				'Authorization': config["Authorization"],
-				"Content-Type" : "application/json"
-				}
-
-				data = {}
-				list_of_fields = []
-				list_of_fields.append("part_id")
-				list_of_fields.append('description')
-
-				entry = {"fieldsToMergeOn": list_of_fields}
-				data = {"performUpsert": entry, "records": data_to_push}
-
-				url = "https://api.airtable.com/v0/appRz7kFjf3jJ9Xe4/tblHGveIi8Oy1XoeA" 
-
-				#commented out to stop calling the api while adding extra features
-				#json_result = requests.put(url, headers=headers, json = data)
-				#print statement for testing
-				#print(json_result)
-
-				bar() #update progress bar 
-
-
-	push_to_airtable(airtable_data)
-
+	sort_data.push_to_airtable(airtable_data)

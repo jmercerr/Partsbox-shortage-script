@@ -1,51 +1,51 @@
 ,id,description,mpn,total_stock,batch_average,time_average,last_batch,risk,rop_estimate,lead_time
-0,03v3p5ntktjjb90mrg0n795kkp,FPGA Kintex-7 Family 406720 Cells 28nm Technology 1V 676-Pin Lidless FCBGA,XC7K410T-1FBG676C,69,-1,0,316,Low - not enough data,-7,1
-1,01drh3znayhbv98w1cny4qw3mp,"Precision resistor, SMD [Panasonic Automotive & Industrial Systems] ERJ2RKF1001X Precision resistor, SMD",ERJ-2RKF1001X,44,-108,28,106,High - overdue for batch,-85,1
-2,00knzpmxpwjbbbmpxf78f9nxj3,"12-Bit, 200-MSPS Analog-to-Digital Converter (ADC) 48-VQFN -40 to 85",ADS4128IRGZT,0,-25,0,179,Low - not enough data,-186,2
-3,09qa1eed22kx4a52pgs092j4j7,"Anti-Static Bag 2x3""",30023,713,-77.70082418,3.932610939,6,High,28.39349845,2
-4,04p1f3kyeykrb8h141f8qnr93g,"Low cost SMA Edge (RF Connectors / Coaxial Connectors SMA EDGE MOUNT JACK),Receptacle, Female Socket",,195,-57,38,95,Low,107,3
-5,0eweygp74yjzx82zyxydfz738n,XMEGA TARGET PCB,,136,-64,0,133,Low - not enough data,-7,3
-6,01hsys77gghg0b8d418wtgxyrk,Res Thick Film 1.6 x 0.8 mm 100 Ohm 1% 0.1W(1/10W) 100ppm/ C Molded SMD Paper T/R,RC0603FR-07100RL,5740,-128,0,133,Low - not enough data,-7,4
-7,02skbrrqr6hmp96pz5m42aahx5,4MM/CCW COIL,,41,-44.66666667,95,155,High - overdue for batch,-67,4
-8,05xxxfmyx6kvjb1dcr2rq3w0cd,NAE-CW508-HPF0.5,,1,-13,0,29,Low - not enough data,-36,5
-9,06wrq318h8k7x8sn4xr8gqynt4,SCAPACK-L1-KIT SLEEVE,,133,-50,0,79,Low - not enough data,-7,5
-10,060x9yrca2hna8p2gjagvgjgtm,USB COMMUNICATION INTERFACE,,24,-15.12222222,31.6,35,High,24.6,6
-11,06mc3e6b9yjqc9hc5sxajjrexh,Hex screwdriver for CW305 Socket,27545,3,-3,0,97,Low - not enough data,-7,6
-12,0bg5csr7wak03bke35b4mqh8yz,Res Thick Film 0402 24K Ohm 1% 0.063W(1/16W) ±100ppm/C Pad SMD Automotive T/R,RMCF0402FT24K0,10444,-108,28,106,Low,2681,7
-13,0gzczzs5jwj7096421g25wj1fc,Conn Shrouded Header HDR 14 POS 2mm Solder ST Top Entry SMD Milli-Grid™ Tube,87832-1420,28,-18.05555556,133.5,58,Low,126.5,7
-14,0c8qc8r4mmk0c8x6a4thqa3jj6,INJECTION TIP LABEL 1MM/CCW (RED),,67,-25,0,155,Low - not enough data,-7,8
-15,06rb2pfp6ckx0bbcxqqgywma77,CW312-TMP91FW27UG target,,5,-29.58333333,283,44,Low,232,8
-16,07ncbnxd5pj3gbka8ttwcewp2w,"Connector Accessory, 0.05in Min Cable Dia, 0.06in Max Cable Dia, Contact, Brass",66506-3,138,-56.75,2,314,High - overdue for batch,-3,9
-17,0mnxhkzv68hhja0t42nhcmtd3r,3 COND 6FT BLACK,173-21103-E,0,-3.222222222,17,161,High - overdue for batch,-151,9
-18,0gd2gmpxxtjpg9e216rmb8b61v,Prototyping Products 3 jumpers-Qty 100 RED female-female),920-0008-01,136,-86.90571429,33.80128205,14,High,26.80128205,0
-19,0ce147mpfag8wahbswmahja319,Chipshover LCD board cable,,2,-6,113,212,High - overdue for batch,-106,1
-20,0mm9jm70c2kmrb1cfehtp5qjj0,"ChipWhisperer 20-pin Breakout, Flying Leads",B451-2008-11-01-1,1101,-27.62533167,4.088194444,6,Low,152.4395833,2
-21,13a3za0w0wjcfa2jbvtn74yet3,"Jumper Wire Female 7"" 100PCS (GREEN)",920-0205-01,444,-215.1888889,43.58333333,14,Medium,80.16666667,3
-22,0dtkrpxpfckn59tnbpypvd2q6d,0603 10 nF 16 V ±10% Tolerance X7R SMT Multilayer Ceramic Capacitor,GRM188R71C103KA01D,1386,-64.22222222,91,63,Low,1904,4
-23,0erak4pxhthnr9fwh12qat1qrm,Res Thick Film 0603 4.7K Ohm 1% 1/10W ±100ppm/°C Molded SMD SMD Paper Tape on Plastic Reel,CR0603-FX-4701ELF,3544,-108,28,106,Low,889,5
-24,0gf588y7cygqf89bvjtp269nw7,"USB-C, 3 feet, black, MP 38916 - Monoprice Select Charge & Sync Type-C to Type-C Cable, USB 2.0, TPE Jacket, Up to 3A/60W, 3ft, Black",38916,0,-4.75,52,171,High - overdue for batch,-126,6
-25,0x7tg547awgnbagpdcmn12kttw,CW310-K410T Kit - SCA (COMPLETE KIT) includes acc pack for K410T (spare fan),,0,-1,0,64,Low - not enough data,-71,7
-26,0vaz1wkncajm89ctbh48fn1fk8,(NAE-CB520)  ....OSCILLOSCOPE PROBE ADAPTER LABEL,,528,-32.5,0,359,Low - not enough data,-7,8
-27,1aq80k2hrtkmqbn3w20fznk2ga,Daughter Cards & OEM Boards STM32L5 w/ Hardware Crypto Target for CW308 (TESTED),,40,-1.7,57.58333333,18,Low,1317.416667,9
-28,0ybffqgw8ekgdbkjx7dx297wwq,Switch Rocker ON OFF SPST Quick Connect Curved Rocker 9A 250VAC 30000Cycles,R1973ABLKGILFF4,75,-7.333333333,58,212,Low,573,0
-29,0wxqbx28jagh8ba3p3gd69r317,0603 47 pF 50 V ±5 % Tol. C0G/NP0 Surface Mount Multilayer Ceramic Capacitor,06035A470JAT2A,3110,-183.3333333,58.5,184,Low,929,1
-30,0r0xt5gbq2krpa5rgff44p7ynx,Light Pipe; Rigid; Panel Mnt (Front); 3mm Round Lens; Low Profile Round Face; .125in.,PLP2-125,1113,-135.5,48.83333333,35,Low,383.6666667,2
-31,1dtqgb40ejg9paxrd35dyqfv3c,Power Supply AC-DC Desktop Medical&ITE 36W 12V@3A 90-264V Input,ACM36US12,5,-9.729166667,18.69047619,57,High - overdue for batch,-45,3
-32,13b9jecs98g1db42htm36z061d,"Stainless Steel Flat-Tip Set Screw, 18-8, M8 x 1.25 mm Thread, 16 mm Long",92605A144,81,-21.5,53.5,35,Low,153.5,4
-33,0pf51gsmkwhfr9j1s1qhz79kjp,Switch DIP ON OFF SPST 6 Raised Slide 0.1A 20VDC Gull Wing 2000Cycles 2.54mm SMD Tube,219-6MST,3,-15,0,16,Low - not enough data,-23,5
-34,11fvjzk7etjdvbtgsnhhfaa4fv,UFO TARGET BOARD MPC5777C  (UNTESTED),,14,-3.666666667,276,52,Low,821,6
-35,1g44amj944g3saw850ar96g2a0,SAM3U Series 96 MHz 256 kB Flash 52 kB SRAM 32-Bit Microcontroller - LQFP-144,ATSAM3U4EA-AU,111,-50,0,329,Low - not enough data,-7,1
-36,14s4kjg2hyj3wbj7k46g5hdffd,"12 1⁄8 x 9 1⁄4 x 4"" White Tab Locking Literature Mailers",S-6714,3,-2.333333333,56.16666667,18,Medium,49.16666667,2
-37,122cmynabyhhqbyefhh8zq0d69,"High-performance foundation line, ARM Cortex-M4 core with DSP and FPU, 1 Mbyte Flash, 168 MHz CPU, ART Accelerator",STM32F405RGT6,0,-100,0,338,Low - not enough data,-345,3
-38,1gkh02zyr4jkgamrb0914ekcpr,SOCKET CAP SCREW (92210A146),92210A146,397,-116,107,35,Low,314,4
-39,14zjpk8zrwj9781911pqfs9f3b,RC Series 0603 0.1 W 2 kOhms 1% ±100 ppm/°C SMT Thick Film Chip Resistor,RC0603FR-072KL,1443,-102.4111111,39.33333333,73,Low,543.6666667,5
-40,0xhfw7cbm2h3h9jhchkjqdpwz9,Nano quick starter guide,,353,-273.5,0,297,Low - not enough data,-7,1
-41,1hnxyw1ekcjxza0cdt1jgckbsb,DIODE SCHOTTKY 40V 1A DO214AC,CDBA140-G,245,-54,9.333333333,106,Medium,30.33333333,2
-42,2c3f4mnxz0k4ab0h4t72mnk559,"4.8"" Long Nozzle, Taper Tip for Twist-Lock Connection Two-Part Cartridge (10 PACKS)....(STATIC MIXER 5MM 24 EB SQ 10PCS)",74695A222,20,-6.5,0,35,Low - not enough data,-7,3
-43,15b0mq66x0gm5aanpxgtvzpknr,EAR99 65LVDS2 Tape & Reel (TR) LVDS interface transceiver 454mV 0.00002A 13.012431mg 3.1ns,SN65LVDS2DBVR,738,-3,0,326,Low - not enough data,-7,4
-44,1facbd5n6ygq08mjg7aygs2e1d,CWHUSKY LABEL rev. 1.1B,,26,-1,0,294,Low - not enough data,-7,5
-45,1fbk5jsrmrk6n8ads94pfv9qj2,Chipshover Power Switch Cable,,13,-5.5,113,212,Low,219,1
-46,1mb5fx8fzwkgva5ydjzxp1wa9x,S-8264,,81,-11.86,30.625,10,Low,176.75,2
+0,03v3p5ntktjjb90mrg0n795kkp,FPGA Kintex-7 Family 406720 Cells 28nm Technology 1V 676-Pin Lidless FCBGA,XC7K410T-1FBG676C,69,-1,0,316,Low - not enough data,-7,
+1,01drh3znayhbv98w1cny4qw3mp,"Precision resistor, SMD [Panasonic Automotive & Industrial Systems] ERJ2RKF1001X Precision resistor, SMD",ERJ-2RKF1001X,44,-108,28,106,High - overdue for batch,-85,
+2,00knzpmxpwjbbbmpxf78f9nxj3,"12-Bit, 200-MSPS Analog-to-Digital Converter (ADC) 48-VQFN -40 to 85",ADS4128IRGZT,0,-25,0,179,Low - not enough data,-186,
+3,09qa1eed22kx4a52pgs092j4j7,"Anti-Static Bag 2x3""",30023,713,-77.70082418,3.932610939,6,High,28.39349845,
+4,04p1f3kyeykrb8h141f8qnr93g,"Low cost SMA Edge (RF Connectors / Coaxial Connectors SMA EDGE MOUNT JACK),Receptacle, Female Socket",,195,-57,38,95,Low,107,
+5,0eweygp74yjzx82zyxydfz738n,XMEGA TARGET PCB,,136,-64,0,133,Low - not enough data,-7,
+6,01hsys77gghg0b8d418wtgxyrk,Res Thick Film 1.6 x 0.8 mm 100 Ohm 1% 0.1W(1/10W) 100ppm/ C Molded SMD Paper T/R,RC0603FR-07100RL,5740,-128,0,133,Low - not enough data,-7,
+7,02skbrrqr6hmp96pz5m42aahx5,4MM/CCW COIL,,41,-44.66666667,95,155,High - overdue for batch,-67,
+8,05xxxfmyx6kvjb1dcr2rq3w0cd,NAE-CW508-HPF0.5,,1,-13,0,29,Low - not enough data,-36,
+9,06wrq318h8k7x8sn4xr8gqynt4,SCAPACK-L1-KIT SLEEVE,,133,-50,0,79,Low - not enough data,-7,
+10,060x9yrca2hna8p2gjagvgjgtm,USB COMMUNICATION INTERFACE,,24,-15.12222222,31.6,35,High,24.6,
+11,06mc3e6b9yjqc9hc5sxajjrexh,Hex screwdriver for CW305 Socket,27545,3,-3,0,97,Low - not enough data,-7,
+12,0bg5csr7wak03bke35b4mqh8yz,Res Thick Film 0402 24K Ohm 1% 0.063W(1/16W) ±100ppm/C Pad SMD Automotive T/R,RMCF0402FT24K0,10444,-108,28,106,Low,2681,
+13,0gzczzs5jwj7096421g25wj1fc,Conn Shrouded Header HDR 14 POS 2mm Solder ST Top Entry SMD Milli-Grid™ Tube,87832-1420,28,-18.05555556,133.5,58,Low,126.5,
+14,0c8qc8r4mmk0c8x6a4thqa3jj6,INJECTION TIP LABEL 1MM/CCW (RED),,67,-25,0,155,Low - not enough data,-7,
+15,06rb2pfp6ckx0bbcxqqgywma77,CW312-TMP91FW27UG target,,5,-29.58333333,283,44,Low,232,
+16,07ncbnxd5pj3gbka8ttwcewp2w,"Connector Accessory, 0.05in Min Cable Dia, 0.06in Max Cable Dia, Contact, Brass",66506-3,138,-56.75,2,314,High - overdue for batch,-3,
+17,0mnxhkzv68hhja0t42nhcmtd3r,3 COND 6FT BLACK,173-21103-E,0,-3.222222222,17,161,High - overdue for batch,-151,
+18,0gd2gmpxxtjpg9e216rmb8b61v,Prototyping Products 3 jumpers-Qty 100 RED female-female),920-0008-01,136,-86.90571429,33.80128205,14,High,26.80128205,
+19,0ce147mpfag8wahbswmahja319,Chipshover LCD board cable,,2,-6,113,212,High - overdue for batch,-106,
+20,0mm9jm70c2kmrb1cfehtp5qjj0,"ChipWhisperer 20-pin Breakout, Flying Leads",B451-2008-11-01-1,1101,-27.62533167,4.088194444,6,Low,152.4395833,
+21,13a3za0w0wjcfa2jbvtn74yet3,"Jumper Wire Female 7"" 100PCS (GREEN)",920-0205-01,444,-215.1888889,43.58333333,14,Medium,80.16666667,
+22,0dtkrpxpfckn59tnbpypvd2q6d,0603 10 nF 16 V ±10% Tolerance X7R SMT Multilayer Ceramic Capacitor,GRM188R71C103KA01D,1386,-64.22222222,91,63,Low,1904,
+23,0erak4pxhthnr9fwh12qat1qrm,Res Thick Film 0603 4.7K Ohm 1% 1/10W ±100ppm/°C Molded SMD SMD Paper Tape on Plastic Reel,CR0603-FX-4701ELF,3544,-108,28,106,Low,889,
+24,0gf588y7cygqf89bvjtp269nw7,"USB-C, 3 feet, black, MP 38916 - Monoprice Select Charge & Sync Type-C to Type-C Cable, USB 2.0, TPE Jacket, Up to 3A/60W, 3ft, Black",38916,0,-4.75,52,171,High - overdue for batch,-126,
+25,0x7tg547awgnbagpdcmn12kttw,CW310-K410T Kit - SCA (COMPLETE KIT) includes acc pack for K410T (spare fan),,0,-1,0,64,Low - not enough data,-71,
+26,0vaz1wkncajm89ctbh48fn1fk8,(NAE-CB520)  ....OSCILLOSCOPE PROBE ADAPTER LABEL,,528,-32.5,0,359,Low - not enough data,-7,
+27,1aq80k2hrtkmqbn3w20fznk2ga,Daughter Cards & OEM Boards STM32L5 w/ Hardware Crypto Target for CW308 (TESTED),,40,-1.7,57.58333333,18,Low,1317.416667,
+28,0ybffqgw8ekgdbkjx7dx297wwq,Switch Rocker ON OFF SPST Quick Connect Curved Rocker 9A 250VAC 30000Cycles,R1973ABLKGILFF4,75,-7.333333333,58,212,Low,573,
+29,0wxqbx28jagh8ba3p3gd69r317,0603 47 pF 50 V ±5 % Tol. C0G/NP0 Surface Mount Multilayer Ceramic Capacitor,06035A470JAT2A,3110,-183.3333333,58.5,184,Low,929,
+30,0r0xt5gbq2krpa5rgff44p7ynx,Light Pipe; Rigid; Panel Mnt (Front); 3mm Round Lens; Low Profile Round Face; .125in.,PLP2-125,1113,-135.5,48.83333333,35,Low,383.6666667,
+31,1dtqgb40ejg9paxrd35dyqfv3c,Power Supply AC-DC Desktop Medical&ITE 36W 12V@3A 90-264V Input,ACM36US12,5,-9.729166667,18.69047619,57,High - overdue for batch,-45,
+32,13b9jecs98g1db42htm36z061d,"Stainless Steel Flat-Tip Set Screw, 18-8, M8 x 1.25 mm Thread, 16 mm Long",92605A144,81,-21.5,53.5,35,Low,153.5,
+33,0pf51gsmkwhfr9j1s1qhz79kjp,Switch DIP ON OFF SPST 6 Raised Slide 0.1A 20VDC Gull Wing 2000Cycles 2.54mm SMD Tube,219-6MST,3,-15,0,16,Low - not enough data,-23,
+34,11fvjzk7etjdvbtgsnhhfaa4fv,UFO TARGET BOARD MPC5777C  (UNTESTED),,14,-3.666666667,276,52,Low,821,
+35,1g44amj944g3saw850ar96g2a0,SAM3U Series 96 MHz 256 kB Flash 52 kB SRAM 32-Bit Microcontroller - LQFP-144,ATSAM3U4EA-AU,111,-50,0,329,Low - not enough data,-7,
+36,14s4kjg2hyj3wbj7k46g5hdffd,"12 1⁄8 x 9 1⁄4 x 4"" White Tab Locking Literature Mailers",S-6714,3,-2.333333333,56.16666667,18,Medium,49.16666667,
+37,122cmynabyhhqbyefhh8zq0d69,"High-performance foundation line, ARM Cortex-M4 core with DSP and FPU, 1 Mbyte Flash, 168 MHz CPU, ART Accelerator",STM32F405RGT6,0,-100,0,338,Low - not enough data,-345,
+38,1gkh02zyr4jkgamrb0914ekcpr,SOCKET CAP SCREW (92210A146),92210A146,397,-116,107,35,Low,314,
+39,14zjpk8zrwj9781911pqfs9f3b,RC Series 0603 0.1 W 2 kOhms 1% ±100 ppm/°C SMT Thick Film Chip Resistor,RC0603FR-072KL,1443,-102.4111111,39.33333333,73,Low,543.6666667,
+40,0xhfw7cbm2h3h9jhchkjqdpwz9,Nano quick starter guide,,353,-273.5,0,297,Low - not enough data,-7,
+41,1hnxyw1ekcjxza0cdt1jgckbsb,DIODE SCHOTTKY 40V 1A DO214AC,CDBA140-G,245,-54,9.333333333,106,Medium,30.33333333,
+42,2c3f4mnxz0k4ab0h4t72mnk559,"4.8"" Long Nozzle, Taper Tip for Twist-Lock Connection Two-Part Cartridge (10 PACKS)....(STATIC MIXER 5MM 24 EB SQ 10PCS)",74695A222,20,-6.5,0,35,Low - not enough data,-7,
+43,15b0mq66x0gm5aanpxgtvzpknr,EAR99 65LVDS2 Tape & Reel (TR) LVDS interface transceiver 454mV 0.00002A 13.012431mg 3.1ns,SN65LVDS2DBVR,738,-3,0,326,Low - not enough data,-7,
+44,1facbd5n6ygq08mjg7aygs2e1d,CWHUSKY LABEL rev. 1.1B,,26,-1,0,294,Low - not enough data,-7,
+45,1fbk5jsrmrk6n8ads94pfv9qj2,Chipshover Power Switch Cable,,13,-5.5,113,212,Low,219,
+46,1mb5fx8fzwkgva5ydjzxp1wa9x,S-8264,,81,-11.86,30.625,10,Low,176.75,
 47,1q638v4zxejmfbwv2aqjyqjbcb,RC Series 0603 0.1 W 33 Ohms 1% ±100 ppm/°C SMT Thick Film Chip Resistor,RC0603FR-0733RL,2021,-202.7222222,46.4,106,Low,410.6,
 48,1f18krndqwhj98n92tp6zajxj8,CW503 Front-Panel,,150,-54,0,91,Low - not enough data,-7,
 49,26pnamdgtyjzqawn1r1s0zjnpd,"Hex L-Key with Standard Tip, 2 mm Size, 2"" Overall Length",7289A12,37,-3.166666667,49.5,64,Low,537.5,
@@ -56,39 +56,39 @@
 54,176h9kx5vwkaqay8kxz6r58ajf,RC Series 0603 0.1 W 100 kOhms 1% ±100 ppm/°C SMT Thick Film Chip Resistor,RC0603FR-07100KL,2668,-45.5,41,63,Low,2371,
 55,0ne8bbyzkyhr58y6f9b5rc58ms,Cable Assembly USB 1m USB 2.0 Type A to USB 2.0 Type B 4 to 4 POS M-M,102-1030-BL-F0100,22,-14.56794872,11.87698413,35,High,4.876984127,
 56,0e92vxae1pg5eb9mr9x6kg3g3x,"FAN BERGEN & LUNA OT (Female Threaded Hex Standoff, Aluminum, 1/8"" Hex, 3/16"" Long, 2-56 Thread)",91780A021,68,-39.44444444,19.73333333,57,High,12.73333333,
-57,1885wtann0hpnagyk66f2s7qks,UFO Target board MPC5676R,,5,-2.5,122,202,Low,237,1
-58,0nhh9wcs5agrbbs4jy2cfzsjmd,CHIPSHOUTER END COVER B,,12,-35.33333333,110,142,High - overdue for batch,-39,1
-59,0eqg9sjyhghjc8bqbjqxjnnp2d,Raspberry Pi Pico Embedded Dev Module,SC0915,60,-36.16666667,132,72,Low,125,1
-60,2gsf446jm4jv294kqehtpb9y5e,Conn SMA RCP 0Hz to 18GHz 50Ohm Solder ST Thru-Hole Gold Over Nickel,142-0701-231,90,-30,0,58,Low - not enough data,-7,1
-61,2w03vgmw0chdqaqrqnhmw51a4y,"Anti-Static Bag 4x6"".....Anti-Static Control Products 4 x 6"" pkg./100",30046,1078,-64.3952381,50.66666667,29,Low,803.6666667,1
-62,0jq707dqepkpyah3dz4r9p83q9,6 inch USB C-C Cable,DH-20UE00062-NH,37,-9.666666667,112,57,Low,329,1
-63,1cdhfsdp6gjq3ajt1k55h84f24,Chipshover,,11,-5.5,113,212,Low,219,1
-64,26kjth87tmj009nff5n11cbgry,C Series 0603 2.2 uF 16 V ±10 % Tolerance X5R SMT Multilayer Ceramic Capacitor,C1608X5R1C225K080AB,4000,-988,0,331,Low - not enough data,-7,1
-65,1c2gecfedeg2893kvt5pxktxhb,Diode Schottky Rectifier 40V 0.5A SOD-123 SMT RoHS,MBR0540-TP,235,-54,9.333333333,106,Medium,30.33333333,1
-66,10h4fgshdahqkbssvja3p320s6,PicoEMP,,4,-1.080952381,6.666666667,15,High,13,1
-67,2m0n509xygjfs93q9bc95f8x63,JS Series DPDT On-On Gull Wing Surface Mount Subminiature Slide Switch,JS202011SCQN,19,-43.71666667,61.6,16,Medium,38,1
-68,1zm2jfb3wpjk39d0tm4rynkfe6,"MCU, 32BIT, 133MHZ, QFN-56;",RP2040TR7,500,-500,0,328,Low - not enough data,-7,1
-69,2m7km44f5yjmt9s6kjcnxzpsc7,,,8,-4,0,282,Low - not enough data,-7,1
-70,1yw4vrzwr6ja39fcms0x7keesa,NPCA Development Boards & Kits - ARM STM32F3 Target for CW308 (UNTESTED),,500,-200,0,92,Low - not enough data,-7,1
-71,2tycznezhejxd84kkq2p2wr0q4,UFO Target ESP32 TESTED,,28,-3.175,139.7777778,18,Low,1111.222222,1
-72,1xdrmy52wwka2976qev4q9zb0r,MCU 32-Bit ARM Cortex M23 RISC 64KB Flash 3.3V 32-Pin TQFP Tray/Tube,ATSAML11E16A-AU,1,-56,34.66666667,198,High - overdue for batch,-170,1
-73,0tkvkqnzfak779zg69yjhetchv,"Microcoaxial RF, 50 Ohm, PCB Vertical Jack Receptacle, SMT, 1.25mm (.049"""") Mounted Height",73412-0110,9,-2.416666667,9,157,High,20,1
-74,2n9chk3dk4j8d9hr8xj12dfjf3,"CONN FEMALE 2POS .100"" R/A GOLD",PPPC021LGBN-RC,239,-54,9.333333333,106,Medium,30.33333333,1
-75,39raqxg2ztj21bafmd3k5xabfq,Standoff; Threaded; Female; 1/4 Round; 4-40 Thread; .375 L; Alum/Clear Iridite,3479,681,-122.7683871,7.113383838,10,High,28.56691919,15
-76,2esef7agerkpd9b9qhbajc01sq,Backshell (90 deg) Orientation 1,,5,-1.25,0,23,Low - not enough data,-7,5
-77,1yw7jdyhj4k6vakymgjm6aqx90,Development Boards & Kits - AVR NOTDuino Kit,,1,-2,0,27,Low - not enough data,-34,5
-78,307q06zt54jwsacpsxpw30ssq1,Chipshover ESTOP cable,,6,-3.333333333,0,212,Low - not enough data,-7,5
-79,228p594v2ykds8d7v1jmb4shbe,Jumper Wire Kit,920-0169-50,0,-2,0,84,Low - not enough data,-91,5
-80,17fq1a9c7jkx583w316d3c4krx,Screw Caphead 6-32 1/2,92196A148,60,-34,0,325,Low - not enough data,-7,5
-81,30dx538craha1a3va7pw5n56kx,USB INTERFACE board REV. 03   (TESTED),,11,-15.02777778,31.8,35,High - overdue for batch,-10,5
-82,18nbvxqdt4hmsabqrt275qgpe1,Thick Film Resistors - SMD 2.2K OHM 1%,RC0603FR-072K2L,3480,-20,0,287,Low - not enough data,-7,5
-83,1570pkx9p8hdmbfpmbba4jt6y2,Chipwhisperer Husky L0 kit,,6,-3.827678571,23.1,18,High,16.1,5
-84,2pn9hkk15rkb98yre16c0eh46v,FOR CHIPSHOUTER END COVERS,,12,-35.33333333,110,142,High - overdue for batch,-39,5
-85,36vngmv82wkwd8gcrv9ty2z8bz,with PROP65 Warning Label printed (small orange box for UFO targets),,1884,-59.16333333,17.84163474,14,Low,546.0906769,5
-86,23y6bcmhnyghqan6ghm5t8btpb,Heat Sink Kit for Raspberry Pi 4B - Black Aluminum,110991328,174,-120.2708333,16.48412698,41,High,9.484126984,5
-87,2ssg5dke98gn3a3464gr9n4vjc,Chipshover case label,,5,-6.666666667,0,211,Low - not enough data,-218,55
-88,2942vqe8wegqa8qmb6zbgsxwp4,Other Modules ChipSHOUTER Electromagnetic Fault Injection (EMFI) Kit,,1,-1.4475,8.342857143,17,High - overdue for batch,-15,5
-89,3px31r7e7rh159s7efsabrhj9e,"SMA Male to MCX Male, 15cm (12"")",,322,-38.87708333,15.23833333,14,Low,114.9066667,5
+57,1885wtann0hpnagyk66f2s7qks,UFO Target board MPC5676R,,5,-2.5,122,202,Low,237,
+58,0nhh9wcs5agrbbs4jy2cfzsjmd,CHIPSHOUTER END COVER B,,12,-35.33333333,110,142,High - overdue for batch,-39,
+59,0eqg9sjyhghjc8bqbjqxjnnp2d,Raspberry Pi Pico Embedded Dev Module,SC0915,60,-36.16666667,132,72,Low,125,
+60,2gsf446jm4jv294kqehtpb9y5e,Conn SMA RCP 0Hz to 18GHz 50Ohm Solder ST Thru-Hole Gold Over Nickel,142-0701-231,90,-30,0,58,Low - not enough data,-7,
+61,2w03vgmw0chdqaqrqnhmw51a4y,"Anti-Static Bag 4x6"".....Anti-Static Control Products 4 x 6"" pkg./100",30046,1078,-64.3952381,50.66666667,29,Low,803.6666667,
+62,0jq707dqepkpyah3dz4r9p83q9,6 inch USB C-C Cable,DH-20UE00062-NH,37,-9.666666667,112,57,Low,329,
+63,1cdhfsdp6gjq3ajt1k55h84f24,Chipshover,,11,-5.5,113,212,Low,219,
+64,26kjth87tmj009nff5n11cbgry,C Series 0603 2.2 uF 16 V ±10 % Tolerance X5R SMT Multilayer Ceramic Capacitor,C1608X5R1C225K080AB,4000,-988,0,331,Low - not enough data,-7,
+65,1c2gecfedeg2893kvt5pxktxhb,Diode Schottky Rectifier 40V 0.5A SOD-123 SMT RoHS,MBR0540-TP,235,-54,9.333333333,106,Medium,30.33333333,
+66,10h4fgshdahqkbssvja3p320s6,PicoEMP,,4,-1.080952381,6.666666667,15,High,13,
+67,2m0n509xygjfs93q9bc95f8x63,JS Series DPDT On-On Gull Wing Surface Mount Subminiature Slide Switch,JS202011SCQN,19,-43.71666667,61.6,16,Medium,38,
+68,1zm2jfb3wpjk39d0tm4rynkfe6,"MCU, 32BIT, 133MHZ, QFN-56;",RP2040TR7,500,-500,0,328,Low - not enough data,-7,
+69,2m7km44f5yjmt9s6kjcnxzpsc7,,,8,-4,0,282,Low - not enough data,-7,
+70,1yw4vrzwr6ja39fcms0x7keesa,NPCA Development Boards & Kits - ARM STM32F3 Target for CW308 (UNTESTED),,500,-200,0,92,Low - not enough data,-7,
+71,2tycznezhejxd84kkq2p2wr0q4,UFO Target ESP32 TESTED,,28,-3.175,139.7777778,18,Low,1111.222222,
+72,1xdrmy52wwka2976qev4q9zb0r,MCU 32-Bit ARM Cortex M23 RISC 64KB Flash 3.3V 32-Pin TQFP Tray/Tube,ATSAML11E16A-AU,1,-56,34.66666667,198,High - overdue for batch,-170,
+73,0tkvkqnzfak779zg69yjhetchv,"Microcoaxial RF, 50 Ohm, PCB Vertical Jack Receptacle, SMT, 1.25mm (.049"""") Mounted Height",73412-0110,9,-2.416666667,9,157,High,20,
+74,2n9chk3dk4j8d9hr8xj12dfjf3,"CONN FEMALE 2POS .100"" R/A GOLD",PPPC021LGBN-RC,239,-54,9.333333333,106,Medium,30.33333333,
+75,39raqxg2ztj21bafmd3k5xabfq,Standoff; Threaded; Female; 1/4 Round; 4-40 Thread; .375 L; Alum/Clear Iridite,3479,681,-122.7683871,7.113383838,10,High,28.56691919,
+76,2esef7agerkpd9b9qhbajc01sq,Backshell (90 deg) Orientation 1,,5,-1.25,0,23,Low - not enough data,-7,
+77,1yw7jdyhj4k6vakymgjm6aqx90,Development Boards & Kits - AVR NOTDuino Kit,,1,-2,0,27,Low - not enough data,-34,
+78,307q06zt54jwsacpsxpw30ssq1,Chipshover ESTOP cable,,6,-3.333333333,0,212,Low - not enough data,-7,
+79,228p594v2ykds8d7v1jmb4shbe,Jumper Wire Kit,920-0169-50,0,-2,0,84,Low - not enough data,-91,
+80,17fq1a9c7jkx583w316d3c4krx,Screw Caphead 6-32 1/2,92196A148,60,-34,0,325,Low - not enough data,-7,
+81,30dx538craha1a3va7pw5n56kx,USB INTERFACE board REV. 03   (TESTED),,11,-15.02777778,31.8,35,High - overdue for batch,-10,
+82,18nbvxqdt4hmsabqrt275qgpe1,Thick Film Resistors - SMD 2.2K OHM 1%,RC0603FR-072K2L,3480,-20,0,287,Low - not enough data,-7,
+83,1570pkx9p8hdmbfpmbba4jt6y2,Chipwhisperer Husky L0 kit,,6,-3.827678571,23.1,18,High,16.1,
+84,2pn9hkk15rkb98yre16c0eh46v,FOR CHIPSHOUTER END COVERS,,12,-35.33333333,110,142,High - overdue for batch,-39,
+85,36vngmv82wkwd8gcrv9ty2z8bz,with PROP65 Warning Label printed (small orange box for UFO targets),,1884,-59.16333333,17.84163474,14,Low,546.0906769,
+86,23y6bcmhnyghqan6ghm5t8btpb,Heat Sink Kit for Raspberry Pi 4B - Black Aluminum,110991328,174,-120.2708333,16.48412698,41,High,9.484126984,
+87,2ssg5dke98gn3a3464gr9n4vjc,Chipshover case label,,5,-6.666666667,0,211,Low - not enough data,-218,
+88,2942vqe8wegqa8qmb6zbgsxwp4,Other Modules ChipSHOUTER Electromagnetic Fault Injection (EMFI) Kit,,1,-1.4475,8.342857143,17,High - overdue for batch,-15,
+89,3px31r7e7rh159s7efsabrhj9e,"SMA Male to MCX Male, 15cm (12"")",,322,-38.87708333,15.23833333,14,Low,114.9066667,
 90,2h4f13mkxwk16bqqyk6ynvsa7s,Res Thick Film 0603 200K Ohm 1% 0.1W(1/10W) ?100ppm/C Molded SMD Paper T/R,RC0603FR-07200KL,2444,-28,7,8,Low,602,
 91,1jhnjy9zb4h5kb899v638d6ep6,Connector Shrouded Header 20 Position 2.54mm Solder Straight Thru-Hole,75869-104LF,2,-30,0,16,Low - not enough data,-23,
 92,1958pkhmawjvpazfssz0qgphd5,iCE40 (small FPGA) target,,8,-27.30601504,12.64814815,14,High - overdue for batch,-8,
@@ -283,41 +283,41 @@
 281,6m69p0s4egja7bxa4feqbcm952,Cable Assembly 1.83m 22AWG USB Type A to DC Power 4 to 2 POS PL-PL,10-00240,9,-1.5,13,16,Medium,71,
 282,55gw8msqxghq7991p5wrm41j2b,"Artix 7A100 FPGA Target - 100 mOhm, No VCC",,9,-3.583333333,30.66666667,64,Medium,54.33333333,
 283,97esv7vrb6kyb9qsjksk4cc8en,BROWN BOX,,65,-3,0,323,Low - not enough data,-7,
-284,8hwgs2awtmjgd8m1n83mapfhtx,Green Ø5 mm 50° 2.3 mcd Diffused 1.8 V Domed Solid State LED Lamp - T-1 3/4,4300H5LC,50,-50,0,95,Low - not enough data,-7,6
-285,6r1rrt4kxyhzga4ftfteqs2mpg,CW308 UFO Board Tested w/ XMEGA Target (TESTED),,0,-23.17083333,10.21168831,7,High - overdue for batch,-4,6
-286,6h6dpdnjm8g48awrmx6n7fyph5,Res Thick Film 1206 0.1 Ohm 1% 1/2W ±100ppm/°C Molded SMD SMD Paper T/R,CSR1206FKR100,46,-3,0,95,Low - not enough data,-7,6
-287,b7qk84fcxegbkb4g24s7xren56,"MCX to BNC Cable, 15cm (12"")",,322,-38.87708333,15.23833333,14,Low,114.9066667,6
-288,9g5v5b0jv4h3h8abtqjjchnz3x,"double sided 3.5 x 17"" Chipwhispere Lite 32-bit edition quick guide",,991,-68.63809524,10.22222222,84,Low,136.1111111,6
-289,79qwwbyhmpkyz8r10c9qyc5km9,"16 X 16 X22"" CORRUGATED BOXES",S-20483,22,-14,0,323,Low - not enough data,-7,6
-290,8kq57wt2zpk62bhgw9pf68evs3,FIXED IND 6UH 2.5A 22 MOHM TH,744710603,62,-19.44444444,132,72,Low,389,6
-291,6r3v2rnqgch60akwzm0wdnhmhj,Test Point MultiPurpose THM .445 L .125OD Heat Resistant Nylon 46 Red,5010,25,-15,0,16,Low - not enough data,-7,6
-292,6vg5gyjwzmh388y1yzytj3dn49,5x CW312 Breakout/Adapter PCBs,,0,-1,0,291,Low - not enough data,-298,6
-293,5bk89rrsmjjcq8p1ss9x4ab8c2,"Screws for Plastic, Zinc-Plated Steel, Number 4 Size, 1/4"" Long PK 100",90380A106,925,-288.2813853,12.93333333,43,Medium,31.8,6
-294,9rgf7fmy3jgreae6wr9a2w3zfd,"Stainless Steel Flat Head Thread-Forming Screws for Plastic, Phillips Drive, Number 4 Screw Size, 3/4"" Long",,112,-144,0,65,Low - not enough data,-72,6
-295,6w7swhebfggkf8rhp1s9v3t3wt,RC_L Series 0603 10 kO ±1% 0.1 W ±100 ppm/°C Thick Film Chip Resistor,RC0603FR-0710KL,4114,-107.6313725,16.91666667,10,Low,635.8333333,6
-296,5dq1gakkhjg7h8xj16berhmdz8,"Artix Socket FPGA Target - 100 mOhm, No VCC",,0,-1,0,212,Low - not enough data,-219,6
-297,5myfdc8hwaknr89rt9mf0carep,FPGA - Field Programmable Gate Array XC6SLX9-3TQG144C,XC6SLX9-3TQG144C,270,-200,0,169,Low - not enough data,-7,6
-298,bjjvjfp0xejy3acvmkgw8hd0wp,"Res, 20M, 5%, 0.5W, 2010 Rohs Compliant: Yes",HV732HTTE206J,417,-50,0,73,Low - not enough data,-7,6
-299,5myrj3xm84kb8bct3jsvv7w5r0,Conn Unshrouded Header HDR 4 POS 2.54mm Solder ST Top Entry Thru-Hole BergStik® Bulk,68000-204HLF,69,-28.53333333,154.5,16,Low,302,6
-300,70mfqza51mgtma3kb3hgv14rjy,DMP2123LQ Series 20 V 3 A P-Channel Enhancement Mode Transistor - SOT-23-3,DMP2123LQ-7,938,-50,0,330,Low - not enough data,-7,6
-301,bmzpmt4m8ghxhbd1ht15nvhqcz,Res Thick Film 0805 1 Ohm 1% 0.33W ±200ppm/°C Molded SMD Punched Carrier T/R,ERJ-6BQF1R0V,688,-56,7,8,Medium,77,6
-302,9484qtn9fghcwbjheess7a70b4,Chipshover case label,,11,-9,0,204,Low - not enough data,-7,6
-303,5jgf9q81dmkdgbxe1zsfzaebgn,75869 Series 6 Position (2 x 3) 2.54 mm Vertical Shrouded 4 Wall Male Pin Header,75869-131LF,332,-91.73333333,14.44,8,Medium,36.32,6
-304,5n0p00eavehmvbag4q6afhz3rd,UFO TARGET CW312T-K82F,,113,-9.916666667,18.85714286,174,Low,200.4285714,6
-305,74zkn6qfkrkd9b88xtsfrw6gz4,CAP CER 680PF 50V NP0 0402,C0402C681J5GAC7867,2086,-108,28,106,Low,525,6
-306,5n8s2rsapahb0ak2d0k9yhnej6,TRANSFORMERS AUDIO & SIGNAL,ATB322524-0110-T000,1640,-123.5,257,73,Low,3334,6
-307,786dfyga6chr4b749xe4de5qt0,"Kinetis K82: 150MHz Cortex-M4F Secure MCU, 256KB Flash, 256KB SRAM, Full-Speed USB, 100-LQFP",MK82FN256VLL15,161,-60.8,33.5,193,Medium,60,66
-308,bsz73899jrh5cav1zh67vzftdv,PCIe Gen4 support ultra-low power clock generator with four programmable outputs & EEPROM 24-VQFN -40 to 85,CDCI6214RGET,507,-125,0,179,Low - not enough data,-7,6
-309,7x0e79qsx6kygbemzb4jcqdsfg,"4.5-V to 17-V, 12-A synchronous buck converter with voltage scaling 24-HTSSOP -40 to 85",TPS56C20PWPR,455,-25,0,63,Low - not enough data,-7,6
-310,5nvyvqdk76hjy9azde8vka1b0m,Ceramic capacitor SMD 1206 100 µF 6.3 V 20 % Murata GRM31CR60J107ME39L 2000 pc(s),GRM31CR60J107ME39L,1277,-400,0,63,Low - not enough data,-7,6
-311,7ad76v07c0k8gab0fxbgcn58fx,"H-Probe Blank PCB, 15mm",,174,-63,0,115,Low - not enough data,-7,6
-312,bvdz69gaxghyx9aqqagjggdmz5,Development Boards & Kits - ARM STM32F4 w/ Hardware Crypto Target for CW308 (TESTED),,1,-4.378571429,46.88888889,27,High,12,6
-313,a6945kdr1yj9kat99bz6y0p4y8,Development Boards & Kits - ARM STM32F4 w/ Hardware Crypto Target for CW308 (TESTED)  ....AUTO,,0,-1,0,157,Low - not enough data,-164,6
-314,82f4qaxbxejq4axgxe2tmvm17k,"RA Plug, Cable 150mm, Teflon Coaxial Cable O.D. 1.13mm, UMC LP Series",415-0086-150,44,-21.94444444,28.03809524,35,Medium,49.07619048,6
-315,7aghavj8cmgvnbqy72scrz80v1,Anti-Static Control Products BOX W/FOAM 2.9 X.63,57002,14,-14.85714286,31.88888889,35,High - overdue for batch,-10,6
-316,bvfej71vycg80a7yw978fmhz6e,"USB Cable: A-Micro B, w/Ferrite, 3 foot",(5457)/(39910)/(39909),147,-34.91961722,6.664603175,6,High,19.6584127,6
-317,a879wev16yg5c9p5bnq61gmmmm,4MM/CCW,,0,-7.936538462,20.14880952,22,High - overdue for batch,-8,6
-318,82fw0fazjek5saddhsxvv3n3gn,PCA: ChipSHOUTER,,8,-1,0,328,Low - not enough data,-7,6
+284,8hwgs2awtmjgd8m1n83mapfhtx,Green Ø5 mm 50° 2.3 mcd Diffused 1.8 V Domed Solid State LED Lamp - T-1 3/4,4300H5LC,50,-50,0,95,Low - not enough data,-7,
+285,6r1rrt4kxyhzga4ftfteqs2mpg,CW308 UFO Board Tested w/ XMEGA Target (TESTED),,0,-23.17083333,10.21168831,7,High - overdue for batch,-4,
+286,6h6dpdnjm8g48awrmx6n7fyph5,Res Thick Film 1206 0.1 Ohm 1% 1/2W ±100ppm/°C Molded SMD SMD Paper T/R,CSR1206FKR100,46,-3,0,95,Low - not enough data,-7,
+287,b7qk84fcxegbkb4g24s7xren56,"MCX to BNC Cable, 15cm (12"")",,322,-38.87708333,15.23833333,14,Low,114.9066667,
+288,9g5v5b0jv4h3h8abtqjjchnz3x,"double sided 3.5 x 17"" Chipwhispere Lite 32-bit edition quick guide",,991,-68.63809524,10.22222222,84,Low,136.1111111,
+289,79qwwbyhmpkyz8r10c9qyc5km9,"16 X 16 X22"" CORRUGATED BOXES",S-20483,22,-14,0,323,Low - not enough data,-7,
+290,8kq57wt2zpk62bhgw9pf68evs3,FIXED IND 6UH 2.5A 22 MOHM TH,744710603,62,-19.44444444,132,72,Low,389,
+291,6r3v2rnqgch60akwzm0wdnhmhj,Test Point MultiPurpose THM .445 L .125OD Heat Resistant Nylon 46 Red,5010,25,-15,0,16,Low - not enough data,-7,
+292,6vg5gyjwzmh388y1yzytj3dn49,5x CW312 Breakout/Adapter PCBs,,0,-1,0,291,Low - not enough data,-298,
+293,5bk89rrsmjjcq8p1ss9x4ab8c2,"Screws for Plastic, Zinc-Plated Steel, Number 4 Size, 1/4"" Long PK 100",90380A106,925,-288.2813853,12.93333333,43,Medium,31.8,
+294,9rgf7fmy3jgreae6wr9a2w3zfd,"Stainless Steel Flat Head Thread-Forming Screws for Plastic, Phillips Drive, Number 4 Screw Size, 3/4"" Long",,112,-144,0,65,Low - not enough data,-72,
+295,6w7swhebfggkf8rhp1s9v3t3wt,RC_L Series 0603 10 kO ±1% 0.1 W ±100 ppm/°C Thick Film Chip Resistor,RC0603FR-0710KL,4114,-107.6313725,16.91666667,10,Low,635.8333333,
+296,5dq1gakkhjg7h8xj16berhmdz8,"Artix Socket FPGA Target - 100 mOhm, No VCC",,0,-1,0,212,Low - not enough data,-219,
+297,5myfdc8hwaknr89rt9mf0carep,FPGA - Field Programmable Gate Array XC6SLX9-3TQG144C,XC6SLX9-3TQG144C,270,-200,0,169,Low - not enough data,-7,
+298,bjjvjfp0xejy3acvmkgw8hd0wp,"Res, 20M, 5%, 0.5W, 2010 Rohs Compliant: Yes",HV732HTTE206J,417,-50,0,73,Low - not enough data,-7,
+299,5myrj3xm84kb8bct3jsvv7w5r0,Conn Unshrouded Header HDR 4 POS 2.54mm Solder ST Top Entry Thru-Hole BergStik® Bulk,68000-204HLF,69,-28.53333333,154.5,16,Low,302,
+300,70mfqza51mgtma3kb3hgv14rjy,DMP2123LQ Series 20 V 3 A P-Channel Enhancement Mode Transistor - SOT-23-3,DMP2123LQ-7,938,-50,0,330,Low - not enough data,-7,
+301,bmzpmt4m8ghxhbd1ht15nvhqcz,Res Thick Film 0805 1 Ohm 1% 0.33W ±200ppm/°C Molded SMD Punched Carrier T/R,ERJ-6BQF1R0V,688,-56,7,8,Medium,77,
+302,9484qtn9fghcwbjheess7a70b4,Chipshover case label,,11,-9,0,204,Low - not enough data,-7,
+303,5jgf9q81dmkdgbxe1zsfzaebgn,75869 Series 6 Position (2 x 3) 2.54 mm Vertical Shrouded 4 Wall Male Pin Header,75869-131LF,332,-91.73333333,14.44,8,Medium,36.32,
+304,5n0p00eavehmvbag4q6afhz3rd,UFO TARGET CW312T-K82F,,113,-9.916666667,18.85714286,174,Low,200.4285714,
+305,74zkn6qfkrkd9b88xtsfrw6gz4,CAP CER 680PF 50V NP0 0402,C0402C681J5GAC7867,2086,-108,28,106,Low,525,
+306,5n8s2rsapahb0ak2d0k9yhnej6,TRANSFORMERS AUDIO & SIGNAL,ATB322524-0110-T000,1640,-123.5,257,73,Low,3334,
+307,786dfyga6chr4b749xe4de5qt0,"Kinetis K82: 150MHz Cortex-M4F Secure MCU, 256KB Flash, 256KB SRAM, Full-Speed USB, 100-LQFP",MK82FN256VLL15,161,-60.8,33.5,193,Medium,60,
+308,bsz73899jrh5cav1zh67vzftdv,PCIe Gen4 support ultra-low power clock generator with four programmable outputs & EEPROM 24-VQFN -40 to 85,CDCI6214RGET,507,-125,0,179,Low - not enough data,-7,
+309,7x0e79qsx6kygbemzb4jcqdsfg,"4.5-V to 17-V, 12-A synchronous buck converter with voltage scaling 24-HTSSOP -40 to 85",TPS56C20PWPR,455,-25,0,63,Low - not enough data,-7,
+310,5nvyvqdk76hjy9azde8vka1b0m,Ceramic capacitor SMD 1206 100 µF 6.3 V 20 % Murata GRM31CR60J107ME39L 2000 pc(s),GRM31CR60J107ME39L,1277,-400,0,63,Low - not enough data,-7,
+311,7ad76v07c0k8gab0fxbgcn58fx,"H-Probe Blank PCB, 15mm",,174,-63,0,115,Low - not enough data,-7,
+312,bvdz69gaxghyx9aqqagjggdmz5,Development Boards & Kits - ARM STM32F4 w/ Hardware Crypto Target for CW308 (TESTED),,1,-4.378571429,46.88888889,27,High,12,
+313,a6945kdr1yj9kat99bz6y0p4y8,Development Boards & Kits - ARM STM32F4 w/ Hardware Crypto Target for CW308 (TESTED)  ....AUTO,,0,-1,0,157,Low - not enough data,-164,
+314,82f4qaxbxejq4axgxe2tmvm17k,"RA Plug, Cable 150mm, Teflon Coaxial Cable O.D. 1.13mm, UMC LP Series",415-0086-150,44,-21.94444444,28.03809524,35,Medium,49.07619048,
+315,7aghavj8cmgvnbqy72scrz80v1,Anti-Static Control Products BOX W/FOAM 2.9 X.63,57002,14,-14.85714286,31.88888889,35,High - overdue for batch,-10,
+316,bvfej71vycg80a7yw978fmhz6e,"USB Cable: A-Micro B, w/Ferrite, 3 foot",(5457)/(39910)/(39909),147,-34.91961722,6.664603175,6,High,19.6584127,
+317,a879wev16yg5c9p5bnq61gmmmm,4MM/CCW,,0,-7.936538462,20.14880952,22,High - overdue for batch,-8,
+318,82fw0fazjek5saddhsxvv3n3gn,PCA: ChipSHOUTER,,8,-1,0,328,Low - not enough data,-7,
 319,9e3mqatkqjh0manq9xvagp0044,"P36-015-005-C 1.5X5 , 301 SS METRIC",91610A106,248,-21.93333333,60,35,Low,653,
 320,5wzvq8ywjgh0mbeycwbz1dp57k,Front-Panel Label,,57,-1,0,325,Low - not enough data,-7,
 321,5y5kw9fneehx0aw41s5fqphbhb,PSU,,31,-1.5,45,283,Low,893,
