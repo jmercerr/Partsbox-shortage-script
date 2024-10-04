@@ -8,7 +8,10 @@ import sort_data
 import calculate
 import time_stamp
 import cache
-
+from ratelimit import limits
+from alive_progress import alive_bar
+from alive_progress.styles import showtime
+import time
 
 """
 function to format the printing of json data
@@ -43,11 +46,9 @@ if __name__ == '__main__':
 	#for testing timestamp function 
 	print("entering timestmap function")
 	Timestamps = time_stamp.get_timestamps()
-	print(Timestamps)
 	print("after timestamp function")
 
 	update = cache.get_update_flag(Timestamps[0])
-	print(update)
 
 
 	data: dict = cache.fetch_data(update=update,
@@ -122,6 +123,7 @@ if __name__ == '__main__':
 
 
 	#testing lead time function
+	#commented out to avoid getting user input during testing 
 	'''
 	file_name = input("Enter the name of the CSV that contains lead times: ")#get input from user for file name
 	if file_name == "": #no file name provided
@@ -148,59 +150,59 @@ if __name__ == '__main__':
 	def get_group_of_ten(airtable_data):
 		test_index = 0
 		group_of_ten = []
-		length = len(airtable_data)
-		print(length)
-		print(test_index)
-		while test_index < 10 and test_index < length-1:
 
-			group_of_ten.append(airtable_data.pop(test_index))
+		length = len(airtable_data)
+		while test_index < 10 and test_index <= length-1:
+			group_of_ten.append(airtable_data.pop(0))
 			test_index += 1
 
 		return group_of_ten
 
-	data_to_push = get_group_of_ten(airtable_data)
 
-	try: 
-		with open("airtable_config.json") as c_file: 
-			config = json.load(c_file)
-	except FileNotFoundError: 
-		print("no config file found")
-		f = open("airtable_config.json", "x")
-		f.close
-		print("config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
+	#time period in seconds (airtable is limited to 5 requests per second)
+	TIME_PERIOD = 1 
+	@limits(calls = 5, period = TIME_PERIOD)
+	def push_to_airtable(airtable_data):
+		length = len(airtable_data)
+		number_of_calls = int(length / 10) + (length % 10 > 0) 
+		with alive_bar(number_of_calls, bar = 'fish') as bar: #set up progress bar based off of number of calls to be made
+			for i in range(number_of_calls):
+				#get arrray of ten parts
+				data_to_push = get_group_of_ten(airtable_data)
+				length = len(airtable_data)
 
-	headers = {
-	'Authorization': config['Authorization'],
-	"Content-Type": "application/json"
-	}
+				#get authorization token
+				try: 
+					with open("airtable_config.json") as c_file: 
+						config = json.load(c_file)
+				except FileNotFoundError: 
+					print("no config file found")
+					f = open("airtable_config.json", "x")
+					f.close
+					print("config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
 
-	data = {}
-	list_of_fields = []
-	list_of_fields.append("part_id")
-	list_of_fields.append("description")
+				headers = {
+				'Authorization': config["Authorization"],
+				"Content-Type" : "application/json"
+				}
 
-	entry = {"fieldsToMergeOn": list_of_fields}
-	data = {"performUpsert": entry, "records": data_to_push}
+				data = {}
+				list_of_fields = []
+				list_of_fields.append("part_id")
+				list_of_fields.append('description')
 
-	data_json = json.dumps(data, default = str)
-	url = "https://api.airtable.com/v0/appRz7kFjf3jJ9Xe4/tblHGveIi8Oy1XoeA" 
+				entry = {"fieldsToMergeOn": list_of_fields}
+				data = {"performUpsert": entry, "records": data_to_push}
 
-	json_result = requests.patch(url, headers = headers, json=data_json)
-	print(json_result)
-	print(data)
+				url = "https://api.airtable.com/v0/appRz7kFjf3jJ9Xe4/tblHGveIi8Oy1XoeA" 
 
+				#commented out to stop calling the api while adding extra features
+				#json_result = requests.put(url, headers=headers, json = data)
+				#print statement for testing
+				#print(json_result)
 
-#commented out for now to test api call with just one group of ten
-'''
-	while airtable_data: 
-		group_of_ten = get_group_of_ten(airtable_data)
-		print("group of ten")
-		jprint(group_of_ten)
-
-'''
+				bar() #update progress bar 
 
 
-
-
-
+	push_to_airtable(airtable_data)
 

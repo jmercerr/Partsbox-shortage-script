@@ -293,12 +293,6 @@ def get_risk_level(sorted_stock, current_timestamp):
 		else: 
 			time_till_next_batch = abs(int(last_batch - avg_time))
 
-		#print for testing 
-		print('time since last batch', last_batch)
-		print('time till next batch', time_till_next_batch)
-		print('average time:', avg_time)
-		print(time_till_next_batch)
-
 		try: 
 			number_of_batches = int(current_stock / avg_batch) 
 		except ZeroDivisionError as e:
@@ -310,8 +304,6 @@ def get_risk_level(sorted_stock, current_timestamp):
 		else:
 			estimated_rop = (number_of_batches * avg_time) - lead_time 
 
-		#print for testing 
-		print('estimated ROP', int(estimated_rop))
 		sorted_stock[part]['estimated_rop'] = estimated_rop
 
 		if avg_time == None or avg_time == 0 or avg_batch == 0: #either no stock entries, only one stock entry, therefore unlikely for more batches to be produced
@@ -325,12 +317,6 @@ def get_risk_level(sorted_stock, current_timestamp):
 				sorted_stock[part]['risk_level'] = 'Medium'
 			elif estimated_rop > 90:
 				sorted_stock[part]['risk_level'] = 'Low'
-
-
-		#print for testing 
-		print('risk level', sorted_stock[part]['risk_level'])
-		print()
-		print()
 
 	return sorted_stock
 

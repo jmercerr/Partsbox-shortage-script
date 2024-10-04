@@ -8,7 +8,6 @@ import requests
 import time 
 import os
 
-
 '''
 function determines if cache file exists 
 	if file exists - use data from file
@@ -61,10 +60,8 @@ def get_update_flag(current_timestamp):
 
 	#convert to milliseconds 
 	modified_time = modified_time * 1000
-	print(modified_time)
 
 	one_week_ago = current_timestamp - MILLI_PER_WEEK
-	print(one_week_ago)
 
 	if modified_time >= one_week_ago: #modified within the past week 
 		update = False

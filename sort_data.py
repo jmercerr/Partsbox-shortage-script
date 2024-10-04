@@ -205,8 +205,6 @@ def get_data_for_airtable(sorted_stock):
 				'description': description,
 				'mpn': mpn,
 				'total_stock': total_stock,
-				'last_batch': last_batch,
-				'last_restock': last_restock,
 				'risk': risk,
 				'rop_estimate': rop_estimate}
 
@@ -217,38 +215,3 @@ def get_data_for_airtable(sorted_stock):
 
 	return airtable_data
 	 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-
-	
-
-
-
-
-
-

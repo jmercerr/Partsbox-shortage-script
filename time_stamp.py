@@ -140,8 +140,12 @@ def get_time_since_last_batch(current_timestamp, sorted_stock):
         last_batch = stock_history[stock_index]['stock/timestamp']
         time_since_last_batch = get_difference(last_batch, current_timestamp)
         sorted_stock[part]["days_since_last_batch"] = time_since_last_batch
-        sorted_stock[part]["date_last_batch"] = datetime.fromtimestamp(last_batch/1000) #convert timestamp to seconds from milliseconds 
-        sorted_stock[part]['date_last_batch'] = datetime.date(sorted_stock[part]["date_last_batch"])
+        date = datetime.fromtimestamp(last_batch/1000) #convert timestamp to seconds from milliseconds 
+        date = datetime.date(date)
+        format_string = '%Y-%m-%d'
+        # Convert the datetime object to a string in the specified format
+        date_string = date.strftime(format_string)
+        sorted_stock[part]['date_last_batch'] = date_string       
 
     return sorted_stock
 
@@ -170,8 +174,12 @@ def get_date_of_last_restock(current_timestamp, parts):
             parts[part_entry]["date_last_restock"] = None
         else:
             last_restock = parts[part_entry]['part/stock'][stock_entry]['stock/timestamp']
-            parts[part_entry]["date_last_restock"] = datetime.fromtimestamp(last_restock/1000) #convert timestamp to seconds from milliseconds first
-            parts[part_entry]["date_last_restock"] = datetime.date(parts[part_entry]["date_last_restock"])
+            date = datetime.fromtimestamp(last_restock/1000) #convert timestamp to seconds from milliseconds first
+            date = datetime.date(date)
+            format_string = '%Y-%m-%d'
+            # Convert the datetime object to a string in the specified format
+            date_string = date.strftime(format_string)
+            parts[part_entry]["date_last_restock"] = date_string         
 
         part_entry += 1
 
