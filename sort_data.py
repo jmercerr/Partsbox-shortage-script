@@ -1,5 +1,5 @@
 """
-Module that contains functions for sorting data for partsbox api interface 
+Module that contains functions for sorting data for partsbox api interface, and for pushing data to airtable 
 """
 
 import json 
@@ -129,7 +129,7 @@ function to remove entries in the sorted data that have no valid stock history
 @params 
 	- parts: list of all parts data
 @returns 
-	- refined_stock: list of parts that have had valid stock history within the past year 
+	- refined_data: list of parts that have had valid stock history within the past year 
 '''
 def remove_empty_stock_list(parts):
 	part_entry = 0 
@@ -151,6 +151,7 @@ def remove_empty_stock_list(parts):
 			refined_data.append(data) #add part entry to list if stock history is valid
 
 		part_entry += 1 
+		
 
 	return refined_data
 
@@ -160,7 +161,7 @@ function to remove entries in the sorted data that have no valid stock history
 @params 
 	- sorted_stock: nested dictionary of valid part information 
 @returns 
-	- refined_stock: list of parts that have had valid stock history within the past year 
+	- refined_data: list of parts that have had valid stock history within the past year 
 '''
 def remove_empty_stock_dict(sorted_stock):
 	refined_data = {}
@@ -251,8 +252,7 @@ limits decorator ensures only 5 calls per second can be made, to meet the rate l
 	- period: amount of seconds for rate limiting 
 @returns 
 	- none
-'''
-'''
+
 function that pushes data to airtable for all valid parts 
 @params
 	- airtable_data: list of all data to be pushed to airtable 

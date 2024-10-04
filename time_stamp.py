@@ -189,11 +189,11 @@ def get_date_of_last_restock(current_timestamp, parts):
 function that determines the most recent restock based on comments not containing 'move'
 and quantity being positive 
 @params 
-    - parts:
-    - stock_index: 
+    - parts: list of dictionaries containing data for all parts
+    - stock_index: integer value for position in stock list (end of list)
+    - part_entry: part id for accessing part from parts 
 @returns 
-    - 
-
+    - stock_index: integer value for position in list of latest restock 
 '''
 def get_restock_entry(parts, stock_index, part_entry):
     #initalize flags
