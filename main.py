@@ -46,11 +46,21 @@ if __name__ == '__main__':
 
 	update = cache.get_update_flag(Timestamps[0])
 
+	request_type = "get"
 
 	data: dict = cache.fetch_data(update=update,
 						    json_cache=json_cache,
 							url=url, 
 							headers=headers)
+
+
+'''
+#testing api requests for project builds 
+	url = 'https://api.partsbox.com/api/1/project/get-builds'
+	payload = {"project/id": "c9bbb3f79mkzq97ejd7wvcj2x9"}
+	project_builds = requests.get(url, headers=headers, params = payload).json()
+	jprint(project_builds)
+'''
 
 	#create list of just the data entries from api response
 	parts = data['data']
@@ -143,4 +153,4 @@ if __name__ == '__main__':
 	print("after getting data for airtable")
 	#jprint(airtable_data) 
 
-	sort_data.push_to_airtable(airtable_data)
+	#sort_data.push_to_airtable(airtable_data)
