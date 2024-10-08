@@ -11,6 +11,96 @@ from alive_progress.styles import showtime
 import time
 import requests
 
+#defining constants for indexing api keys 
+WRITE = 0
+READ = 1 
+
+
+"""
+function that checks if parts have a valid lead time field and if not adds a custom field with the default lead time
+@params	
+	- parts: list of part data from partsbox api response 
+@returns
+	- parts: with added lead times field for parts that had invalid or non existent lead times 
+
+"""
+#TODO add robustness for if there is other custom fields 
+def update_lead_times(parts):
+	valid = True
+	part_id = parts[0]['part/id']
+	#printing for testing
+	print(part_id)
+	#printing for testing 
+	part_lead = get_lead(parts, 0)
+	print(part_lead)
+
+	#check for lead times that are negative or 0 
+	if int(part_lead) <= 0: 
+		#set to default of 2 weeks 
+		valid = False
+	#printing for testing 
+	print(valid)
+
+	if valid == False: 
+		try: 
+			with open("partsbox_config.json") as config_file: 
+				config = json.load(config_file)
+		except FileNotFoundError: 
+			print("no config file found")
+			f = open("partsbox_config.json", "x")
+			f.close
+			print("partsbox_config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
+
+		headers = {
+		'Authorization': config[WRITE]["API_key"] 
+		}
+
+		url = 'https://api.partsbox.com/api/1/part/update-custom-fields' 
+
+		payload = {"part/id": part_id,  "custom-fields": [{"key": "lead_time_(weeks)", "value": "2"}]}
+		print(payload)
+
+		json_data = requests.post(url, headers=headers, json = payload).json()
+
+		print()
+		print()
+		print(json_data)
+		print()
+		print()
+
+
+'''
+function that searches for a custom field for lead times 
+@params
+	- parts: list of data for all parts 
+	- parts_index: index for parts list 
+@returns
+	- leadtime: leadtime if found or 0 otherwise
+'''
+def get_lead(parts, parts_index):
+	try: #check if part has valid lead time
+		custom_fields = parts[parts_index]["part/custom-fields"]
+		field_index = 0
+
+		for field in custom_fields: 
+			if custom_fields[field_index]["key"] == "lead_time_(weeks)":
+				leadtime = custom_fields[field_index]["value"]
+			else:
+				leadtime = 0 
+
+			field_index += 1
+
+	except KeyError: #no data
+		#set to default lead time of 2 weeks 
+		leadtime = 0
+
+	return leadtime
+
+
+
+
+
+
 
 """
 Function to sort the data from api response to have just the batch data
@@ -295,7 +385,7 @@ def push_to_airtable(airtable_data):
 			url = "https://api.airtable.com/v0/appRz7kFjf3jJ9Xe4/tblHGveIi8Oy1XoeA" 
 
 			#commented out to stop calling the api while adding extra features
-			json_result = requests.put(url, headers=headers, json = data)
+			json_result = requests.patch(url, headers=headers, json = data)
 			#print statement for testing
 			print(json_result)
 

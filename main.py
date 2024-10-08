@@ -21,6 +21,10 @@ def jprint(obj):
 	print(text)
 
 
+#constants for indexing into partsbox config list
+WRITE = 0
+READ = 1
+
 """main"""
 if __name__ == '__main__':
 	url = 'https://api.partsbox.com/api/1/part/all' 
@@ -36,7 +40,8 @@ if __name__ == '__main__':
 		print("partsbox_config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
 
 	headers = {
-	'Authorization': config["API_key"] 
+	'Authorization': config[READ]["API_key"],
+	"Content-Type" : "application/json" #get api key for read only access
 	}
 
 	#for testing timestamp function 
@@ -46,25 +51,14 @@ if __name__ == '__main__':
 
 	update = cache.get_update_flag(Timestamps[0])
 
-	request_type = "get"
-
 	data: dict = cache.fetch_data(update=update,
 						    json_cache=json_cache,
 							url=url, 
 							headers=headers)
 
 
-'''
-#testing api requests for project builds 
-	url = 'https://api.partsbox.com/api/1/project/get-builds'
-	payload = {"project/id": "c9bbb3f79mkzq97ejd7wvcj2x9"}
-	project_builds = requests.get(url, headers=headers, params = payload).json()
-	jprint(project_builds)
-'''
-
 	#create list of just the data entries from api response
 	parts = data['data']
-
 
 	#for testing delete empty stock lists 
 	print("before delete function")
@@ -74,6 +68,27 @@ if __name__ == '__main__':
 	print('Length after inital delete', length)
 	print("after delete function")
 
+	url =  'https://api.partsbox.com/api/1/part/get' 
+	payload = {"part/id": "1r0hffs75mjs798rxtnspmhqb9"}
+	test_data = requests.get(url, headers=headers, params = payload).json()
+	print()
+	jprint(test_data)
+	print()
+
+
+	headers = {
+	'Authorization': config[WRITE]["API_key"] #get api key for read and write access
+	}
+
+	url = 'https://api.partsbox.com/api/1/part/update-custom-fields' 
+	payload = {"part/id": "1r0hffs75mjs798rxtnspmhqb9", "custom-fields": [{"key": "lead_time_(weeks)", "value": "2"}]}
+	print(payload)
+	test_data = requests.post(url, headers = headers, json = payload).json()
+	print()
+	jprint(test_data)
+	print()	
+
+	sort_data.update_lead_times(parts)
 
 	#for testing total stock function
 	print("entering total stock function")
@@ -87,6 +102,9 @@ if __name__ == '__main__':
 	time_stamp.get_date_of_last_restock(Timestamps[0], parts)
 	#jprint(parts)
 	print("after get last restock function")
+
+
+	#sort_data.get_lead_times(parts)
 
 
 	#for testing sort function
@@ -128,19 +146,6 @@ if __name__ == '__main__':
 	print("after time since function")
 
 
-	#testing lead time function
-	#commented out to avoid getting user input during testing 
-	'''
-	file_name = input("Enter the name of the CSV that contains lead times: ")#get input from user for file name
-	if file_name == "": #no file name provided
-		calculate.get_lead_times(sorted_stock)
-	else: #file name provided
-		calculate.get_lead_times(sorted_stock, file_name)
-	'''
-	calculate.get_lead_times(sorted_stock)
-	#jprint(sorted_stock)
-
-
 	#for testing risk level function 
 	print("before risk level function")
 	sorted_stock = calculate.get_risk_level(sorted_stock, Timestamps[0])
@@ -151,6 +156,16 @@ if __name__ == '__main__':
 	print("before getting data for airtable")
 	airtable_data = sort_data.get_data_for_airtable(sorted_stock)
 	print("after getting data for airtable")
-	#jprint(airtable_data) 
+	jprint(airtable_data) 
 
+#commented out while working on writing to personal partsbox account 
 	#sort_data.push_to_airtable(airtable_data)
+
+'''
+#testing api requests for project builds 
+	url = 'https://api.partsbox.com/api/1/project/get-builds'
+	payload = {"project/id": "c9bbb3f79mkzq97ejd7wvcj2x9"}
+	project_builds = requests.get(url, headers=headers, params = payload).json()
+	jprint(project_builds)
+'''
+

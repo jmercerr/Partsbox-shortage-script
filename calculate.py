@@ -228,36 +228,6 @@ def get_weighted_average(averages):
 	return average_for_calculations
 
 
-
-'''
-function that takes in a csv file with data for lead times and adds lead times to parts 
-using uuid's to identify the correct parts 
-@params
-	- sorted_stock: dictionary of valid parts 
-	- file_name: name of csv file 
-@returns
-	- sorted_stock: dictionary of valid parts with updated lead times 
-'''
-def get_lead_times(sorted_stock, file_name = "leadtimes.csv"): 
-	data = pd.read_csv(file_name)
-
-	row_index = 0
-	length = len(data)
-
-	#add lead times to sorted_stock dictionary using data from the provided csv file 
-	while row_index < length: 
-		part_id = data['id'].values[row_index]
-		lead_time = data["lead_time"].values[row_index]
-		if lead_time == "nan" or "NaN":
-			sorted_stock[part_id]["lead_time"] = DEFAULT_LEAD_TIME
-		else: 
-			sorted_stock[part_id]["lead_time"] = lead_time
-		row_index += 1
-
-	return sorted_stock
-
-
-
 ''' 
 function to calculate the risk level of running out of each part 
 	- high = likely to run out in next month
@@ -282,8 +252,10 @@ def get_risk_level(sorted_stock, current_timestamp):
 		avg_time = sorted_stock[part]['time/average_for_calculations']
 		last_batch = sorted_stock[part]['days_since_last_batch']
 
+		#should be able to change this as all parts should have lead times after fully implementing get lead times 
 		try:
-			lead_time = sorted_stock[part]["lead_time"] 
+			#convert to days from weeks 
+			lead_time = (sorted_stock[part]["lead_time_(weeks)"]) * 7
 		except KeyError as e: 
 			lead_time = DEFAULT_LEAD_TIME
 			e.add_note(f"{part} does not contain the data field 'lead_time'")

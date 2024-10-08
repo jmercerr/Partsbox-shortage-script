@@ -62,6 +62,8 @@ def get_update_flag(current_timestamp):
 	modified_time = modified_time * 1000
 
 	one_week_ago = current_timestamp - MILLI_PER_WEEK
+	#testing
+	#one_week_ago = current_timestamp
 
 	if modified_time >= one_week_ago: #modified within the past week 
 		update = False
