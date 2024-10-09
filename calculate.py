@@ -251,14 +251,7 @@ def get_risk_level(sorted_stock, current_timestamp):
 		avg_batch = abs(avg_batch)
 		avg_time = sorted_stock[part]['time/average_for_calculations']
 		last_batch = sorted_stock[part]['days_since_last_batch']
-
-		#should be able to change this as all parts should have lead times after fully implementing get lead times 
-		try:
-			#convert to days from weeks 
-			lead_time = (sorted_stock[part]["lead_time_(weeks)"]) * 7
-		except KeyError as e: 
-			lead_time = DEFAULT_LEAD_TIME
-			e.add_note(f"{part} does not contain the data field 'lead_time'")
+		lead_time = sorted_stock[part]['lead_time_(weeks)'] * 7 #convert from weeks to days 
 
 		if last_batch >= avg_time: #overdue for a batch to be produced
 			time_till_next_batch = -abs(int(last_batch - avg_time))
@@ -266,7 +259,7 @@ def get_risk_level(sorted_stock, current_timestamp):
 			time_till_next_batch = abs(int(last_batch - avg_time))
 
 		try: 
-			number_of_batches = int(current_stock / avg_batch) 
+			number_of_batches = int(current_stock / avg_batch) + (current_stock % avg_batch > 0)
 		except ZeroDivisionError as e:
 			e.add_note(f"{part} does not contain data for the past year, resulting in an average batch size of 0, unlikely that the part will be needed soon")
 			number_of_batches = 0

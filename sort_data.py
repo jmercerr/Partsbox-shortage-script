@@ -27,66 +27,55 @@ function that checks if parts have a valid lead time field and if not adds a cus
 #TODO add robustness for if there is other custom fields 
 def update_lead_times(parts):
 	valid = True
-	part_id = parts[0]['part/id']
-	#printing for testing
-	print(part_id)
-	#printing for testing 
-	part_lead = get_lead(parts, 0)
-	print(part_lead)
+	part_entry = 0
 
-	#check for lead times that are negative or 0 
-	if int(part_lead) <= 0: 
-		#set to default of 2 weeks 
-		valid = False
-	#printing for testing 
-	print(valid)
+	for part in parts: 
+		part = parts[part_entry]
+		part_id = parts[part_entry]["part/id"]
+		part_lead = get_lead(part)
+		
+		#check for lead times that are negative or 0 
+		if int(part_lead) <= 0: 
+			#set to default of 2 weeks 
+			valid = False
 
-	if valid == False: 
-		try: 
-			with open("partsbox_config.json") as config_file: 
-				config = json.load(config_file)
-		except FileNotFoundError: 
-			print("no config file found")
-			f = open("partsbox_config.json", "x")
-			f.close
-			print("partsbox_config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
+		if valid == False: 
+			try: 
+				with open("partsbox_config.json") as config_file: 
+					config = json.load(config_file)
+			except FileNotFoundError: 
+				print("no config file found")
+				f = open("partsbox_config.json", "x")
+				f.close
+				print("partsbox_config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
 
-		headers = {
-		'Authorization': config[WRITE]["API_key"] 
-		}
+			headers = {
+			'Authorization': config[WRITE]["API_key"] 
+			}
+			url = 'https://api.partsbox.com/api/1/part/update-custom-fields' 
+			payload = {"part/id": part_id,  "custom-fields": [{"key": "lead_time_(weeks)", "value": "2"}]}
 
-		url = 'https://api.partsbox.com/api/1/part/update-custom-fields' 
+			json_data = requests.post(url, headers=headers, json = payload).json()
 
-		payload = {"part/id": part_id,  "custom-fields": [{"key": "lead_time_(weeks)", "value": "2"}]}
-		print(payload)
-
-		json_data = requests.post(url, headers=headers, json = payload).json()
-
-		print()
-		print()
-		print(json_data)
-		print()
-		print()
+		part_entry += 1
 
 
 '''
 function that searches for a custom field for lead times 
 @params
-	- parts: list of data for all parts 
-	- parts_index: index for parts list 
+	- part: data for a single part from the parts list  
 @returns
 	- leadtime: leadtime if found or 0 otherwise
 '''
-def get_lead(parts, parts_index):
+def get_lead(part):
 	try: #check if part has valid lead time
-		custom_fields = parts[parts_index]["part/custom-fields"]
+		custom_fields = part["part/custom-fields"]
 		field_index = 0
+		leadtime = 0
 
 		for field in custom_fields: 
 			if custom_fields[field_index]["key"] == "lead_time_(weeks)":
 				leadtime = custom_fields[field_index]["value"]
-			else:
-				leadtime = 0 
 
 			field_index += 1
 
@@ -95,11 +84,6 @@ def get_lead(parts, parts_index):
 		leadtime = 0
 
 	return leadtime
-
-
-
-
-
 
 
 """
@@ -154,10 +138,16 @@ def sort(parts, Timestamps):
 		except KeyError as e: 
 			part_restock = None
 			e.add_note(f"{part_id} does not contain the data field 'date_last_restock'")
+		try:#TODO: need to edit this to add cases for if there are multiple custom fields needs to go through all custom fields
+			part_lead_key = parts[part_entry]["part/custom-fields"][0]["key"]
+			part_lead_value = int(parts[part_entry]["part/custom-fields"][0]["value"])
+		except KeyError as e:
+			part_lead_value = None 
+			e.add_note(f'{part_id} does not contain the data field "lead_time_(weeks)" as a custom field')
 
 
 		#create dictionary of data feilds for parts
-		stock_list[part_id] = {'description': part_description, 'mpn': part_mpn, 'total_stock': part_stock_count, 'part/restock': part_restock}
+		stock_list[part_id] = {'description': part_description, 'mpn': part_mpn, 'total_stock': part_stock_count, 'part/restock': part_restock, 'lead_time_(weeks)': part_lead_value}
 
 		#create empty list for valid stock entries for each part
 		valid_stock = []
@@ -296,12 +286,14 @@ def get_data_for_airtable(sorted_stock):
 		last_restock = sorted_stock[part]['part/restock']
 		risk = sorted_stock[part]['risk_level']
 		rop_estimate = int(sorted_stock[part]['estimated_rop'])
+		leadtime = int(sorted_stock[part]["lead_time_(weeks)"])
 
 		entry = {'part_id': part_id,
 				'description': description,
 				'mpn': mpn,
 				'total_stock': total_stock,
 				'risk': risk,
+				'lead_time_(weeks)': leadtime,
 				'rop_estimate': rop_estimate, 
 				'last_batch': last_batch,
 				'last_restock': last_restock}
@@ -381,7 +373,6 @@ def push_to_airtable(airtable_data):
 
 			entry = {"fieldsToMergeOn": list_of_fields}
 			data = {"performUpsert": entry, "records": data_to_push}
-
 			url = "https://api.airtable.com/v0/appRz7kFjf3jJ9Xe4/tblHGveIi8Oy1XoeA" 
 
 			#commented out to stop calling the api while adding extra features
