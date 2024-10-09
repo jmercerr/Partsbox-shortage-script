@@ -10,6 +10,7 @@ from alive_progress import alive_bar
 from alive_progress.styles import showtime
 import time
 import requests
+import cache
 
 #defining constants for indexing api keys 
 WRITE = 0
@@ -20,12 +21,13 @@ READ = 1
 function that checks if parts have a valid lead time field and if not adds a custom field with the default lead time
 @params	
 	- parts: list of part data from partsbox api response 
+	- header: headers data including authorization key for api call 
 @returns
 	- parts: with added lead times field for parts that had invalid or non existent lead times 
 
 """
 #TODO add robustness for if there is other custom fields 
-def update_lead_times(parts):
+def update_lead_times(parts, headers):
 	valid = True
 	part_entry = 0
 
@@ -40,21 +42,8 @@ def update_lead_times(parts):
 			valid = False
 
 		if valid == False: 
-			try: 
-				with open("partsbox_config.json") as config_file: 
-					config = json.load(config_file)
-			except FileNotFoundError: 
-				print("no config file found")
-				f = open("partsbox_config.json", "x")
-				f.close
-				print("partsbox_config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
-
-			headers = {
-			'Authorization': config[WRITE]["API_key"] 
-			}
 			url = 'https://api.partsbox.com/api/1/part/update-custom-fields' 
 			payload = {"part/id": part_id,  "custom-fields": [{"key": "lead_time_(weeks)", "value": "2"}]}
-
 			json_data = requests.post(url, headers=headers, json = payload).json()
 
 		part_entry += 1
@@ -145,9 +134,11 @@ def sort(parts, Timestamps):
 			part_lead_value = None 
 			e.add_note(f'{part_id} does not contain the data field "lead_time_(weeks)" as a custom field')
 
+		used_in = []
+
 
 		#create dictionary of data feilds for parts
-		stock_list[part_id] = {'description': part_description, 'mpn': part_mpn, 'total_stock': part_stock_count, 'part/restock': part_restock, 'lead_time_(weeks)': part_lead_value}
+		stock_list[part_id] = {'description': part_description, 'mpn': part_mpn, 'total_stock': part_stock_count, 'part/restock': part_restock, 'lead_time_(weeks)': part_lead_value, "projects_used_in": used_in}
 
 		#create empty list for valid stock entries for each part
 		valid_stock = []
@@ -384,6 +375,121 @@ def push_to_airtable(airtable_data):
 
 
 
+''' 
+function that gets the list of projects
+@params 
+	- headers: headers with authorization key for api request
+	- current_timestamp: timestamp from when get timestamps function was called 
+@returns 
+	- projects: list of projects from api response or cache 
+
+'''
+def get_projects(headers, current_timestamp):
+	#get project data 
+	url = 'https://api.partsbox.com/api/1/project/all' 
+	
+	cache_name = "project_cache.json"
+	#see if cache needs to be updated
+	update = cache.get_update_flag(current_timestamp, cache_name)
+
+	#get data from cache or api response if necessary 
+	data: dict = cache.fetch_data(update=update, json_cache=cache_name, url=url, headers=headers, params=None)
+
+	#get just data from api response
+	projects = data["data"]
+
+	return(projects)
+
+'''
+function that gets boms for all projects
+'''
+def get_boms(projects, headers):
+	#not using the cache.fetch_data function since the api needs to be called in a loop iterating over parts 
+	cache_name = "project_entries_cache.json"
+	try:
+		#cache is created 
+		with open(cache_name, 'r') as file:
+			json_data = json.load(file)
+			print('Fetched data from local cache!')
+	except(FileNotFoundError, json.JSONDecodeError) as e:
+		print(f'No local cache found... ({e})')
+		json_data = None
+
+	#create cache file 
+	if not json_data:
+		#make api requests in loop
+		project_index = 0
+		project_boms = []
+		for project in projects: 
+			#get project data
+			project_name = projects[project_index]["project/name"]
+			project_id = projects[project_index]["project/id"]
+
+			if project_name != "":
+				#make api request 
+				url = 'https://api.partsbox.com/api/1/project/get-entries' 	
+				payload = {"project/id": project_id}
+
+				#get data from cache or api response if necessary 
+				project_parts = requests.get(url, headers=headers, params=payload).json()
+
+				part_index = 0
+				parts = []
+				for part in project_parts:
+					try:
+						print("ATTEMPT")
+						part_id = project_parts["data"][part_index]["entry/part-id"] 
+						print("part_id", part_id)
+						parts.append(part_id)
+
+					except KeyError as e: 
+						e.add_note("part does not contain the data field 'entry/part-id'")
+
+					part_index += 1
+
+				bom_entry = {"project_name": project_name, "parts": parts}
+
+				project_boms.append(bom_entry)
+				print(project_boms)
+
+			project_index += 1
+			print("waiting")
+
+	
+		with open("project_entries_cache.json", 'w') as file:
+			json.dump(project_boms, file)
+
+	return json_data
 
 
-	 
+
+
+'''
+function that goes through project boms and adds project names to parts 
+@params
+	- project_boms: list of dictionary entries consisiting of project description and all parts with part ids included in the BOM
+	- sorted_stock: nested dictionary containg data for all valid parts
+@returns
+	- sorted_stock: nested dictionary containg data for all valid parts with added data for projects parts are used in 
+'''
+def update_project_data(project_boms, sorted_stock): 
+	project_index = 0 
+
+	for project in project_boms: 
+		part_index = 0 
+		parts = project_boms[project_index]["parts"]
+		project_name = project_boms[project_index]["project_name"]
+
+		for part in parts:
+			try: 
+				part_id = parts[part_index]
+				sorted_stock[part_id]["projects_used_in"].append(project_name)
+			except KeyError as e:
+				e.add_note(f"{part_id} was not found in sorted_stock")
+
+			part_index += 1 
+
+		project_index += 1
+
+	return(sorted_stock)
+

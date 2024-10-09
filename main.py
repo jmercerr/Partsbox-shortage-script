@@ -48,13 +48,15 @@ if __name__ == '__main__':
 	print("entering timestmap function")
 	Timestamps = time_stamp.get_timestamps()
 	print("after timestamp function")
+	cache_name = "request_cache.json"
 
-	update = cache.get_update_flag(Timestamps[0])
+	update = cache.get_update_flag(Timestamps[0], cache_name)
 
 	data: dict = cache.fetch_data(update=update,
 						    json_cache=json_cache,
 							url=url, 
-							headers=headers)
+							headers=headers,
+							params=None)
 
 
 	#create list of just the data entries from api response
@@ -72,7 +74,10 @@ if __name__ == '__main__':
 
 	#for testing lead time function 
 	print("entering update lead time functions")
-	sort_data.update_lead_times(parts)
+	headers = {
+			'Authorization': config[WRITE]["API_key"] 
+			}
+	sort_data.update_lead_times(parts, headers)
 	print("after update lead time function")
 
 
@@ -132,7 +137,7 @@ if __name__ == '__main__':
 	#for testing risk level function 
 	print("before risk level function")
 	sorted_stock = calculate.get_risk_level(sorted_stock, Timestamps[0])
-	jprint(sorted_stock)
+	#jprint(sorted_stock)
 	print("after risk level function")
 
 	#for testing the get data for airtable function
@@ -141,8 +146,20 @@ if __name__ == '__main__':
 	print("after getting data for airtable")
 	#jprint(airtable_data) 
 
+	projects = sort_data.get_projects(headers, Timestamps[0])
+	#jprint(projects)
+
+	project_boms = sort_data.get_boms(projects, headers)
+	jprint(project_boms)
+
+	#sorted_stock = sort_data.update_project_data(project_boms, sorted_stock)
+	#jprint(sorted_stock)
+
+
+
+'''
+	#for testing pushing to airtable
 	print("before pushing to airtable")
 	sort_data.push_to_airtable(airtable_data)
 	print("after pushing to airtable")
-	
-
+'''

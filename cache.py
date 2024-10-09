@@ -20,7 +20,7 @@ function determines if cache file exists
 @returns
 	- json_data: data in the cache file 
 '''
-def fetch_data(*, update: bool = False, json_cache: str, url: str, headers: dict):
+def fetch_data(*, update: bool = False, json_cache: str, url: str, headers: dict, params: dict):
 	if update:
 		json_data = None
 	else:
@@ -36,7 +36,11 @@ def fetch_data(*, update: bool = False, json_cache: str, url: str, headers: dict
 	#create cache file 
 	if not json_data:
 		print('Fetching new json data... (creating local cache)')
-		json_data = requests.get(url, headers=headers).json()
+		if params != None:
+			json_data = requests.get(url, headers=headers, params=params).json()
+		else:
+			json_data = requests.get(url, headers=headers).json()
+
 
 		with open(json_cache, 'w') as file:
 			json.dump(json_data, file)
@@ -51,8 +55,7 @@ function determines if cache file needs to be updated with new data from partsbo
 @returns 
 	- update: bool flag (set to true if the cache was last modified over a week ago, false otherwise)
 '''
-def get_update_flag(current_timestamp): 
-	cache = "request_cache.json"
+def get_update_flag(current_timestamp, cache): 
 	MILLI_PER_WEEK = 604800000
 
 	#get timestamp in seconds
