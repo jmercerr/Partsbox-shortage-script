@@ -140,26 +140,35 @@ if __name__ == '__main__':
 	#jprint(sorted_stock)
 	print("after risk level function")
 
+	#for testing get projects function
+	print("before getting projects")
+	result = sort_data.get_projects(headers, Timestamps[0])
+	projects = result["projects"]
+	update = result["update"]
+	#jprint(projects)
+	print("after getting projects")
+
+	#for testing getting boms 
+	print("before getting boms")
+	project_boms = sort_data.get_boms(projects, headers, update)
+	#jprint(project_boms)
+	print("after getting boms")
+
+	#for testing the update project data 
+	print("before updating project data")
+	sorted_stock = sort_data.update_project_data(project_boms, sorted_stock)
+	#jprint(sorted_stock)
+	print("after updating project data")
+
+
 	#for testing the get data for airtable function
 	print("before getting data for airtable")
 	airtable_data = sort_data.get_data_for_airtable(sorted_stock)
 	print("after getting data for airtable")
-	#jprint(airtable_data) 
-
-	projects = sort_data.get_projects(headers, Timestamps[0])
-	#jprint(projects)
-
-	project_boms = sort_data.get_boms(projects, headers)
-	jprint(project_boms)
-
-	#sorted_stock = sort_data.update_project_data(project_boms, sorted_stock)
-	#jprint(sorted_stock)
+	jprint(airtable_data) 
 
 
-
-'''
 	#for testing pushing to airtable
 	print("before pushing to airtable")
 	sort_data.push_to_airtable(airtable_data)
 	print("after pushing to airtable")
-'''

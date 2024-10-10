@@ -278,6 +278,11 @@ def get_data_for_airtable(sorted_stock):
 		risk = sorted_stock[part]['risk_level']
 		rop_estimate = int(sorted_stock[part]['estimated_rop'])
 		leadtime = int(sorted_stock[part]["lead_time_(weeks)"])
+		projects_used_in = sorted_stock[part]["projects_used_in"]
+
+		delimiter = ","
+		project_string = delimiter.join(projects_used_in)
+		print(project_string)
 
 		entry = {'part_id': part_id,
 				'description': description,
@@ -287,7 +292,8 @@ def get_data_for_airtable(sorted_stock):
 				'lead_time_(weeks)': leadtime,
 				'rop_estimate': rop_estimate, 
 				'last_batch': last_batch,
-				'last_restock': last_restock}
+				'last_restock': last_restock,
+				'projects_used_in': project_string}
 
 		data = {"fields": entry}
 
@@ -367,7 +373,7 @@ def push_to_airtable(airtable_data):
 			url = "https://api.airtable.com/v0/appRz7kFjf3jJ9Xe4/tblHGveIi8Oy1XoeA" 
 
 			#commented out to stop calling the api while adding extra features
-			json_result = requests.patch(url, headers=headers, json = data)
+			json_result = requests.patch(url, headers=headers, json=data)
 			#print statement for testing
 			print(json_result)
 
@@ -398,12 +404,14 @@ def get_projects(headers, current_timestamp):
 	#get just data from api response
 	projects = data["data"]
 
-	return(projects)
+	result = {"projects": projects, "update": update}
+
+	return(result)
 
 '''
 function that gets boms for all projects
 '''
-def get_boms(projects, headers):
+def get_boms(projects, headers, update):
 	#not using the cache.fetch_data function since the api needs to be called in a loop iterating over parts 
 	cache_name = "project_entries_cache.json"
 	try:
@@ -416,11 +424,13 @@ def get_boms(projects, headers):
 		json_data = None
 
 	#create cache file 
-	if not json_data:
+	if not json_data or update == True:
 		#make api requests in loop
 		project_index = 0
 		project_boms = []
+
 		for project in projects: 
+			print("reentered project loop")
 			#get project data
 			project_name = projects[project_index]["project/name"]
 			project_id = projects[project_index]["project/id"]
@@ -432,13 +442,17 @@ def get_boms(projects, headers):
 
 				#get data from cache or api response if necessary 
 				project_parts = requests.get(url, headers=headers, params=payload).json()
+				project_parts = project_parts["data"]
+
+				print(project_parts)
 
 				part_index = 0
 				parts = []
 				for part in project_parts:
 					try:
 						print("ATTEMPT")
-						part_id = project_parts["data"][part_index]["entry/part-id"] 
+						print("parts index", part_index)
+						part_id = project_parts[part_index]["entry/part-id"] 
 						print("part_id", part_id)
 						parts.append(part_id)
 
@@ -446,6 +460,7 @@ def get_boms(projects, headers):
 						e.add_note("part does not contain the data field 'entry/part-id'")
 
 					part_index += 1
+				print("exited for part in projet_parts loop")
 
 				bom_entry = {"project_name": project_name, "parts": parts}
 
@@ -454,14 +469,15 @@ def get_boms(projects, headers):
 
 			project_index += 1
 			print("waiting")
-
+			print("updated project index", project_index)
 	
 		with open("project_entries_cache.json", 'w') as file:
 			json.dump(project_boms, file)
 
+	else: #cache exists and does not need to be updated 
+		project_boms = json_data 
+
 	return json_data
-
-
 
 
 '''
