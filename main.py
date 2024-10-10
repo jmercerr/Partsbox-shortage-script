@@ -1,5 +1,6 @@
 """ 
 Main module for partsbox api interface
+
 """
 
 import json 
@@ -9,8 +10,10 @@ import calculate
 import time_stamp
 import cache
 
+
 """
-function to format the printing of json data
+Function to format the printing of json data (for testing)
+
 @params
 	- obj: object containing json data
 @returns 
@@ -27,8 +30,9 @@ READ = 1
 
 """main"""
 if __name__ == '__main__':
-	url = 'https://api.partsbox.com/api/1/part/all' 
-	json_cache = 'request_cache.json'
+	#get all parts data from PartsBox
+	url = "https://api.partsbox.com/api/1/part/all" 
+	json_cache = "request_cache.json"
 
 	try: 
 		with open("partsbox_config.json") as config_file: 
@@ -40,7 +44,7 @@ if __name__ == '__main__':
 		print("partsbox_config.json file created, populate file with your api key and rerun program!\n the format for the config file is as follows\n {'API_key': 'APIKey enter_your_api_key_here'}")
 
 	headers = {
-	'Authorization': config[READ]["API_key"],
+	"Authorization": config[READ]["API_key"],
 	"Content-Type" : "application/json" #get api key for read only access
 	}
 
@@ -52,15 +56,17 @@ if __name__ == '__main__':
 
 	update = cache.get_update_flag(Timestamps[0], cache_name)
 
-	data: dict = cache.fetch_data(update=update,
-						    json_cache=json_cache,
-							url=url, 
-							headers=headers,
-							params=None)
+	#check rate limit for Partsbox api
+	sort_data.check_partsbox_limit()
 
+	data: dict = cache.fetch_data(update = update,
+						    json_cache = json_cache,
+							url = url, 
+							headers = headers,
+							params = None)
 
 	#create list of just the data entries from api response
-	parts = data['data']
+	parts = data["data"]
 
 
 	#for testing delete empty stock lists 
@@ -68,14 +74,15 @@ if __name__ == '__main__':
 	parts = sort_data.remove_empty_stock_list(parts)
 	#jprint(sorted_stock)
 	length = len(parts)
-	print('Length after inital delete', length)
+	print("Length after inital delete", length)
 	print("after delete function")
 
 
 	#for testing lead time function 
 	print("entering update lead time functions")
+	#change header to api key for writing in order to update lead times if necessary 
 	headers = {
-			'Authorization': config[WRITE]["API_key"] 
+			"Authorization": config[WRITE]["API_key"] 
 			}
 	sort_data.update_lead_times(parts, headers)
 	print("after update lead time function")
@@ -109,7 +116,7 @@ if __name__ == '__main__':
 	sorted_stock = sort_data.remove_empty_stock_dict(sorted_stock)
 	#jprint(sorted_stock)
 	length = len(sorted_stock)
-	print('Length after second delete', length)
+	print("Length after second delete", length)
 	print("after delete function")
 
 
@@ -165,7 +172,7 @@ if __name__ == '__main__':
 	print("before getting data for airtable")
 	airtable_data = sort_data.get_data_for_airtable(sorted_stock)
 	print("after getting data for airtable")
-	jprint(airtable_data) 
+	#jprint(airtable_data) 
 
 
 	#for testing pushing to airtable

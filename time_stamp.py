@@ -7,7 +7,8 @@ from datetime import datetime, timedelta
 
 
 """
-Calculates Timestamps 
+Function that calculates Timestamps 
+
 @params
     - none 
 @returns 
@@ -30,12 +31,12 @@ def get_timestamps():
         #if in previous year
         if difference <= 0: 
             month = 12 + difference
-            previous_date = current_date.replace(month=month, year=current_date.year-1)
+            previous_date = current_date.replace(month = month, year = current_date.year - 1)
 
         #if in the current year
         else:
             month = current_date.month - num
-            previous_date = current_date.replace(month=month)
+            previous_date = current_date.replace(month = month)
 
         #get timestamp as an int and store in dictionary of timestamps 
         previous_timestamp = int(previous_date.timestamp())
@@ -46,12 +47,13 @@ def get_timestamps():
 
 
 '''
-calculates the difference in days between two timestamps 
+Function that calculates the difference in days between two timestamps 
+
 @params
-    - timestamp_1: first time stamp 
-    - timestamp_2: second time stamp 
+    - timestamp_1: first time stamp, unix timestamp, in milliseconds (integer) 
+    - timestamp_2: second time stamp, unix timestamp, in milliseconds (integer)
 @returns 
-    - difference: difference between two timestamps in days 
+    - difference: difference between two timestamps in days (integer)
 '''
 def get_difference(timestamp_1, timestamp_2):
     MILLI_PER_DAY = 86400000
@@ -64,10 +66,11 @@ def get_difference(timestamp_1, timestamp_2):
 
 
 '''
-determines if two time stamps are in the same time period 
+Function that determines if two time stamps are in the same time period 
+
 @params 
-    - timestamp_1: first time stamp 
-    - timestamp_2: second time stamp
+    - timestamp_1: first time stamp, unix timestamp, in milliseconds (integer)
+    - timestamp_2: second time stamp, unix timestamp, in milliseconds (integer)
     - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
                   timestamps are unix timestamps, in milliseconds represented as integers 
 @returns
@@ -76,16 +79,16 @@ determines if two time stamps are in the same time period
 def get_similar_timeperiod(timestamp_1, timestamp_2, Timestamps):
 
     if (Timestamps[0] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[1]) and (timestamp_2 > Timestamps[1]): #in the past month
-        time_period = '1_month'
+        time_period = "1_month"
 
     elif (Timestamps[1] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[3])and (timestamp_2 > Timestamps[3]): #between the past month and past 3 months   
-        time_period = '3_months'
+        time_period = "3_months"
 
     elif (Timestamps[3] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[6]) and (timestamp_2 > Timestamps[6]): #between the past 3 months and past 6 months
-        time_period = '6_months'
+        time_period = "6_months"
 
     elif (Timestamps[6] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[12]) and (timestamp_2 > Timestamps[12]) : #between the past 6 months and past year
-        time_period = '12_months'
+        time_period = "12_months"
     else:
         time_period = 0
 
@@ -93,10 +96,11 @@ def get_similar_timeperiod(timestamp_1, timestamp_2, Timestamps):
 
 
 '''
-determines the timeperiod a timestamp falls in
+Function that determines the timeperiod that a timestamp falls in
+
 @params 
-    - timestamp_1: first time stamp 
-    - timestamp_2: second time stamp
+    - timestamp_1: first time stamp, unix timestamp, in milliseconds (integer)
+    - timestamp_2: second time stamp, unix timestamp, in milliseconds (integer)
     - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
                   timestamps are unix timestamps, in milliseconds represented as integers 
 @returns
@@ -106,16 +110,16 @@ def get_current_timeperiod(timestamp, Timestamps):
     time_period = None
 
     if (Timestamps[0] > timestamp) and (timestamp > Timestamps[1]): #in the past month
-        time_period = '1_month'
+        time_period = "1_month"
 
     elif (Timestamps[1] > timestamp) and  (timestamp > Timestamps[3]): #between the past month and past 3 months   
-        time_period = '3_months'
+        time_period = "3_months"
 
     elif (Timestamps[3] > timestamp)  and (timestamp > Timestamps[6]): #between the past 3 months and past 6 months
-        time_period = '6_months'
+        time_period = "6_months"
 
     elif (Timestamps[6] > timestamp)  and (timestamp > Timestamps[12]): #between the past 6 months and past year
-        time_period = '12_months'
+        time_period = "12_months"
     else: 
         time_period = None
 
@@ -123,38 +127,40 @@ def get_current_timeperiod(timestamp, Timestamps):
 
 
 '''
-function to get the time since last batch for each part
+Function to get the time since last batch for each part
+
 @params
-    - current_timestamp: timestamp from when get_timestamps function was called
-                         unix timestamp, in milliseconds represented as an integer
-    - sorted_stock: sorted stock data 
+    - current_timestamp: timestamp from when get_timestamps function was called,  
+                         unix timestamp, in milliseconds (integer)
+    - sorted_stock: nested dictionary containg data for all valid parts 
 @returns
     - sorted_stock: sorted stock data with added data to each part for time since last batch 
 '''
 def get_time_since_last_batch(current_timestamp, sorted_stock):
     for part in sorted_stock: 
-        stock_history = sorted_stock[part]['stock']
+        stock_history = sorted_stock[part]["stock"]
         length = len(stock_history)
         stock_index = length - 1
 
-        last_batch = stock_history[stock_index]['stock/timestamp']
+        last_batch = stock_history[stock_index]["stock/timestamp"]
         time_since_last_batch = get_difference(last_batch, current_timestamp)
         sorted_stock[part]["days_since_last_batch"] = time_since_last_batch
-        date = datetime.fromtimestamp(last_batch/1000) #convert timestamp to seconds from milliseconds 
+        date = datetime.fromtimestamp(last_batch / 1000) #convert timestamp to seconds from milliseconds 
         date = datetime.date(date)
         format_string = '%Y-%m-%d'
         # Convert the datetime object to a string in the specified format
         date_string = date.strftime(format_string)
-        sorted_stock[part]['date_last_batch'] = date_string       
+        sorted_stock[part]["date_last_batch"] = date_string       
 
     return sorted_stock
 
 
 '''
-function to get date of last acquisition of parts 
+Function to get date of last acquisition of parts 
+
 @params
-    - current_timestamp: timestamp from when get_timestamp function was called, 
-                         unix timestamp, in milliseconds represented as an integer 
+    - current_timestamp: timestamp from when get_timestamp function was called,
+                         unix timestamp, in milliseconds (integer)
     - parts: list of dictionaries with full response from api request 
 @returns 
     - parts: parts data with added feild for date of last acquisition 
@@ -173,7 +179,7 @@ def get_date_of_last_restock(current_timestamp, parts):
         if stock_entry == None:
             parts[part_entry]["date_last_restock"] = None
         else:
-            last_restock = parts[part_entry]['part/stock'][stock_entry]['stock/timestamp']
+            last_restock = parts[part_entry]["part/stock"][stock_entry]["stock/timestamp"]
             date = datetime.fromtimestamp(last_restock/1000) #convert timestamp to seconds from milliseconds first
             date = datetime.date(date)
             format_string = '%Y-%m-%d'
@@ -186,8 +192,8 @@ def get_date_of_last_restock(current_timestamp, parts):
     return parts
 
 '''
-function that determines the most recent restock based on comments not containing 'move'
-and quantity being positive 
+Function that determines the most recent restock based on comments not containing 'move' and quantity being positive 
+
 @params 
     - parts: list of dictionaries containing data for all parts
     - stock_index: integer value for position in stock list (end of list)
@@ -205,11 +211,11 @@ def get_restock_entry(parts, stock_index, part_entry):
         #loop until most recent entry that is a restock 
         if stock_index > 0: 
             stock_index -= 1
-            quantity = parts[part_entry]['part/stock'][stock_index]['stock/quantity']
+            quantity = parts[part_entry]["part/stock"][stock_index]["stock/quantity"]
 
             try:
-                comment = parts[part_entry]['part/stock'][stock_index]['stock/comments']
-                word = 'moved'
+                comment = parts[part_entry]["part/stock"][stock_index]["stock/comments"]
+                word = "moved"
                 #check if stock entry was for moving stock
                 if word in comment.lower():
                     comment = False
@@ -230,9 +236,3 @@ def get_restock_entry(parts, stock_index, part_entry):
             stock_index = None
 
     return stock_index
-
-
-
-""" Testing the functions """
-if __name__ == '__main__':
-    print(get_timestamps())
