@@ -68,7 +68,7 @@ def get_avg_batch(sorted_stock, Timestamps):
 			#call get time period function 
 			time_period = time_stamp.get_current_timeperiod(timestamp, Timestamps)
 
-			if time_period != None: 
+			if time_period: 
 				#increase batch total based on time period 
 				batch_totals[time_period] = batch_totals[time_period] + sorted_stock[part]["stock"][stock_entry]["stock/quantity"]
 
@@ -138,7 +138,7 @@ def get_avg_time(sorted_stock, Timestamps):
 			else: 
 				difference = 0
 
-			if time_period != 0:
+			if time_period:
 				time_totals[time_period] = time_totals[time_period] + difference
 				data_points[time_period] = data_points[time_period] + 1
 
@@ -185,7 +185,7 @@ def get_weighted_average(averages):
 	time_periods = ["1_month", "3_months", "6_months", "12_months"]
 	year_average = averages["12_months"] 
 
-	if year_average != 0: #if there is data for the past year
+	if year_average: #if there is data for the past year
 		tolerance = year_average * 0.15
 		lower_bound = int(averages["12_months"] - tolerance)
 		upper_bound = int(averages["12_months"] + tolerance)
@@ -210,10 +210,10 @@ def get_weighted_average(averages):
 
 	i = 0 
 	#determine if a weighted average needs to be calculated or if the 12 month average should be used
-	while weighted_flag == False and i <= 3:
+	while not weighted_flag and i <= 3:
 		average = averages[time_periods[i]]
 
-		if average != 0: 
+		if average: 
 			if lower_bound <= average <= upper_bound:
 				weighted_flag = False
 			else: 
@@ -222,7 +222,7 @@ def get_weighted_average(averages):
 		i += 1 
 
 	divisor = [10, 6, 3, 1]
-	if weighted_flag == True:
+	if weighted_flag:
 		average_for_calculations = (averages["1_month"] * 4) + (averages ["3_months"] * 3) + (averages["6_months"] * 2) + (averages["12_months"] * 1)
 		average_for_calculations = average_for_calculations / divisor[zero_count]
 
@@ -270,7 +270,7 @@ def get_risk_level(sorted_stock, current_timestamp):
 			e.add_note(f"{part} does not contain data for the past year, resulting in an average batch size of 0, unlikely that the part will be needed soon")
 			number_of_batches = 0
 
-		if number_of_batches == 0: #next batch will require more stock before it can be completed 
+		if not number_of_batches: #next batch will require more stock before it can be completed 
 			estimated_rop =  time_till_next_batch - lead_time
 		else:
 			estimated_rop = (number_of_batches * avg_time) - lead_time 

@@ -5,12 +5,12 @@ Module that contains functions for sorting data for partsbox api interface, and 
 
 import json 
 import pandas as pd
+import time
+import requests
 import csv
 from ratelimit import limits, sleep_and_retry
 from alive_progress import alive_bar
 from alive_progress.styles import showtime
-import time
-import requests
 import cache
 
 
@@ -56,10 +56,11 @@ def update_lead_times(parts, headers):
 			#set to default of 2 weeks 
 			valid = False
 
-		if valid == False: 
+		if not valid: 
 			url = "https://api.partsbox.com/api/1/part/update-custom-fields"
 			payload = {"part/id": part_id,  "custom-fields": [{"key": "lead_time_(weeks)", "value": "2"}]}
 			json_data = requests.post(url, headers = headers, json = payload).json()
+			part_lead = 2 #set to default 
 
 		part_entry += 1
 
@@ -199,7 +200,7 @@ def sort(parts, Timestamps):
 				negative = True
 
 			#if for production add to stock list 
-			if valid == True and negative == True:
+			if valid and negative:
 				valid_stock.append(stock_data)
 				add_part_flag == True
 
@@ -236,10 +237,10 @@ def remove_empty_stock_list(parts):
 		except KeyError: #entry does not exist 
 			valid = False
 
-		if stock_data == []:
+		if not stock_data:
 			valid = False
 
-		if valid == True: 
+		if valid: 
 			refined_data.append(data) #add part entry to list if stock history is valid
 
 		part_entry += 1 
@@ -268,10 +269,10 @@ def remove_empty_stock_dict(sorted_stock):
 		except KeyError: #entry does not exist 
 			valid = False
 
-		if stock_data == []:
+		if not stock_data:
 			valid = False
 
-		if valid == True: 
+		if valid: 
 			refined_data[part] = data
 
 	return refined_data
@@ -413,8 +414,9 @@ def get_projects(headers, current_timestamp):
 	url = "https://api.partsbox.com/api/1/project/all"
 	
 	cache_name = "project_cache.json"
+	timeframe = "month"
 	#see if cache needs to be updated
-	update = cache.get_update_flag(current_timestamp, cache_name)
+	update = cache.get_update_flag(current_timestamp, cache_name, timeframe)
 
 	#check rate limit for Partsbox api
 	check_partsbox_limit()
@@ -454,11 +456,11 @@ def get_boms(projects, headers, update):
 		print(f'No local cache found... ({e})')
 		json_data = None
  
-	number_of_calls = len(projects)
-	print("getting boms from Partsbox")
-	with alive_bar(number_of_calls, bar = "fish") as bar: #set up progress bar based off of number of calls to be made
-		#create cache file 	
-		if not json_data or update == True:
+	#create cache file 	
+	if not json_data or update:
+		number_of_calls = len(projects)
+		print("getting boms from Partsbox")
+		with alive_bar(number_of_calls, bar = "fish") as bar: #set up progress bar based off of number of calls to be made
 			#make api requests in loop
 			project_index = 0
 			project_boms = []
@@ -499,9 +501,9 @@ def get_boms(projects, headers, update):
 			with open("project_entries_cache.json", "w") as file:
 				json.dump(project_boms, file)
 
-		else: #cache exists and does not need to be updated 
-			print("Fetched data from local cache!")
-			project_boms = json_data 
+	else: #cache exists and does not need to be updated 
+		print("Fetched data from local cache!")
+		project_boms = json_data 
 
 	return project_boms
 

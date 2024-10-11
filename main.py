@@ -53,8 +53,9 @@ if __name__ == '__main__':
 	Timestamps = time_stamp.get_timestamps()
 	print("after timestamp function")
 	cache_name = "request_cache.json"
+	timeframe = "week"
 
-	update = cache.get_update_flag(Timestamps[0], cache_name)
+	update = cache.get_update_flag(Timestamps[0], cache_name, timeframe)
 
 	#check rate limit for Partsbox api
 	sort_data.check_partsbox_limit()

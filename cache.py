@@ -54,11 +54,19 @@ Function determines if cache file needs to be updated with new data from partsbo
 @params
 	- current_timestamp: the timestamp from when the get_timestamps function was called, 
 				         unix timestamp, in milliseconds (integer)
+	- cache: file name of cache 
+	- timeframe: month or week (string), to determine timeframe in which the cache must be updated
 @returns 
 	- update: bool flag (set to true if the cache was last modified over a week ago, false otherwise)
 '''
-def get_update_flag(current_timestamp, cache): 
+def get_update_flag(current_timestamp, cache, timeframe): 
 	MILLI_PER_WEEK = 604800000
+	MILLI_PER_MONTH = 2629746000
+
+	if timeframe == "week": 
+		difference = MILLI_PER_WEEK
+	if timeframe == "month": 
+		difference = MILLI_PER_MONTH 
 
 	#get timestamp in seconds
 	modified_time = int(os.path.getmtime(cache))
@@ -66,11 +74,11 @@ def get_update_flag(current_timestamp, cache):
 	#convert to milliseconds 
 	modified_time = modified_time * 1000
 
-	one_week_ago = current_timestamp - MILLI_PER_WEEK
+	update_time = current_timestamp - difference
 
-	if modified_time >= one_week_ago: #modified within the past week 
+	if modified_time >= update_time: #modified within the timeframe, does not need to be updated
 		update = False
-	else: #modified more than a week ago
+	else: #modified outside of the timeframe and needs to be updated
 		update = True
 
 	return update
