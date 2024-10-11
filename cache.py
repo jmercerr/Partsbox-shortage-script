@@ -8,20 +8,22 @@ import requests
 import time 
 import os
 
-'''
-Function determines if cache file exists 
-	if file exists - use data from file
-	else - creates cache file, makes api request, stores response in file 
 
-@params
-	- update: flag (bool)
-	- json_cache: file name
-	- url: for api request
-	- headers: for api request
-@returns
-	- json_data: data in the cache file 
-'''
 def fetch_data(*, update: bool = False, json_cache: str, url: str, headers: dict, params: dict):
+	"""
+	Determine if cache file exists.
+
+		if file exists - use data from file
+		else - creates cache file, makes api request, stores response in file 
+
+	@params
+		- update: flag (bool)
+		- json_cache: file name
+		- url: for api request
+		- headers: for api request
+	@returns
+		- json_data: data in the cache file 
+	"""	
 	if update:
 		json_data = None
 	else:
@@ -48,18 +50,18 @@ def fetch_data(*, update: bool = False, json_cache: str, url: str, headers: dict
 	return json_data
 
 
-'''
-Function determines if cache file needs to be updated with new data from partsbox
-
-@params
-	- current_timestamp: the timestamp from when the get_timestamps function was called, 
-				         unix timestamp, in milliseconds (integer)
-	- cache: file name of cache 
-	- timeframe: month or week (string), to determine timeframe in which the cache must be updated
-@returns 
-	- update: bool flag (set to true if the cache was last modified over a week ago, false otherwise)
-'''
 def get_update_flag(current_timestamp, cache, timeframe): 
+	"""
+	Determine if cache file needs to be updated with new data from partsbox.
+
+	@params
+		- current_timestamp: the timestamp from when the get_timestamps function was called, 
+					         unix timestamp, in milliseconds (integer)
+		- cache: file name of cache 
+		- timeframe: month or week (string), to determine timeframe in which the cache must be updated
+	@returns 
+		- update: bool flag (set to true if the cache was last modified over a week ago, false otherwise)
+	"""
 	MILLI_PER_WEEK = 604800000
 	MILLI_PER_MONTH = 2629746000
 
@@ -82,8 +84,3 @@ def get_update_flag(current_timestamp, cache, timeframe):
 		update = True
 
 	return update
-
-
-
-
-

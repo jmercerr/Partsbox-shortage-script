@@ -1,25 +1,22 @@
 """
-Module containing functions to complete necessary calculations for partsbox api interface 
+Module containing functions to complete necessary calculations for partsbox api interface.
 
 """
 
 import time_stamp
 import pandas as pd
+import pydoc 
 
 
-#constant default (in days), used in get_lead_times, if CSV has no data
-DEFAULT_LEAD_TIME = 7
-
-
-"""
-Function that calculates total stock count for each part
-
-@params 
-	- parts: json data from api response/cache
-@returns 
-	- parts: data from api/response with appended data for stock counts 
-"""
 def total_stock(parts):
+	"""
+	Calculate total stock count for each part.
+
+	@params 
+		- parts: json data from api response/cache
+	@returns 
+		- parts: data from api/response with appended data for stock counts 
+	"""
 	part_entry = 0
 
 	for part in parts:
@@ -36,20 +33,19 @@ def total_stock(parts):
 		part_entry += 1
 
 	return parts
+	
 
-
-
-"""
-Function to calculate the average batch size for 4 time periods 
-
-@params 
-	- sorted_stock: sorted data from api response/cache 
-  - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
-                timestamps are unix timestamps, in milliseconds represented as integers 
-@returns 
-	- sorted_stock: sorted data with dictionary of average batch sizes added 
-"""
 def get_avg_batch(sorted_stock, Timestamps):
+	"""
+	Calculate the average batch size for 4 time periods. 
+
+	@params 
+		- sorted_stock: sorted data from api response/cache 
+	  - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
+	                timestamps are unix timestamps, in milliseconds represented as integers 
+	@returns 
+		- sorted_stock: sorted data with dictionary of average batch sizes added 
+	"""
 	for part in sorted_stock:
 		batch_totals = {"1_month": 0, "3_months": 0, "6_months": 0, "12_months": 0}
 		batch_averages = {"1_month": 0, "3_months": 0, "6_months": 0, "12_months": 0}
@@ -104,17 +100,17 @@ def get_avg_batch(sorted_stock, Timestamps):
 	return sorted_stock
 
 
-"""
-Function to calculate the average time between batches for 4 time periods 
-
-@params
-	- sorted_stock: dictionary of sorted data from api response/cache
-	- Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
-                timestamps are unix timestamps, in milliseconds represented as integers 
-@returns 
-	- sorted_stock: sorted stock data with dictionary of average times between batches added
-"""
 def get_avg_time(sorted_stock, Timestamps): 
+	"""
+	Calculate the average time between batches for 4 time periods. 
+
+	@params
+		- sorted_stock: dictionary of sorted data from api response/cache
+		- Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
+	                timestamps are unix timestamps, in milliseconds represented as integers 
+	@returns 
+		- sorted_stock: sorted stock data with dictionary of average times between batches added
+	"""
 	for part in sorted_stock: 
 		time_totals = {"1_month": 0, "3_months": 0, "6_months": 0, "12_months": 0}
 		time_averages = {"1_month": 0, "3_months": 0, "6_months": 0, "12_months": 0}
@@ -173,15 +169,15 @@ def get_avg_time(sorted_stock, Timestamps):
 	return sorted_stock
 
 
-''' 
-Function that determines whether 4 averages for a part are relatively similar or if a weighted average must be calculated 
-
-@params
-	- averages: a dictionary containing 4 averages for the 4 time periods
-@returns
-	- average_for_calculations: weighted average if averages are not relatively similar, year average otherwise
-'''
 def get_weighted_average(averages):
+	"""
+	Determine if 4 averages are similar or if weighted average must be calculated. 
+
+	@params
+		- averages: a dictionary containing 4 averages for the 4 time periods
+	@returns
+		- average_for_calculations: weighted average if averages are not relatively similar, year average otherwise
+	"""	
 	time_periods = ["1_month", "3_months", "6_months", "12_months"]
 	year_average = averages["12_months"] 
 
@@ -232,22 +228,22 @@ def get_weighted_average(averages):
 	return average_for_calculations
 
 
-''' 
-Function to calculate the risk level of running out of each part 
+def get_risk_level(sorted_stock, current_timestamp):
+	"""
+	Calculate the risk level of running out of each part.
 
-Risk Scale:
-	- high = likely to run out in next month
-	- medium = likely to run out in month - 3 months 
-	- low = likely to run out in over 3 months 
-	- not enough data = no stock data or only 1 data point - unlikely for future batches to take place 
-	- overdue for batch = using the formula for reording this part should have already been ordered but since it hasnt the need for a batch can not be determined 
-@params 
-	- sorted_stock: dictionary with all sorted_data and added feilds from previous calculations 
-	- current_timestamp: unix timestamp in milliseconds (integer) from when the program was run 
-@returns
-	- sorted_stock: with added risk level and estimated time till no stock 
-'''
-def get_risk_level(sorted_stock, current_timestamp): 
+	Risk Scale:
+		- high = likely to run out in next month
+		- medium = likely to run out in month - 3 months 
+		- low = likely to run out in over 3 months 
+		- not enough data = no stock data or only 1 data point - unlikely for future batches to take place 
+		- overdue for batch = using the formula for reording this part should have already been ordered but since it hasnt the need for a batch can not be determined 
+	@params 
+		- sorted_stock: dictionary with all sorted_data and added feilds from previous calculations 
+		- current_timestamp: unix timestamp in milliseconds (integer) from when the program was run 
+	@returns
+		- sorted_stock: with added risk level and estimated time till no stock 
+	""" 
 	for part in sorted_stock: 
 		estimated_rop = 0
 		sorted_stock[part]["risk_level"] = None
@@ -290,4 +286,3 @@ def get_risk_level(sorted_stock, current_timestamp):
 				sorted_stock[part]["risk_level"] = "Low"
 
 	return sorted_stock
-

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module time_stamp</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">time_stamp</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cjordan%5Cdocuments%5Cgithub%5Cpartsbox-shortage-script%5Ctime_stamp.py">c:\users\jordan\documents\github\partsbox-shortage-script\time_stamp.py</a></td></tr></table>
+    <p><span class="code">Module&nbsp;that&nbsp;contains&nbsp;functions&nbsp;for&nbsp;dealing&nbsp;with&nbsp;timestamps</span></p>
+<p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-get_current_timeperiod"><strong>get_current_timeperiod</strong></a>(timestamp, Timestamps)</dt><dd><span class="code">Determine&nbsp;the&nbsp;timeperiod&nbsp;that&nbsp;a&nbsp;timestamp&nbsp;falls&nbsp;in.<br>
+&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;timestamp_1:&nbsp;first&nbsp;time&nbsp;stamp,&nbsp;unix&nbsp;timestamp,&nbsp;in&nbsp;milliseconds&nbsp;(integer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;timestamp_2:&nbsp;second&nbsp;time&nbsp;stamp,&nbsp;unix&nbsp;timestamp,&nbsp;in&nbsp;milliseconds&nbsp;(integer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Timestamps:&nbsp;dictionary&nbsp;of&nbsp;timestamps&nbsp;for&nbsp;the&nbsp;four&nbsp;time&nbsp;periods&nbsp;used&nbsp;and&nbsp;the&nbsp;current&nbsp;timestamp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timestamps&nbsp;are&nbsp;unix&nbsp;timestamps,&nbsp;in&nbsp;milliseconds&nbsp;represented&nbsp;as&nbsp;integers&nbsp;<br>
+@returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;time_period:&nbsp;time&nbsp;period&nbsp;that&nbsp;both&nbsp;timestamps&nbsp;are&nbsp;in&nbsp;or&nbsp;null&nbsp;if&nbsp;timestamps&nbsp;are&nbsp;not&nbsp;within&nbsp;the&nbsp;same&nbsp;time&nbsp;period</span></dd></dl>
+ <dl><dt><a name="-get_date_of_last_restock"><strong>get_date_of_last_restock</strong></a>(current_timestamp, parts)</dt><dd><span class="code">Get&nbsp;the&nbsp;date&nbsp;of&nbsp;last&nbsp;acquisition&nbsp;of&nbsp;parts.<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;current_timestamp:&nbsp;timestamp&nbsp;from&nbsp;when&nbsp;get_timestamp&nbsp;function&nbsp;was&nbsp;called,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unix&nbsp;timestamp,&nbsp;in&nbsp;milliseconds&nbsp;(integer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;parts:&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;with&nbsp;full&nbsp;response&nbsp;from&nbsp;api&nbsp;request&nbsp;<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;parts:&nbsp;parts&nbsp;data&nbsp;with&nbsp;added&nbsp;feild&nbsp;for&nbsp;date&nbsp;of&nbsp;last&nbsp;acquisition</span></dd></dl>
+ <dl><dt><a name="-get_difference"><strong>get_difference</strong></a>(timestamp_1, timestamp_2)</dt><dd><span class="code">Calculate&nbsp;the&nbsp;difference&nbsp;in&nbsp;days&nbsp;between&nbsp;two&nbsp;timestamps.&nbsp;<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;timestamp_1:&nbsp;first&nbsp;time&nbsp;stamp,&nbsp;unix&nbsp;timestamp,&nbsp;in&nbsp;milliseconds&nbsp;(integer)&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;timestamp_2:&nbsp;second&nbsp;time&nbsp;stamp,&nbsp;unix&nbsp;timestamp,&nbsp;in&nbsp;milliseconds&nbsp;(integer)<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;difference:&nbsp;difference&nbsp;between&nbsp;two&nbsp;timestamps&nbsp;in&nbsp;days&nbsp;(integer)</span></dd></dl>
+ <dl><dt><a name="-get_restock_entry"><strong>get_restock_entry</strong></a>(parts, stock_index, part_entry)</dt><dd><span class="code">Determine&nbsp;the&nbsp;most&nbsp;recent&nbsp;restock.&nbsp;<br>
+&nbsp;<br>
+Restock&nbsp;requirements:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;quantity&nbsp;is&nbsp;positive&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;does&nbsp;not&nbsp;contain&nbsp;"moved"&nbsp;in&nbsp;comment&nbsp;<br>
+&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;parts:&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;containing&nbsp;data&nbsp;for&nbsp;all&nbsp;parts<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;stock_index:&nbsp;integer&nbsp;value&nbsp;for&nbsp;position&nbsp;in&nbsp;stock&nbsp;list&nbsp;(end&nbsp;of&nbsp;list)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;part_entry:&nbsp;part&nbsp;id&nbsp;for&nbsp;accessing&nbsp;part&nbsp;from&nbsp;parts&nbsp;<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;stock_index:&nbsp;integer&nbsp;value&nbsp;for&nbsp;position&nbsp;in&nbsp;list&nbsp;of&nbsp;latest&nbsp;restock</span></dd></dl>
+ <dl><dt><a name="-get_similar_timeperiod"><strong>get_similar_timeperiod</strong></a>(timestamp_1, timestamp_2, Timestamps)</dt><dd><span class="code">Determine&nbsp;if&nbsp;two&nbsp;time&nbsp;stamps&nbsp;are&nbsp;in&nbsp;the&nbsp;same&nbsp;time&nbsp;period.&nbsp;<br>
+&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;timestamp_1:&nbsp;first&nbsp;time&nbsp;stamp,&nbsp;unix&nbsp;timestamp,&nbsp;in&nbsp;milliseconds&nbsp;(integer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;timestamp_2:&nbsp;second&nbsp;time&nbsp;stamp,&nbsp;unix&nbsp;timestamp,&nbsp;in&nbsp;milliseconds&nbsp;(integer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Timestamps:&nbsp;dictionary&nbsp;of&nbsp;timestamps&nbsp;for&nbsp;the&nbsp;four&nbsp;time&nbsp;periods&nbsp;used&nbsp;and&nbsp;the&nbsp;current&nbsp;timestamp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timestamps&nbsp;are&nbsp;unix&nbsp;timestamps,&nbsp;in&nbsp;milliseconds&nbsp;represented&nbsp;as&nbsp;integers&nbsp;<br>
+@returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;time_period:&nbsp;time&nbsp;period&nbsp;that&nbsp;both&nbsp;timestamps&nbsp;are&nbsp;in&nbsp;or&nbsp;null&nbsp;if&nbsp;timestamps&nbsp;are&nbsp;not&nbsp;within&nbsp;the&nbsp;same&nbsp;time&nbsp;period</span></dd></dl>
+ <dl><dt><a name="-get_time_since_last_batch"><strong>get_time_since_last_batch</strong></a>(current_timestamp, sorted_stock)</dt><dd><span class="code">Get&nbsp;the&nbsp;time&nbsp;since&nbsp;last&nbsp;batch&nbsp;for&nbsp;each&nbsp;part.<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;current_timestamp:&nbsp;timestamp&nbsp;from&nbsp;when&nbsp;get_timestamps&nbsp;function&nbsp;was&nbsp;called,&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unix&nbsp;timestamp,&nbsp;in&nbsp;milliseconds&nbsp;(integer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;nested&nbsp;dictionary&nbsp;containg&nbsp;data&nbsp;for&nbsp;all&nbsp;valid&nbsp;parts&nbsp;<br>
+@returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;sorted&nbsp;stock&nbsp;data&nbsp;with&nbsp;added&nbsp;data&nbsp;to&nbsp;each&nbsp;part&nbsp;for&nbsp;time&nbsp;since&nbsp;last&nbsp;batch</span></dd></dl>
+ <dl><dt><a name="-get_timestamps"><strong>get_timestamps</strong></a>()</dt><dd><span class="code">Calculates&nbsp;Timestamps&nbsp;for&nbsp;4&nbsp;time&nbsp;periods.&nbsp;<br>
+&nbsp;<br>
+Time&nbsp;Periods:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;current&nbsp;time<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;1&nbsp;month&nbsp;ago&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;3&nbsp;months&nbsp;ago&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;6&nbsp;months&nbsp;ago&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;12&nbsp;months&nbsp;ago<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;none&nbsp;<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Timestamps:&nbsp;dictionary&nbsp;of&nbsp;timestamps&nbsp;for&nbsp;the&nbsp;four&nbsp;time&nbsp;periods&nbsp;used&nbsp;and&nbsp;the&nbsp;current&nbsp;timestamp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timestamps&nbsp;are&nbsp;unix&nbsp;timestamps,&nbsp;in&nbsp;milliseconds&nbsp;represented&nbsp;as&nbsp;integers</span></dd></dl>
+</td></tr></table>
+</body></html>

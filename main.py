@@ -1,5 +1,5 @@
 """ 
-Main module for partsbox api interface
+Main module for partsbox api interface.
 
 """
 
@@ -11,22 +11,23 @@ import time_stamp
 import cache
 
 
-"""
-Function to format the printing of json data (for testing)
-
-@params
-	- obj: object containing json data
-@returns 
-	- none
-"""
-def jprint(obj):
-	text = json.dumps(obj, indent = 4, default = str)
-	print(text)
-
-
 #constants for indexing into partsbox config list
 WRITE = 0
 READ = 1
+
+
+def jprint(obj):
+	"""
+	Format the printing of json data (for testing).
+
+	@params
+		- obj: object containing json data
+	@returns 
+		- none
+	"""
+	text = json.dumps(obj, indent = 4, default = str)
+	print(text)
+
 
 """main"""
 if __name__ == '__main__':

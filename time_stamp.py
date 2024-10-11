@@ -6,16 +6,23 @@ Module that contains functions for dealing with timestamps
 from datetime import datetime, timedelta
 
 
-"""
-Function that calculates Timestamps 
-
-@params
-    - none 
-@returns 
-    - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
-                  timestamps are unix timestamps, in milliseconds represented as integers 
-"""
 def get_timestamps():
+    """
+    Calculates Timestamps for 4 time periods. 
+
+    Time Periods: 
+        - current time
+        - 1 month ago 
+        - 3 months ago 
+        - 6 months ago 
+        - 12 months ago
+
+    @params
+        - none 
+    @returns 
+        - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
+                      timestamps are unix timestamps, in milliseconds represented as integers 
+    """    
     Timestamps = {}
     num_months = (1, 3, 6, 12) #set number of months needed as a tuple 
 
@@ -46,16 +53,16 @@ def get_timestamps():
     return Timestamps 
 
 
-'''
-Function that calculates the difference in days between two timestamps 
-
-@params
-    - timestamp_1: first time stamp, unix timestamp, in milliseconds (integer) 
-    - timestamp_2: second time stamp, unix timestamp, in milliseconds (integer)
-@returns 
-    - difference: difference between two timestamps in days (integer)
-'''
 def get_difference(timestamp_1, timestamp_2):
+    """
+    Calculate the difference in days between two timestamps. 
+
+    @params
+        - timestamp_1: first time stamp, unix timestamp, in milliseconds (integer) 
+        - timestamp_2: second time stamp, unix timestamp, in milliseconds (integer)
+    @returns 
+        - difference: difference between two timestamps in days (integer)
+    """    
     MILLI_PER_DAY = 86400000
 
     difference_in_milli = timestamp_2 - timestamp_1
@@ -65,19 +72,18 @@ def get_difference(timestamp_1, timestamp_2):
     return difference
 
 
-'''
-Function that determines if two time stamps are in the same time period 
-
-@params 
-    - timestamp_1: first time stamp, unix timestamp, in milliseconds (integer)
-    - timestamp_2: second time stamp, unix timestamp, in milliseconds (integer)
-    - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
-                  timestamps are unix timestamps, in milliseconds represented as integers 
-@returns
-    - time_period: time period that both timestamps are in or null if timestamps are not within the same time period 
-'''
 def get_similar_timeperiod(timestamp_1, timestamp_2, Timestamps):
+    """
+    Determine if two time stamps are in the same time period. 
 
+    @params 
+        - timestamp_1: first time stamp, unix timestamp, in milliseconds (integer)
+        - timestamp_2: second time stamp, unix timestamp, in milliseconds (integer)
+        - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
+                      timestamps are unix timestamps, in milliseconds represented as integers 
+    @returns
+        - time_period: time period that both timestamps are in or null if timestamps are not within the same time period 
+    """
     if (Timestamps[0] > timestamp_1) and (Timestamps[0] > timestamp_2) and (timestamp_1 > Timestamps[1]) and (timestamp_2 > Timestamps[1]): #in the past month
         time_period = "1_month"
 
@@ -95,18 +101,18 @@ def get_similar_timeperiod(timestamp_1, timestamp_2, Timestamps):
     return time_period
 
 
-'''
-Function that determines the timeperiod that a timestamp falls in
-
-@params 
-    - timestamp_1: first time stamp, unix timestamp, in milliseconds (integer)
-    - timestamp_2: second time stamp, unix timestamp, in milliseconds (integer)
-    - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
-                  timestamps are unix timestamps, in milliseconds represented as integers 
-@returns
-    - time_period: time period that both timestamps are in or null if timestamps are not within the same time period 
-'''
 def get_current_timeperiod(timestamp, Timestamps):
+    """
+    Determine the timeperiod that a timestamp falls in.
+
+    @params 
+        - timestamp_1: first time stamp, unix timestamp, in milliseconds (integer)
+        - timestamp_2: second time stamp, unix timestamp, in milliseconds (integer)
+        - Timestamps: dictionary of timestamps for the four time periods used and the current timestamp
+                      timestamps are unix timestamps, in milliseconds represented as integers 
+    @returns
+        - time_period: time period that both timestamps are in or null if timestamps are not within the same time period 
+    """    
     time_period = None
 
     if (Timestamps[0] > timestamp) and (timestamp > Timestamps[1]): #in the past month
@@ -126,17 +132,17 @@ def get_current_timeperiod(timestamp, Timestamps):
     return time_period
 
 
-'''
-Function to get the time since last batch for each part
+def get_time_since_last_batch(current_timestamp, sorted_stock):   
+    """
+    Get the time since last batch for each part.
 
-@params
-    - current_timestamp: timestamp from when get_timestamps function was called,  
-                         unix timestamp, in milliseconds (integer)
-    - sorted_stock: nested dictionary containg data for all valid parts 
-@returns
-    - sorted_stock: sorted stock data with added data to each part for time since last batch 
-'''
-def get_time_since_last_batch(current_timestamp, sorted_stock):
+    @params
+        - current_timestamp: timestamp from when get_timestamps function was called,  
+                             unix timestamp, in milliseconds (integer)
+        - sorted_stock: nested dictionary containg data for all valid parts 
+    @returns
+        - sorted_stock: sorted stock data with added data to each part for time since last batch 
+    """
     for part in sorted_stock: 
         stock_history = sorted_stock[part]["stock"]
         length = len(stock_history)
@@ -155,17 +161,17 @@ def get_time_since_last_batch(current_timestamp, sorted_stock):
     return sorted_stock
 
 
-'''
-Function to get date of last acquisition of parts 
-
-@params
-    - current_timestamp: timestamp from when get_timestamp function was called,
-                         unix timestamp, in milliseconds (integer)
-    - parts: list of dictionaries with full response from api request 
-@returns 
-    - parts: parts data with added feild for date of last acquisition 
-'''
 def get_date_of_last_restock(current_timestamp, parts):
+    """
+    Get the date of last acquisition of parts.
+
+    @params
+        - current_timestamp: timestamp from when get_timestamp function was called,
+                             unix timestamp, in milliseconds (integer)
+        - parts: list of dictionaries with full response from api request 
+    @returns 
+        - parts: parts data with added feild for date of last acquisition 
+    """    
     part_entry = 0
 
     for part in parts: 
@@ -191,17 +197,22 @@ def get_date_of_last_restock(current_timestamp, parts):
 
     return parts
 
-'''
-Function that determines the most recent restock based on comments not containing 'move' and quantity being positive 
 
-@params 
-    - parts: list of dictionaries containing data for all parts
-    - stock_index: integer value for position in stock list (end of list)
-    - part_entry: part id for accessing part from parts 
-@returns 
-    - stock_index: integer value for position in list of latest restock 
-'''
 def get_restock_entry(parts, stock_index, part_entry):
+    """
+    Determine the most recent restock. 
+
+    Restock requirements:
+        - quantity is positive 
+        - does not contain "moved" in comment 
+
+    @params 
+        - parts: list of dictionaries containing data for all parts
+        - stock_index: integer value for position in stock list (end of list)
+        - part_entry: part id for accessing part from parts 
+    @returns 
+        - stock_index: integer value for position in list of latest restock 
+    """    
     #initalize flags
     comment = False
     positive = False

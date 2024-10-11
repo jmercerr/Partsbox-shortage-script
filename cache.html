@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module cache</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">cache</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cjordan%5Cdocuments%5Cgithub%5Cpartsbox-shortage-script%5Ccache.py">c:\users\jordan\documents\github\partsbox-shortage-script\cache.py</a></td></tr></table>
+    <p><span class="code">module&nbsp;that&nbsp;contains&nbsp;functions&nbsp;for&nbsp;creating&nbsp;an&nbsp;updating&nbsp;the&nbsp;json&nbsp;cache&nbsp;file</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="json.html">json</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="requests.html">requests</a><br>
+</td><td class="multicolumn"><a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-fetch_data"><strong>fetch_data</strong></a>(*, update: bool = False, json_cache: str, url: str, headers: dict, params: dict)</dt><dd><span class="code">Determine&nbsp;if&nbsp;cache&nbsp;file&nbsp;exists.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;file&nbsp;exists&nbsp;-&nbsp;use&nbsp;data&nbsp;from&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;-&nbsp;creates&nbsp;cache&nbsp;file,&nbsp;makes&nbsp;api&nbsp;request,&nbsp;stores&nbsp;response&nbsp;in&nbsp;file&nbsp;<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;update:&nbsp;flag&nbsp;(bool)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;json_cache:&nbsp;file&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;url:&nbsp;for&nbsp;api&nbsp;request<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;headers:&nbsp;for&nbsp;api&nbsp;request<br>
+@returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;json_data:&nbsp;data&nbsp;in&nbsp;the&nbsp;cache&nbsp;file</span></dd></dl>
+ <dl><dt><a name="-get_update_flag"><strong>get_update_flag</strong></a>(current_timestamp, cache, timeframe)</dt><dd><span class="code">Determine&nbsp;if&nbsp;cache&nbsp;file&nbsp;needs&nbsp;to&nbsp;be&nbsp;updated&nbsp;with&nbsp;new&nbsp;data&nbsp;from&nbsp;partsbox.<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;current_timestamp:&nbsp;the&nbsp;timestamp&nbsp;from&nbsp;when&nbsp;the&nbsp;get_timestamps&nbsp;function&nbsp;was&nbsp;called,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unix&nbsp;timestamp,&nbsp;in&nbsp;milliseconds&nbsp;(integer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;cache:&nbsp;file&nbsp;name&nbsp;of&nbsp;cache&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;timeframe:&nbsp;month&nbsp;or&nbsp;week&nbsp;(string),&nbsp;to&nbsp;determine&nbsp;timeframe&nbsp;in&nbsp;which&nbsp;the&nbsp;cache&nbsp;must&nbsp;be&nbsp;updated<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;update:&nbsp;bool&nbsp;flag&nbsp;(set&nbsp;to&nbsp;true&nbsp;if&nbsp;the&nbsp;cache&nbsp;was&nbsp;last&nbsp;modified&nbsp;over&nbsp;a&nbsp;week&nbsp;ago,&nbsp;false&nbsp;otherwise)</span></dd></dl>
+</td></tr></table>
+</body></html>

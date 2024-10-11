@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module calculate</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">calculate</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cjordan%5Cdocuments%5Cgithub%5Cpartsbox-shortage-script%5Ccalculate.py">c:\users\jordan\documents\github\partsbox-shortage-script\calculate.py</a></td></tr></table>
+    <p><span class="code">Module&nbsp;containing&nbsp;functions&nbsp;to&nbsp;complete&nbsp;necessary&nbsp;calculations&nbsp;for&nbsp;partsbox&nbsp;api&nbsp;interface.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="pandas.html">pandas</a><br>
+</td><td class="multicolumn"><a href="pydoc.html">pydoc</a><br>
+</td><td class="multicolumn"><a href="time_stamp.html">time_stamp</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-get_avg_batch"><strong>get_avg_batch</strong></a>(sorted_stock, Timestamps)</dt><dd><span class="code">Calculate&nbsp;the&nbsp;average&nbsp;batch&nbsp;size&nbsp;for&nbsp;4&nbsp;time&nbsp;periods.&nbsp;<br>
+&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;sorted&nbsp;data&nbsp;from&nbsp;api&nbsp;response/cache&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;Timestamps:&nbsp;dictionary&nbsp;of&nbsp;timestamps&nbsp;for&nbsp;the&nbsp;four&nbsp;time&nbsp;periods&nbsp;used&nbsp;and&nbsp;the&nbsp;current&nbsp;timestamp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timestamps&nbsp;are&nbsp;unix&nbsp;timestamps,&nbsp;in&nbsp;milliseconds&nbsp;represented&nbsp;as&nbsp;integers&nbsp;<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;sorted&nbsp;data&nbsp;with&nbsp;dictionary&nbsp;of&nbsp;average&nbsp;batch&nbsp;sizes&nbsp;added</span></dd></dl>
+ <dl><dt><a name="-get_avg_time"><strong>get_avg_time</strong></a>(sorted_stock, Timestamps)</dt><dd><span class="code">Calculate&nbsp;the&nbsp;average&nbsp;time&nbsp;between&nbsp;batches&nbsp;for&nbsp;4&nbsp;time&nbsp;periods.&nbsp;<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;dictionary&nbsp;of&nbsp;sorted&nbsp;data&nbsp;from&nbsp;api&nbsp;response/cache<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Timestamps:&nbsp;dictionary&nbsp;of&nbsp;timestamps&nbsp;for&nbsp;the&nbsp;four&nbsp;time&nbsp;periods&nbsp;used&nbsp;and&nbsp;the&nbsp;current&nbsp;timestamp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timestamps&nbsp;are&nbsp;unix&nbsp;timestamps,&nbsp;in&nbsp;milliseconds&nbsp;represented&nbsp;as&nbsp;integers&nbsp;<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;sorted&nbsp;stock&nbsp;data&nbsp;with&nbsp;dictionary&nbsp;of&nbsp;average&nbsp;times&nbsp;between&nbsp;batches&nbsp;added</span></dd></dl>
+ <dl><dt><a name="-get_risk_level"><strong>get_risk_level</strong></a>(sorted_stock, current_timestamp)</dt><dd><span class="code">Calculate&nbsp;the&nbsp;risk&nbsp;level&nbsp;of&nbsp;running&nbsp;out&nbsp;of&nbsp;each&nbsp;part.<br>
+&nbsp;<br>
+Risk&nbsp;Scale:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;high&nbsp;=&nbsp;likely&nbsp;to&nbsp;run&nbsp;out&nbsp;in&nbsp;next&nbsp;month<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;medium&nbsp;=&nbsp;likely&nbsp;to&nbsp;run&nbsp;out&nbsp;in&nbsp;month&nbsp;-&nbsp;3&nbsp;months&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;low&nbsp;=&nbsp;likely&nbsp;to&nbsp;run&nbsp;out&nbsp;in&nbsp;over&nbsp;3&nbsp;months&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;not&nbsp;enough&nbsp;data&nbsp;=&nbsp;no&nbsp;stock&nbsp;data&nbsp;or&nbsp;only&nbsp;1&nbsp;data&nbsp;point&nbsp;-&nbsp;unlikely&nbsp;for&nbsp;future&nbsp;batches&nbsp;to&nbsp;take&nbsp;place&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;overdue&nbsp;for&nbsp;batch&nbsp;=&nbsp;using&nbsp;the&nbsp;formula&nbsp;for&nbsp;reording&nbsp;this&nbsp;part&nbsp;should&nbsp;have&nbsp;already&nbsp;been&nbsp;ordered&nbsp;but&nbsp;since&nbsp;it&nbsp;hasnt&nbsp;the&nbsp;need&nbsp;for&nbsp;a&nbsp;batch&nbsp;can&nbsp;not&nbsp;be&nbsp;determined&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;dictionary&nbsp;with&nbsp;all&nbsp;sorted_data&nbsp;and&nbsp;added&nbsp;feilds&nbsp;from&nbsp;previous&nbsp;calculations&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;current_timestamp:&nbsp;unix&nbsp;timestamp&nbsp;in&nbsp;milliseconds&nbsp;(integer)&nbsp;from&nbsp;when&nbsp;the&nbsp;program&nbsp;was&nbsp;run&nbsp;<br>
+@returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;with&nbsp;added&nbsp;risk&nbsp;level&nbsp;and&nbsp;estimated&nbsp;time&nbsp;till&nbsp;no&nbsp;stock</span></dd></dl>
+ <dl><dt><a name="-get_weighted_average"><strong>get_weighted_average</strong></a>(averages)</dt><dd><span class="code">Determine&nbsp;if&nbsp;4&nbsp;averages&nbsp;are&nbsp;similar&nbsp;or&nbsp;if&nbsp;weighted&nbsp;average&nbsp;must&nbsp;be&nbsp;calculated.&nbsp;<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;averages:&nbsp;a&nbsp;dictionary&nbsp;containing&nbsp;4&nbsp;averages&nbsp;for&nbsp;the&nbsp;4&nbsp;time&nbsp;periods<br>
+@returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;average_for_calculations:&nbsp;weighted&nbsp;average&nbsp;if&nbsp;averages&nbsp;are&nbsp;not&nbsp;relatively&nbsp;similar,&nbsp;year&nbsp;average&nbsp;otherwise</span></dd></dl>
+ <dl><dt><a name="-total_stock"><strong>total_stock</strong></a>(parts)</dt><dd><span class="code">Calculate&nbsp;total&nbsp;stock&nbsp;count&nbsp;for&nbsp;each&nbsp;part.<br>
+&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;parts:&nbsp;json&nbsp;data&nbsp;from&nbsp;api&nbsp;response/cache<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;parts:&nbsp;data&nbsp;from&nbsp;api/response&nbsp;with&nbsp;appended&nbsp;data&nbsp;for&nbsp;stock&nbsp;counts</span></dd></dl>
+</td></tr></table>
+</body></html>

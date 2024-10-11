@@ -13,36 +13,35 @@ from alive_progress import alive_bar
 from alive_progress.styles import showtime
 import cache
 
-
-'''
-Empty function for checking calls to the PartsBox API
-
-Should be called at the beggining of every function that makes a request to PartsBox 
-currently partsbox does not enforce rate limiting but if they do change calls and rate_limit to match their listed limits
-'''
-REQUESTS = 200 
-TIME_PERIOD = 60 #(seconds)
-@sleep_and_retry
-@limits(calls = REQUESTS, period = TIME_PERIOD)
-def check_partsbox_limit():
-
-	return
-
-
 #defining constants for indexing api keys 
 WRITE = 0
 READ = 1 
+REQUESTS = 200 
+TIME_PERIOD = 60 #(seconds)
 
-"""
-Function that checks if parts have a valid lead time field and if not adds a custom field with the default lead time
+@sleep_and_retry
+@limits(calls = REQUESTS, period = TIME_PERIOD)
+def check_partsbox_limit():
+	"""
+	Empty function for checking calls to the PartsBox API.
 
-@params	
-	- parts: list of part data from partsbox api response 
-	- headers: headers data including authorization key for api call 
-@returns
-	- parts: with added lead times field for parts that had invalid or non existent lead times 
-"""
-def update_lead_times(parts, headers):
+	Should be called at the beggining of every function that makes a request to PartsBox 
+	currently partsbox does not enforce rate limiting but if they do change calls and rate_limit to match their listed limits
+
+	"""
+	return
+
+
+def update_lead_times(parts, headers):	
+	"""
+	Check if parts have a valid lead time and adds default lead time if not. 
+
+	@params	
+		- parts: list of part data from partsbox api response 
+		- headers: headers data including authorization key for api call 
+	@returns
+		- parts: with added lead times field for parts that had invalid or non existent lead times 
+	"""
 	valid = True
 	part_entry = 0
 
@@ -67,15 +66,15 @@ def update_lead_times(parts, headers):
 	return parts
 
 
-'''
-Function that searches for a custom field for lead times 
-
-@params
-	- part: data for a single part from the parts list  
-@returns
-	- leadtime: leadtime if found or 0 otherwise
-'''
 def get_lead(part):
+	"""
+	Search for a custom field for lead times.
+
+	@params
+		- part: data for a single part from the parts list  
+	@returns
+		- leadtime: leadtime if found or 0 otherwise
+	"""	
 	try: #check if part has valid lead time
 		custom_fields = part["part/custom-fields"]
 		field_index = 0
@@ -95,26 +94,26 @@ def get_lead(part):
 	return leadtime
 
 
-"""
-Function to sort the data from api response to have just the batch data
-@params 
-	- parts: data from api response/cache 
-	- Timestamps: dictionary of timestamps for the four time periods used, and the current timestamp
-				  timestamps are unix timestamps, in milliseconds represented as integers 
-@returns 
-	- stock_list: dictionary of sorted data 
-"""
 def sort(parts, Timestamps):
+	"""
+	Sort the data from api response to have just batch data.
+
+	@params 
+		- parts: data from api response/cache 
+		- Timestamps: dictionary of timestamps for the four time periods used, and the current timestamp
+					  timestamps are unix timestamps, in milliseconds represented as integers 
+	@returns 
+		- stock_list: dictionary of sorted data 
+	"""
 	part_entry = 0
 	#create an empty dictionary to store all stock data 
 	stock_list = {}
 
-	""" 
-	iterate through parts in data 
-	for each part get stock information and id 
-	create dictionary entries that holds all the IDs, Descriptions, and stock info 
-	append dictionary to list 
-	"""
+	
+	#iterate through parts in data 
+	#for each part get stock information and id 
+	#create dictionary entries that holds all the IDs, Descriptions, and stock info 
+	#append dictionary to list 
 	for part in parts:
 		add_part_flag = False; 
 
@@ -167,14 +166,11 @@ def sort(parts, Timestamps):
 		valid_stock = []
 		#set stock entry counter to 0 for each part 
 		stock_entry = 0
-
-		"""
-		Loop through stock entries
-		Discard entries that have strings with 'move' in them
-		Discard postive entries 
-		Discard entries that do not have stock entries from the past year 
-
-		"""
+		
+		#Loop through stock entries
+		#Discard entries that have strings with 'move' in them
+		#Discard postive entries 
+		#Discard entries that do not have stock entries from the past year 
 		for stock in part_stock:
 
 			#set valid and negative flags 
@@ -215,16 +211,15 @@ def sort(parts, Timestamps):
 	return stock_list
 
 
-
-'''
-Function to remove entries in the sorted data that have no valid stock history 
-
-@params 
-	- parts: list of all parts data
-@returns 
-	- refined_data: list of parts that have had valid stock history within the past year 
-'''
 def remove_empty_stock_list(parts):
+	"""
+	Remove entries in the sorted data that have no valid stock history. 
+
+	@params 
+		- parts: list of all parts data
+	@returns 
+		- refined_data: list of parts that have had valid stock history within the past year 
+	"""	
 	part_entry = 0 
 	refined_data = []
 
@@ -249,15 +244,15 @@ def remove_empty_stock_list(parts):
 	return refined_data
 
 
-'''
-Function to remove entries in the sorted data that have no valid stock history 
-
-@params 
-	- sorted_stock: nested dictionary of valid part information 
-@returns 
-	- refined_data: nested dictionary of parts that have had valid stock history within the past year 
-'''
 def remove_empty_stock_dict(sorted_stock):
+	"""
+	Remove entries in the sorted data that have no valid stock history. 
+
+	@params 
+		- sorted_stock: nested dictionary of valid part information 
+	@returns 
+		- refined_data: nested dictionary of parts that have had valid stock history within the past year 
+	"""	
 	refined_data = {}
 
 	for part in sorted_stock: 
@@ -278,16 +273,15 @@ def remove_empty_stock_dict(sorted_stock):
 	return refined_data
 
 
-'''
-Function that sorts data to be pushed to air table
-
-@params
-	- sorted_stock: nested dictionary containg data for all valid parts
-@returns 
-	- airtable_data: airtable data for all parts, formatted as a list so it can be easily broken in to groups of 10 for pushing to airtable
-
-'''
 def get_data_for_airtable(sorted_stock):
+	"""
+	Sort data to be pushed to air table.
+
+	@params
+		- sorted_stock: nested dictionary containg data for all valid parts
+	@returns 
+		- airtable_data: airtable data for all parts, formatted as a list so it can be easily broken in to groups of 10 for pushing to airtable
+	"""	
 	airtable_data = []
 
 	for part in sorted_stock: 
@@ -323,16 +317,15 @@ def get_data_for_airtable(sorted_stock):
 	return airtable_data
 
 
-'''
-Function that prepares part data for pushing to airtable in groups of no more than 10
-
-@params
-	- airtable_data: list of parts left to be pushed to airtable
-@returns:
-	- group_of_ten: list containing data for up to 10 parts
-
-'''
 def get_group_of_ten(airtable_data):
+	"""
+	Prepare part data for pushing to airtable in groups of no more than 10.
+
+	@params
+		- airtable_data: list of parts left to be pushed to airtable
+	@returns:
+		- group_of_ten: list containing data for up to 10 parts
+	"""	
 	test_index = 0
 	group_of_ten = []
 
@@ -345,21 +338,25 @@ def get_group_of_ten(airtable_data):
 
 
 TIME_PERIOD = 1 #time period in seconds (airtable is limited to 5 requests per second)	
-'''
-limits decorator: ensures only 5 calls per second can be made, to meet the rate limit of airtables api 
-@params
-	- calls: number of calls (integer) that can take place during one period 
-	- period: time period (seconds)
-
-Function that pushes data to airtable for all valid parts 
-
-@params
-	- airtable_data: list of all data to be pushed to airtable 
-@returns: 
-	- none
-'''
 @limits(calls = 5, period = TIME_PERIOD)
 def push_to_airtable(airtable_data):
+	"""
+	limits decorator: ensures only 5 calls per second can be made, to meet the rate limit of airtables api 
+	@params
+		- calls: number of calls (integer) that can take place during one period 
+		- period: time period (seconds)
+	"""
+	"""
+	Pushes data to airtable for all valid parts. 
+
+	Requires airtable base and table to be configured prior to runnning.
+	All headers must match names and types of fields being pushed.=== 
+
+	@params
+		- airtable_data: list of all data to be pushed to airtable 
+	@returns: 
+		- none
+	"""
 	length = len(airtable_data)
 	number_of_calls = int(length / 10) + (length % 10 > 0) 
 	print("pushing date to airtable")
@@ -391,25 +388,25 @@ def push_to_airtable(airtable_data):
 
 			entry = {"fieldsToMergeOn": list_of_fields}
 			data = {"performUpsert": entry, "records": data_to_push}
-			url = "https://api.airtable.com/v0/appRz7kFjf3jJ9Xe4/tblHGveIi8Oy1XoeA" 
+			url = config["URL"] #store url in config file as url contains base and table IDs
 
-			json_result = requests.patch(url, headers = headers, json = data)
+			result = requests.patch(url, headers = headers, json = data)
+			#print statement for testing 
+			#print(result)
 
-			bar() #update progress bar 
+			bar() #update alive progress bar 
 
 
-
-''' 
-Function that gets the list of projects from PartsBox or cache
-
-@params 
-	- headers: dictionary of headers with authorization key for api request
-	- current_timestamp: timestamp from when get timestamps function was called 
-@returns 
-	- result: dictionary with list of projects (list of dictionaries) from api response or cache and update flag to be used for getting project boms 
-
-'''
 def get_projects(headers, current_timestamp):
+	"""
+	Get the list of projects from PartsBox or cache.
+
+	@params 
+		- headers: dictionary of headers with authorization key for api request
+		- current_timestamp: timestamp from when get timestamps function was called 
+	@returns 
+		- result: dictionary with list of projects (list of dictionaries) from api response or cache and update flag to be used for getting project boms 
+	"""	
 	#get project data 
 	url = "https://api.partsbox.com/api/1/project/all"
 	
@@ -435,18 +432,18 @@ def get_projects(headers, current_timestamp):
 
 	return result
 
-'''
-Function that gets boms for all projects from PartsBox or cache
 
-@params
-	- projects: list of dictionaries containing project data 
-	- headers: dictionary of headers for api request, including api authroization key 
-	- update: bool, set to True if projects cache was updated in get_projects, False otherwise
-@returns 
-	- project_boms: list of dictionaries containing project names and their bom's (list of part IDs)
-
-'''
 def get_boms(projects, headers, update):
+	"""
+	Get boms for all projects from PartsBox or cache.
+
+	@params
+		- projects: list of dictionaries containing project data 
+		- headers: dictionary of headers for api request, including api authroization key 
+		- update: bool, set to True if projects cache was updated in get_projects, False otherwise
+	@returns 
+		- project_boms: list of dictionaries containing project names and their bom's (list of part IDs)
+	"""	
 	cache_name = "project_entries_cache.json"
 	try:
 		#cache is created 
@@ -508,16 +505,16 @@ def get_boms(projects, headers, update):
 	return project_boms
 
 
-'''
-Function that goes through project boms and adds project names to parts 
-
-@params
-	- project_boms: list of dictionary entries consisiting of project names and bom's (list of part IDs)
-	- sorted_stock: nested dictionary containg data for all valid parts
-@returns
-	- sorted_stock: nested dictionary containg data for all valid parts with added data for projects which parts are used in 
-'''
 def update_project_data(project_boms, sorted_stock): 
+	"""
+	Goes through project boms and adds project names to parts. 
+
+	@params
+		- project_boms: list of dictionary entries consisiting of project names and bom's (list of part IDs)
+		- sorted_stock: nested dictionary containg data for all valid parts
+	@returns
+		- sorted_stock: nested dictionary containg data for all valid parts with added data for projects which parts are used in 
+	"""	
 	project_index = 0 
 
 	for project in project_boms: 
@@ -537,4 +534,3 @@ def update_project_data(project_boms, sorted_stock):
 		project_index += 1
 
 	return sorted_stock
-

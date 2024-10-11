@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module sort_data</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">sort_data</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cjordan%5Cdocuments%5Cgithub%5Cpartsbox-shortage-script%5Csort_data.py">c:\users\jordan\documents\github\partsbox-shortage-script\sort_data.py</a></td></tr></table>
+    <p><span class="code">Module&nbsp;that&nbsp;contains&nbsp;functions&nbsp;for&nbsp;sorting&nbsp;data&nbsp;for&nbsp;partsbox&nbsp;api&nbsp;interface,&nbsp;and&nbsp;for&nbsp;pushing&nbsp;data&nbsp;to&nbsp;airtable</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="cache.html">cache</a><br>
+<a href="csv.html">csv</a><br>
+</td><td class="multicolumn"><a href="json.html">json</a><br>
+<a href="pandas.html">pandas</a><br>
+</td><td class="multicolumn"><a href="requests.html">requests</a><br>
+<a href="time.html">time</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-check_partsbox_limit"><strong>check_partsbox_limit</strong></a>()</dt><dd><span class="code">Empty&nbsp;function&nbsp;for&nbsp;checking&nbsp;calls&nbsp;to&nbsp;the&nbsp;PartsBox&nbsp;API.<br>
+&nbsp;<br>
+Should&nbsp;be&nbsp;called&nbsp;at&nbsp;the&nbsp;beggining&nbsp;of&nbsp;every&nbsp;function&nbsp;that&nbsp;makes&nbsp;a&nbsp;request&nbsp;to&nbsp;PartsBox&nbsp;<br>
+currently&nbsp;partsbox&nbsp;does&nbsp;not&nbsp;enforce&nbsp;rate&nbsp;limiting&nbsp;but&nbsp;if&nbsp;they&nbsp;do&nbsp;change&nbsp;calls&nbsp;and&nbsp;rate_limit&nbsp;to&nbsp;match&nbsp;their&nbsp;listed&nbsp;limits</span></dd></dl>
+ <dl><dt><a name="-get_boms"><strong>get_boms</strong></a>(projects, headers, update)</dt><dd><span class="code">Get&nbsp;boms&nbsp;for&nbsp;all&nbsp;projects&nbsp;from&nbsp;PartsBox&nbsp;or&nbsp;cache.<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;projects:&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;containing&nbsp;project&nbsp;data&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;headers:&nbsp;dictionary&nbsp;of&nbsp;headers&nbsp;for&nbsp;api&nbsp;request,&nbsp;including&nbsp;api&nbsp;authroization&nbsp;key&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;update:&nbsp;bool,&nbsp;set&nbsp;to&nbsp;True&nbsp;if&nbsp;projects&nbsp;cache&nbsp;was&nbsp;updated&nbsp;in&nbsp;get_projects,&nbsp;False&nbsp;otherwise<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;project_boms:&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;containing&nbsp;project&nbsp;names&nbsp;and&nbsp;their&nbsp;bom's&nbsp;(list&nbsp;of&nbsp;part&nbsp;IDs)</span></dd></dl>
+ <dl><dt><a name="-get_data_for_airtable"><strong>get_data_for_airtable</strong></a>(sorted_stock)</dt><dd><span class="code">Sort&nbsp;data&nbsp;to&nbsp;be&nbsp;pushed&nbsp;to&nbsp;air&nbsp;table.<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;nested&nbsp;dictionary&nbsp;containg&nbsp;data&nbsp;for&nbsp;all&nbsp;valid&nbsp;parts<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;airtable_data:&nbsp;airtable&nbsp;data&nbsp;for&nbsp;all&nbsp;parts,&nbsp;formatted&nbsp;as&nbsp;a&nbsp;list&nbsp;so&nbsp;it&nbsp;can&nbsp;be&nbsp;easily&nbsp;broken&nbsp;in&nbsp;to&nbsp;groups&nbsp;of&nbsp;10&nbsp;for&nbsp;pushing&nbsp;to&nbsp;airtable</span></dd></dl>
+ <dl><dt><a name="-get_group_of_ten"><strong>get_group_of_ten</strong></a>(airtable_data)</dt><dd><span class="code">Prepare&nbsp;part&nbsp;data&nbsp;for&nbsp;pushing&nbsp;to&nbsp;airtable&nbsp;in&nbsp;groups&nbsp;of&nbsp;no&nbsp;more&nbsp;than&nbsp;10.<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;airtable_data:&nbsp;list&nbsp;of&nbsp;parts&nbsp;left&nbsp;to&nbsp;be&nbsp;pushed&nbsp;to&nbsp;airtable<br>
+@returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;group_of_ten:&nbsp;list&nbsp;containing&nbsp;data&nbsp;for&nbsp;up&nbsp;to&nbsp;10&nbsp;parts</span></dd></dl>
+ <dl><dt><a name="-get_lead"><strong>get_lead</strong></a>(part)</dt><dd><span class="code">Search&nbsp;for&nbsp;a&nbsp;custom&nbsp;field&nbsp;for&nbsp;lead&nbsp;times.<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;part:&nbsp;data&nbsp;for&nbsp;a&nbsp;single&nbsp;part&nbsp;from&nbsp;the&nbsp;parts&nbsp;list&nbsp;&nbsp;<br>
+@returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;leadtime:&nbsp;leadtime&nbsp;if&nbsp;found&nbsp;or&nbsp;0&nbsp;otherwise</span></dd></dl>
+ <dl><dt><a name="-get_projects"><strong>get_projects</strong></a>(headers, current_timestamp)</dt><dd><span class="code">Get&nbsp;the&nbsp;list&nbsp;of&nbsp;projects&nbsp;from&nbsp;PartsBox&nbsp;or&nbsp;cache.<br>
+&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;headers:&nbsp;dictionary&nbsp;of&nbsp;headers&nbsp;with&nbsp;authorization&nbsp;key&nbsp;for&nbsp;api&nbsp;request<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;current_timestamp:&nbsp;timestamp&nbsp;from&nbsp;when&nbsp;get&nbsp;timestamps&nbsp;function&nbsp;was&nbsp;called&nbsp;<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;result:&nbsp;dictionary&nbsp;with&nbsp;list&nbsp;of&nbsp;projects&nbsp;(list&nbsp;of&nbsp;dictionaries)&nbsp;from&nbsp;api&nbsp;response&nbsp;or&nbsp;cache&nbsp;and&nbsp;update&nbsp;flag&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;getting&nbsp;project&nbsp;boms</span></dd></dl>
+ <dl><dt><a name="-push_to_airtable"><strong>push_to_airtable</strong></a>(airtable_data)</dt><dd><span class="code">limits&nbsp;decorator:&nbsp;ensures&nbsp;only&nbsp;5&nbsp;calls&nbsp;per&nbsp;second&nbsp;can&nbsp;be&nbsp;made,&nbsp;to&nbsp;meet&nbsp;the&nbsp;rate&nbsp;limit&nbsp;of&nbsp;airtables&nbsp;api&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;calls:&nbsp;number&nbsp;of&nbsp;calls&nbsp;(integer)&nbsp;that&nbsp;can&nbsp;take&nbsp;place&nbsp;during&nbsp;one&nbsp;period&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;period:&nbsp;time&nbsp;period&nbsp;(seconds)</span></dd></dl>
+ <dl><dt><a name="-remove_empty_stock_dict"><strong>remove_empty_stock_dict</strong></a>(sorted_stock)</dt><dd><span class="code">Remove&nbsp;entries&nbsp;in&nbsp;the&nbsp;sorted&nbsp;data&nbsp;that&nbsp;have&nbsp;no&nbsp;valid&nbsp;stock&nbsp;history.&nbsp;<br>
+&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;nested&nbsp;dictionary&nbsp;of&nbsp;valid&nbsp;part&nbsp;information&nbsp;<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;refined_data:&nbsp;nested&nbsp;dictionary&nbsp;of&nbsp;parts&nbsp;that&nbsp;have&nbsp;had&nbsp;valid&nbsp;stock&nbsp;history&nbsp;within&nbsp;the&nbsp;past&nbsp;year</span></dd></dl>
+ <dl><dt><a name="-remove_empty_stock_list"><strong>remove_empty_stock_list</strong></a>(parts)</dt><dd><span class="code">Remove&nbsp;entries&nbsp;in&nbsp;the&nbsp;sorted&nbsp;data&nbsp;that&nbsp;have&nbsp;no&nbsp;valid&nbsp;stock&nbsp;history.&nbsp;<br>
+&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;parts:&nbsp;list&nbsp;of&nbsp;all&nbsp;parts&nbsp;data<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;refined_data:&nbsp;list&nbsp;of&nbsp;parts&nbsp;that&nbsp;have&nbsp;had&nbsp;valid&nbsp;stock&nbsp;history&nbsp;within&nbsp;the&nbsp;past&nbsp;year</span></dd></dl>
+ <dl><dt><a name="-sort"><strong>sort</strong></a>(parts, Timestamps)</dt><dd><span class="code">Sort&nbsp;the&nbsp;data&nbsp;from&nbsp;api&nbsp;response&nbsp;to&nbsp;have&nbsp;just&nbsp;batch&nbsp;data.<br>
+&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;parts:&nbsp;data&nbsp;from&nbsp;api&nbsp;response/cache&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Timestamps:&nbsp;dictionary&nbsp;of&nbsp;timestamps&nbsp;for&nbsp;the&nbsp;four&nbsp;time&nbsp;periods&nbsp;used,&nbsp;and&nbsp;the&nbsp;current&nbsp;timestamp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timestamps&nbsp;are&nbsp;unix&nbsp;timestamps,&nbsp;in&nbsp;milliseconds&nbsp;represented&nbsp;as&nbsp;integers&nbsp;<br>
+@returns&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;stock_list:&nbsp;dictionary&nbsp;of&nbsp;sorted&nbsp;data</span></dd></dl>
+ <dl><dt><a name="-update_lead_times"><strong>update_lead_times</strong></a>(parts, headers)</dt><dd><span class="code">Check&nbsp;if&nbsp;parts&nbsp;have&nbsp;a&nbsp;valid&nbsp;lead&nbsp;time&nbsp;and&nbsp;adds&nbsp;default&nbsp;lead&nbsp;time&nbsp;if&nbsp;not.&nbsp;<br>
+&nbsp;<br>
+@params&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;parts:&nbsp;list&nbsp;of&nbsp;part&nbsp;data&nbsp;from&nbsp;partsbox&nbsp;api&nbsp;response&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;headers:&nbsp;headers&nbsp;data&nbsp;including&nbsp;authorization&nbsp;key&nbsp;for&nbsp;api&nbsp;call&nbsp;<br>
+@returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;parts:&nbsp;with&nbsp;added&nbsp;lead&nbsp;times&nbsp;field&nbsp;for&nbsp;parts&nbsp;that&nbsp;had&nbsp;invalid&nbsp;or&nbsp;non&nbsp;existent&nbsp;lead&nbsp;times</span></dd></dl>
+ <dl><dt><a name="-update_project_data"><strong>update_project_data</strong></a>(project_boms, sorted_stock)</dt><dd><span class="code">Goes&nbsp;through&nbsp;project&nbsp;boms&nbsp;and&nbsp;adds&nbsp;project&nbsp;names&nbsp;to&nbsp;parts.&nbsp;<br>
+&nbsp;<br>
+@params<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;project_boms:&nbsp;list&nbsp;of&nbsp;dictionary&nbsp;entries&nbsp;consisiting&nbsp;of&nbsp;project&nbsp;names&nbsp;and&nbsp;bom's&nbsp;(list&nbsp;of&nbsp;part&nbsp;IDs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;nested&nbsp;dictionary&nbsp;containg&nbsp;data&nbsp;for&nbsp;all&nbsp;valid&nbsp;parts<br>
+@returns<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;sorted_stock:&nbsp;nested&nbsp;dictionary&nbsp;containg&nbsp;data&nbsp;for&nbsp;all&nbsp;valid&nbsp;parts&nbsp;with&nbsp;added&nbsp;data&nbsp;for&nbsp;projects&nbsp;which&nbsp;parts&nbsp;are&nbsp;used&nbsp;in</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>READ</strong> = 1<br>
+<strong>REQUESTS</strong> = 200<br>
+<strong>TIME_PERIOD</strong> = 1<br>
+<strong>WRITE</strong> = 0</td></tr></table>
+</body></html>
