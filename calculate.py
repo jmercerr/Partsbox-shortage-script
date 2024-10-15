@@ -45,6 +45,7 @@ def get_avg_batch(sorted_stock, Timestamps):
 	                timestamps are unix timestamps, in milliseconds represented as integers 
 	@returns 
 		- sorted_stock: sorted data with dictionary of average batch sizes added 
+		
 	"""
 	for part in sorted_stock:
 		batch_totals = {"1_month": 0, "3_months": 0, "6_months": 0, "12_months": 0}
@@ -261,7 +262,7 @@ def get_risk_level(sorted_stock, current_timestamp):
 			time_till_next_batch = abs(int(last_batch - avg_time))
 
 		try: 
-			number_of_batches = int(current_stock / avg_batch) + (current_stock % avg_batch > 0)
+			number_of_batches = int(current_stock / avg_batch + current_stock % avg_batch > 0) #add the remainder to round up the value
 		except ZeroDivisionError as e:
 			e.add_note(f"{part} does not contain data for the past year, resulting in an average batch size of 0, unlikely that the part will be needed soon")
 			number_of_batches = 0
@@ -274,7 +275,7 @@ def get_risk_level(sorted_stock, current_timestamp):
 		sorted_stock[part]["estimated_rop"] = estimated_rop
 
 		if avg_time == None or avg_time == 0 or avg_batch == 0: #either no stock entries, only one stock entry, therefore unlikely for more batches to be produced
-			sorted_stock[part]["risk_level"] = "not enough data"
+			sorted_stock[part]["risk_level"] = "Not enough data"
 		else: 
 			if estimated_rop < 0:
 				sorted_stock[part]["risk_level"] = "Overdue for batch"

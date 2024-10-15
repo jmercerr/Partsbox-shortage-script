@@ -17,12 +17,12 @@ def fetch_data(*, update: bool = False, json_cache: str, url: str, headers: dict
 		else - creates cache file, makes api request, stores response in file 
 
 	@params
-		- update: flag (bool)
+		- update: bool flag (set to true if update to cache is required, false otherwise)
 		- json_cache: file name
-		- url: for api request
-		- headers: for api request
+		- url: url for api request
+		- headers: for api request, including authorization/api key
 	@returns
-		- json_data: data in the cache file 
+		- json_data: data in the cache file or data from api request 
 	"""	
 	if update:
 		json_data = None

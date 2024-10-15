@@ -59,7 +59,7 @@ def update_lead_times(parts, headers):
 			url = "https://api.partsbox.com/api/1/part/update-custom-fields"
 			payload = {"part/id": part_id,  "custom-fields": [{"key": "lead_time_(weeks)", "value": "2"}]}
 			json_data = requests.post(url, headers = headers, json = payload).json()
-			part_lead = 2 #set to default 
+			part_lead = 2 #set to default
 
 		part_entry += 1
 
@@ -109,7 +109,6 @@ def sort(parts, Timestamps):
 	#create an empty dictionary to store all stock data 
 	stock_list = {}
 
-	
 	#iterate through parts in data 
 	#for each part get stock information and id 
 	#create dictionary entries that holds all the IDs, Descriptions, and stock info 
@@ -160,7 +159,12 @@ def sort(parts, Timestamps):
 		used_in = []
 
 		#create dictionary of data feilds for parts
-		stock_list[part_id] = {"description": part_description, "mpn": part_mpn, "total_stock": part_stock_count, "part/restock": part_restock, "lead_time_(weeks)": part_lead_value, "projects_used_in": used_in}
+		stock_list[part_id] = {"description": part_description, 
+							   "mpn": part_mpn, 
+							   "total_stock": part_stock_count, 
+							   "part/restock": part_restock, 
+							   "lead_time_(weeks)": part_lead_value, 
+							   "projects_used_in": used_in}
 
 		#create empty list for valid stock entries for each part
 		valid_stock = []
@@ -345,12 +349,23 @@ def push_to_airtable(airtable_data):
 	@params
 		- calls: number of calls (integer) that can take place during one period 
 		- period: time period (seconds)
-	"""
-	"""
-	Pushes data to airtable for all valid parts. 
 
+	push_to_airtable function: 
+	Pushes data to airtable for all valid parts. 
+	
 	Requires airtable base and table to be configured prior to runnning.
-	All headers must match names and types of fields being pushed.=== 
+	All headers must match names and types of fields being pushed.
+	headers and their types: 
+		- part_id: single line text 
+		- description: single line text
+		- mpn: single line text
+		- total_stock: number
+		- risk: single line text
+		- lead_time_(weeks): number
+		- rop_estimate_(days): number
+		- last_batch: date
+		- last_restock: date
+		- projects_used_in: long text
 
 	@params
 		- airtable_data: list of all data to be pushed to airtable 
@@ -382,10 +397,7 @@ def push_to_airtable(airtable_data):
 			}
 
 			data = {}
-			list_of_fields = []
-			list_of_fields.append("part_id")
-			list_of_fields.append("description")
-
+			list_of_fields = ["part_id", "description"]
 			entry = {"fieldsToMergeOn": list_of_fields}
 			data = {"performUpsert": entry, "records": data_to_push}
 			url = config["URL"] #store url in config file as url contains base and table IDs
